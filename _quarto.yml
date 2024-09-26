@@ -3,9 +3,6 @@ project:
 
 website:
   title: "Sadashiv Nandanikar"
-  search:
-    location: navbar
-    type: overlay
   
   favicon: "images/luffy.jpg"
   
