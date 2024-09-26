@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Sadashiv Nandanikar",
@@ -7,10 +14,24 @@
     "text": "Data Scientist @ Maruti Suzuki India Limited.\nExperienced Data Scientist | Machine Learning Specialist with a proven track record of driving business growth through data-driven insights, advanced analytics, and Python expertise."
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
     "section": "",
-    "text": "About this site"
+    "text": "Introduction to Algorithm\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "projects/Introduction to Algorithm.html",
+    "href": "projects/Introduction to Algorithm.html",
+    "title": "Sadashiv Nandanikar",
+    "section": "",
+    "text": "Algorithm\n\n\n\nIn the context of machine learning and deep learning, an algorithm is like a set of step-by-step instructions that a computer follows to learn from data or make predictions.\nIt’s a recipe for the computer to process information, find patterns, and make decisions.\nThink of it as a smart way for a computer to solve problems or make sense of complex data.\nThese algorithms help us build models that can recognize patterns, understand language, or even play games, among many other things.\nSo, in a nutshell, algorithms are like the brains behind the magic of machine learning and deep learning.\n\n\n\n\nIn machine learning and deep learning, there are several types of algorithms, each with its own purpose and characteristics. Here’s a simple overview of some common types:\n\n[[Supervised Learning Algorithms]]:\n\nThese algorithms learn from labeled data, where the input and the desired output are known.\nCommon algorithms include Linear Regression, Decision Trees, and Support Vector Machines (SVM).\n\n[[Unsupervised Learning Algorithms]]:\n\nThese algorithms work with unlabeled data, aiming to find hidden patterns or group similar data points.\nExamples include K-Means Clustering and Principal Component Analysis (PCA).\n\nDeep Learning Algorithms:\n\nDeep learning is a subset of machine learning that uses neural networks with many layers (deep networks) to learn from data.\nCommon deep learning algorithms include Convolutional Neural Networks (CNNs) for image analysis and Recurrent Neural Networks (RNNs) for sequence data.\n\nReinforcement Learning Algorithms:\n\nThese algorithms are used in scenarios where an agent learns to take actions to maximize rewards in an environment.\nWell-known algorithms include Q-Learning and Deep Q-Networks (DQNs).\n\nSemi-Supervised and Self-Supervised Learning:\n\nThese approaches combine elements of supervised and unsupervised learning, making use of both labeled and unlabeled data.\n\nTransfer Learning:\n\nTransfer learning involves using a pre-trained model on a related task as a starting point for a new task, saving training time and resources.\n\nEnsemble Methods:\n\nEnsemble methods combine multiple models to improve prediction accuracy. Examples include Random Forests and Gradient Boosting.\n\nNatural Language Processing (NLP) Algorithms:\n\nThese are specialized algorithms for working with text data, such as sentiment analysis and named entity recognition.\n\nDeep Reinforcement Learning:\n\nThis combines deep learning and reinforcement learning, often used in complex tasks like game playing (e.g., AlphaGo).\n\nDimensionality Reduction:\n\nAlgorithms like t-SNE and UMAP are used to reduce the number of features in high-dimensional data while preserving important relationships.\n\n\nThese are just some of the many types of algorithms used in machine learning and deep learning. The choice of algorithm depends on the specific problem you’re trying to solve and the type of data you have."
+  },
+  {
+    "objectID": "projects/Introduction to Algorithm.html#introduction-to-algorithm",
+    "href": "projects/Introduction to Algorithm.html#introduction-to-algorithm",
+    "title": "Sadashiv Nandanikar",
+    "section": "",
+    "text": "Algorithm\n\n\n\nIn the context of machine learning and deep learning, an algorithm is like a set of step-by-step instructions that a computer follows to learn from data or make predictions.\nIt’s a recipe for the computer to process information, find patterns, and make decisions.\nThink of it as a smart way for a computer to solve problems or make sense of complex data.\nThese algorithms help us build models that can recognize patterns, understand language, or even play games, among many other things.\nSo, in a nutshell, algorithms are like the brains behind the magic of machine learning and deep learning.\n\n\n\n\nIn machine learning and deep learning, there are several types of algorithms, each with its own purpose and characteristics. Here’s a simple overview of some common types:\n\n[[Supervised Learning Algorithms]]:\n\nThese algorithms learn from labeled data, where the input and the desired output are known.\nCommon algorithms include Linear Regression, Decision Trees, and Support Vector Machines (SVM).\n\n[[Unsupervised Learning Algorithms]]:\n\nThese algorithms work with unlabeled data, aiming to find hidden patterns or group similar data points.\nExamples include K-Means Clustering and Principal Component Analysis (PCA).\n\nDeep Learning Algorithms:\n\nDeep learning is a subset of machine learning that uses neural networks with many layers (deep networks) to learn from data.\nCommon deep learning algorithms include Convolutional Neural Networks (CNNs) for image analysis and Recurrent Neural Networks (RNNs) for sequence data.\n\nReinforcement Learning Algorithms:\n\nThese algorithms are used in scenarios where an agent learns to take actions to maximize rewards in an environment.\nWell-known algorithms include Q-Learning and Deep Q-Networks (DQNs).\n\nSemi-Supervised and Self-Supervised Learning:\n\nThese approaches combine elements of supervised and unsupervised learning, making use of both labeled and unlabeled data.\n\nTransfer Learning:\n\nTransfer learning involves using a pre-trained model on a related task as a starting point for a new task, saving training time and resources.\n\nEnsemble Methods:\n\nEnsemble methods combine multiple models to improve prediction accuracy. Examples include Random Forests and Gradient Boosting.\n\nNatural Language Processing (NLP) Algorithms:\n\nThese are specialized algorithms for working with text data, such as sentiment analysis and named entity recognition.\n\nDeep Reinforcement Learning:\n\nThis combines deep learning and reinforcement learning, often used in complex tasks like game playing (e.g., AlphaGo).\n\nDimensionality Reduction:\n\nAlgorithms like t-SNE and UMAP are used to reduce the number of features in high-dimensional data while preserving important relationships.\n\n\nThese are just some of the many types of algorithms used in machine learning and deep learning. The choice of algorithm depends on the specific problem you’re trying to solve and the type of data you have."
   }
 ]
