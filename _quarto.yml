@@ -24,6 +24,8 @@ website:
         text: Projects
       - href: Blogs.qmd
         text: Blogs
+      - href: Resume
+        text: Resume
       # - href: tidytuesday.qmd
       #   text: TidyTuesday
       # - href: workshops.qmd
