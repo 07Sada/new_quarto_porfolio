@@ -24,14 +24,8 @@ website:
         text: Projects
       - href: Blogs.qmd
         text: Blogs
-      - href: Resume
+      - href: resume.qmd
         text: Resume
-      # - href: tidytuesday.qmd
-      #   text: TidyTuesday
-      # - href: workshops.qmd
-      #   text: Workshops
-      # - href: blogs.qmd
-      #   text: Blogs
         
     right:
       - icon: linkedin
