@@ -1,16 +1,16 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Sadashiv Nandanikar",
     "section": "",
     "text": "Data Scientist @ Maruti Suzuki India Limited.\nExperienced Data Scientist | Machine Learning Specialist with a proven track record of driving business growth through data-driven insights, advanced analytics, and Python expertise."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
   }
 ]
