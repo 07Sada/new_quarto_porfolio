@@ -2,11 +2,11 @@
 title: Introduction to Algorithm
 author: Sadashiv
 date: 09-26-2024
-image: projects\project_images\machine-learning-algorithms.jpeg
+image: project_images\machine-learning-algorithms.jpeg
 ---
 
 ## Introduction to Algorithm
-![Algorithm](projects\project_images\machine-learning-algorithms.jpeg)
+![Algorithm](project_images\machine-learning-algorithms.jpeg)
 
 - In the context of machine learning and deep learning, an algorithm is like a set of step-by-step instructions that a computer follows to learn from data or make predictions. 
 - It's a recipe for the computer to process information, find patterns, and make decisions. 
