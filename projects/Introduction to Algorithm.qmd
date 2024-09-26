@@ -1,7 +1,7 @@
 ---
 title: Introduction to Algorithm
 author: Sadashiv
-date: 26-09-2024
+date: 09-26-2024
 image: images\machine-learning-algorithms.jpeg
 ---
 
