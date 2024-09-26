@@ -23,6 +23,8 @@ In machine learning and deep learning, there are several types of algorithms, ea
    - These algorithms learn from labeled data, where the input and the desired output are known.
    - Common algorithms include Linear Regression, Decision Trees, and Support Vector Machines (SVM).
 
+
+
 2. **[[Unsupervised Learning Algorithms]]**:
    - These algorithms work with unlabeled data, aiming to find hidden patterns or group similar data points.
    - Examples include K-Means Clustering and Principal Component Analysis (PCA).
