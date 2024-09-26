@@ -1,7 +1,22 @@
 ---
-title: "new_quarto_porfolio"
+title: "Sadashiv Nandanikar"
+image: "images/profile_pic.png"
+about:
+  template: jolla
+  image-width: 14em
+  image-shape: round
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com/in/sadashiv-nandanikar-406484292
+    - icon: github
+      text: Github
+      href: https://github.com/07Sada
+    - icon: envelope
+      text: Contact me
+      href: mailto:nandanikar.sadashiv0712@gmail.com
 ---
 
-This is a Quarto website.
+Data Scientist @ Maruti Suzuki India Limited.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Experienced Data Scientist | Machine Learning Specialist with a proven track record of driving business growth through data-driven insights, advanced analytics, and Python expertise.
