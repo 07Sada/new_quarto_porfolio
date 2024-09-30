@@ -58,7 +58,7 @@ There are mainly two types of Feature Selection techniques, which are:
 	Unsupervised Feature selection techniques ignore the target variable and can be used for the unlabeled dataset.
 
 
-![Feature_Selection_Techniques_Drawing](blogs\feature_selection_technique\feature_selection_technique.jpeg)
+![Feature_Selection_Techniques_Drawing](feature_selection_technique.png)
 
 There are mainly three techniques under supervised feature Selection:
 
@@ -92,6 +92,7 @@ The filter method filters out the irrelevant feature and redundant columns from 
 The advantage of using filter methods is that it needs low computational time and does not overfit the data.
 
 ![](https://static.javatpoint.com/tutorial/machine-learning/images/feature-selection-techniques-in-machine-learning4.png)
+
 Some common techniques of Filter methods are as follows:
 - Information Gain
 - Chi-square Test
@@ -109,6 +110,7 @@ Some common techniques of Filter methods are as follows:
 
 - **Missing Value Ratio:**
 	The value of the missing value ratio can be used for evaluating the feature set against the threshold value. The formula for obtaining the missing value ratio is the number of missing values in each column divided by the total number of observations. The variable is having more than the threshold value can be dropped. 
+
 	$$\text{Missing Value Ratio} = \frac{\text{Number of Missing Values} \times 100}{\text{Total Number of Observations}}
 	$$
 
@@ -117,6 +119,7 @@ Some common techniques of Filter methods are as follows:
 Embedded methods combined the advantages of both filter and wrapper methods by considering the interaction of features along with low computational cost. These are fast processing methods similar to the filter method but more accurate than the filter method.
 
 ![](https://static.javatpoint.com/tutorial/machine-learning/images/feature-selection-techniques-in-machine-learning6.png)
+
 These methods are also iterative, which evaluates each iteration, and optimally finds the most important features that contribute the most to training in a particular iteration. Some techniques of embedded methods are:
 
 - **Regularization**:
@@ -135,20 +138,25 @@ To know this, we need to first identify the type of input and output variables. 
 
 - **Numerical Variables:** 
 	Variable with continuous values such as integer, float
+	
 - **Categorical Variables:**
 	Variables with categorical values such as Boolean, ordinal, nominals.
 
 Below are some univariate statistical measures, which can be used for filter-based feature selection:
+
 1. **Numerical Input, Numerical Output:**
 	Numerical Input variables are used for predictive regression modelling. The common method to be used for such a case is the Correlation coefficient.
 	- Pearson's correlation coefficient (For linear Correlation).
 	- Spearman's rank coefficient (for non-linear correlation).
+
 2.  **Numerical Input, Categorical Output:**
 	Numerical Input with categorical output is the case for classification predictive modelling problem**s.** In this case, also, correlation-based techniques should be used, but with categorical output.
 	- **ANOVA correlation coefficient (linear).**
 	- - **Kendall's rank coefficient (nonlinear).**
+
 3. **Categorical Input, Numerical Output:**
 	This is the case of regression predictive modelling with categorical input. It is a different example of a regression problem. We can use the same measures as discussed in the above case but in reverse order.
+
 4. **Categorical Input, Categorical Output:**
 	This is a case of classification predictive modelling with categorical Input variables.
 	
