@@ -22,7 +22,7 @@ website:
         text: Home
       - href: projects.qmd
         text: Projects
-      - href: Blogs.qmd
+      - href: blogs.qmd
         text: Blogs
       - href: resume.qmd
         text: Resume
