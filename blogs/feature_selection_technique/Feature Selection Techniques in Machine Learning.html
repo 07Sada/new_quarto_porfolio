@@ -238,7 +238,7 @@ window.Quarto = {
 <p>There are mainly two types of Feature Selection techniques, which are: - <strong>Supervised Feature Selection technique</strong> Supervised Feature selection techniques consider the target variable and can be used for the labelled dataset. - <strong>Unsupervised Feature Selection technique</strong> Unsupervised Feature selection techniques ignore the target variable and can be used for the unlabeled dataset.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="blogs\feature_selection_technique\feature_selection_technique.jpeg" class="img-fluid figure-img"></p>
+<p><img src="feature_selection_technique.png" class="img-fluid figure-img"></p>
 <figcaption>Feature_Selection_Techniques_Drawing</figcaption>
 </figure>
 </div>
@@ -261,19 +261,22 @@ window.Quarto = {
 <p>In Filter Method, features are selected on the basis of statistics measures. This method does not depend on the learning algorithm and chooses the features as a pre-processing step.</p>
 <p>The filter method filters out the irrelevant feature and redundant columns from the model by using different metrics through ranking.</p>
 <p>The advantage of using filter methods is that it needs low computational time and does not overfit the data.</p>
-<p><img src="https://static.javatpoint.com/tutorial/machine-learning/images/feature-selection-techniques-in-machine-learning4.png" class="img-fluid"> Some common techniques of Filter methods are as follows: - Information Gain - Chi-square Test - Fisher’s Score - Missing Value Ratio</p>
+<p><img src="https://static.javatpoint.com/tutorial/machine-learning/images/feature-selection-techniques-in-machine-learning4.png" class="img-fluid"></p>
+<p>Some common techniques of Filter methods are as follows: - Information Gain - Chi-square Test - Fisher’s Score - Missing Value Ratio</p>
 <ul>
 <li><p><strong>Information Gain:</strong> Information gain determines the reduction in entropy while transforming the dataset. It can be used as a feature selection technique by calculating the information gain of each variable with respect to the target variable.</p></li>
 <li><p><strong>Chi-square Test:</strong> Chi-square test is a technique to determine the relationship between the categorical variables. The chi-square value is calculated between each feature and the target variable, and the desired number of features with the best chi-square value is selected.</p></li>
 <li><p><strong>Fisher’s Score:</strong> Fisher’s score is one of the popular supervised technique of features selection. It returns the rank of the variable on the fisher’s criteria in descending order. Then we can select the variables with a large fisher’s score.</p></li>
-<li><p><strong>Missing Value Ratio:</strong> The value of the missing value ratio can be used for evaluating the feature set against the threshold value. The formula for obtaining the missing value ratio is the number of missing values in each column divided by the total number of observations. The variable is having more than the threshold value can be dropped. <span class="math display">\[\text{Missing Value Ratio} = \frac{\text{Number of Missing Values} \times 100}{\text{Total Number of Observations}}
+<li><p><strong>Missing Value Ratio:</strong> The value of the missing value ratio can be used for evaluating the feature set against the threshold value. The formula for obtaining the missing value ratio is the number of missing values in each column divided by the total number of observations. The variable is having more than the threshold value can be dropped.</p>
+<p><span class="math display">\[\text{Missing Value Ratio} = \frac{\text{Number of Missing Values} \times 100}{\text{Total Number of Observations}}
   \]</span></p></li>
 </ul>
 </section>
 <section id="embedded-methods" class="level3">
 <h3 class="anchored" data-anchor-id="embedded-methods">3. Embedded Methods</h3>
 <p>Embedded methods combined the advantages of both filter and wrapper methods by considering the interaction of features along with low computational cost. These are fast processing methods similar to the filter method but more accurate than the filter method.</p>
-<p><img src="https://static.javatpoint.com/tutorial/machine-learning/images/feature-selection-techniques-in-machine-learning6.png" class="img-fluid"> These methods are also iterative, which evaluates each iteration, and optimally finds the most important features that contribute the most to training in a particular iteration. Some techniques of embedded methods are:</p>
+<p><img src="https://static.javatpoint.com/tutorial/machine-learning/images/feature-selection-techniques-in-machine-learning6.png" class="img-fluid"></p>
+<p>These methods are also iterative, which evaluates each iteration, and optimally finds the most important features that contribute the most to training in a particular iteration. Some techniques of embedded methods are:</p>
 <ul>
 <li><p><strong>Regularization</strong>: <em>Regularization adds a penalty term to different parameters of the machine learning model for avoiding overfitting in the model.</em> This penalty term is added to the coefficients; hence it shrinks some coefficients to zero. Those features with zero coefficients can be removed from the dataset. The types of regularization techniques are L1 Regularization (Lasso Regularization) or Elastic Nets (L1 and L2 regularization).</p></li>
 <li><p><strong>Random Forest Importance</strong>: <em>Different tree-based methods of feature selection help us with feature importance to provide a way of selecting features.</em> Here, feature importance specifies which feature has more importance in model building or has a great impact on the target variable. Random Forest is such a tree-based method, which is a type of bagging algorithm that aggregates a different number of decision trees. It automatically ranks the nodes by their performance or decrease in the impurity (Gini impurity) over all the trees. Nodes are arranged as per the impurity values, and thus it allows to pruning of trees below a specific node. The remaining nodes create a subset of the most important features.</p></li>
@@ -286,11 +289,27 @@ window.Quarto = {
 <p>![[Feature_Selection_Flow_Chart.png]]</p>
 <p>To know this, we need to first identify the type of input and output variables. In machine learning, variables are of mainly two types:</p>
 <ul>
-<li><strong>Numerical Variables:</strong> Variable with continuous values such as integer, float</li>
-<li><strong>Categorical Variables:</strong> Variables with categorical values such as Boolean, ordinal, nominals.</li>
+<li><p><strong>Numerical Variables:</strong> Variable with continuous values such as integer, float</p></li>
+<li><p><strong>Categorical Variables:</strong> Variables with categorical values such as Boolean, ordinal, nominals.</p></li>
 </ul>
-<p>Below are some univariate statistical measures, which can be used for filter-based feature selection: 1. <strong>Numerical Input, Numerical Output:</strong> Numerical Input variables are used for predictive regression modelling. The common method to be used for such a case is the Correlation coefficient. - Pearson’s correlation coefficient (For linear Correlation). - Spearman’s rank coefficient (for non-linear correlation). 2. &nbsp;<strong>Numerical Input, Categorical Output:</strong> Numerical Input with categorical output is the case for classification predictive modelling problem<strong>s.</strong>&nbsp;In this case, also, correlation-based techniques should be used, but with categorical output. - <strong>ANOVA correlation coefficient (linear).</strong> - - <strong>Kendall’s rank coefficient (nonlinear).</strong> 3. <strong>Categorical Input, Numerical Output:</strong> This is the case of regression predictive modelling with categorical input. It is a different example of a regression problem. We can use the same measures as discussed in the above case but in reverse order. 4. <strong>Categorical Input, Categorical Output:</strong> This is a case of classification predictive modelling with categorical Input variables.</p>
-<pre><code>The commonly used technique for such a case is Chi-Squared Test. We can also use Information gain in this case.</code></pre>
+<p>Below are some univariate statistical measures, which can be used for filter-based feature selection:</p>
+<ol type="1">
+<li><p><strong>Numerical Input, Numerical Output:</strong> Numerical Input variables are used for predictive regression modelling. The common method to be used for such a case is the Correlation coefficient.</p>
+<ul>
+<li>Pearson’s correlation coefficient (For linear Correlation).</li>
+<li>Spearman’s rank coefficient (for non-linear correlation).</li>
+</ul></li>
+<li><p>&nbsp;<strong>Numerical Input, Categorical Output:</strong> Numerical Input with categorical output is the case for classification predictive modelling problem<strong>s.</strong>&nbsp;In this case, also, correlation-based techniques should be used, but with categorical output.</p>
+<ul>
+<li><strong>ANOVA correlation coefficient (linear).</strong></li>
+<li><ul>
+<li><strong>Kendall’s rank coefficient (nonlinear).</strong></li>
+</ul></li>
+</ul></li>
+<li><p><strong>Categorical Input, Numerical Output:</strong> This is the case of regression predictive modelling with categorical input. It is a different example of a regression problem. We can use the same measures as discussed in the above case but in reverse order.</p></li>
+<li><p><strong>Categorical Input, Categorical Output:</strong> This is a case of classification predictive modelling with categorical Input variables.</p>
+<p>The commonly used technique for such a case is Chi-Squared Test. We can also use Information gain in this case.</p></li>
+</ol>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
