@@ -262,8 +262,12 @@ window.Quarto = {
 <p>The filter method filters out the irrelevant feature and redundant columns from the model by using different metrics through ranking.</p>
 <p>The advantage of using filter methods is that it needs low computational time and does not overfit the data.</p>
 <p><img src="https://static.javatpoint.com/tutorial/machine-learning/images/feature-selection-techniques-in-machine-learning4.png" class="img-fluid"></p>
-<p>Some common techniques of Filter methods are as follows: - Information Gain - Chi-square Test - Fisher’s Score - Missing Value Ratio</p>
+<p>Some common techniques of Filter methods are as follows:</p>
 <ul>
+<li><p>Information Gain</p></li>
+<li><p>Chi-square Test</p></li>
+<li><p>Fisher’s Score</p></li>
+<li><p>Missing Value Ratio</p></li>
 <li><p><strong>Information Gain:</strong> Information gain determines the reduction in entropy while transforming the dataset. It can be used as a feature selection technique by calculating the information gain of each variable with respect to the target variable.</p></li>
 <li><p><strong>Chi-square Test:</strong> Chi-square test is a technique to determine the relationship between the categorical variables. The chi-square value is calculated between each feature and the target variable, and the desired number of features with the best chi-square value is selected.</p></li>
 <li><p><strong>Fisher’s Score:</strong> Fisher’s score is one of the popular supervised technique of features selection. It returns the rank of the variable on the fisher’s criteria in descending order. Then we can select the variables with a large fisher’s score.</p></li>
@@ -286,7 +290,12 @@ window.Quarto = {
 <section id="how-to-choose-a-feature-selection-method" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-choose-a-feature-selection-method">How to choose a Feature Selection Method?</h2>
 <p>For machine learning engineers, it is very important to understand that which feature selection method will work properly for their model. The more we know the datatypes of variables, the easier it is to choose the appropriate statistical measure for feature selection.</p>
-<p>![[Feature_Selection_Flow_Chart.png]]</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Feature_Selection_Flow_Chart.png" class="img-fluid figure-img"></p>
+<figcaption>Feature_Selection_Flow_Chart</figcaption>
+</figure>
+</div>
 <p>To know this, we need to first identify the type of input and output variables. In machine learning, variables are of mainly two types:</p>
 <ul>
 <li><p><strong>Numerical Variables:</strong> Variable with continuous values such as integer, float</p></li>
@@ -302,9 +311,7 @@ window.Quarto = {
 <li><p>&nbsp;<strong>Numerical Input, Categorical Output:</strong> Numerical Input with categorical output is the case for classification predictive modelling problem<strong>s.</strong>&nbsp;In this case, also, correlation-based techniques should be used, but with categorical output.</p>
 <ul>
 <li><strong>ANOVA correlation coefficient (linear).</strong></li>
-<li><ul>
 <li><strong>Kendall’s rank coefficient (nonlinear).</strong></li>
-</ul></li>
 </ul></li>
 <li><p><strong>Categorical Input, Numerical Output:</strong> This is the case of regression predictive modelling with categorical input. It is a different example of a regression problem. We can use the same measures as discussed in the above case but in reverse order.</p></li>
 <li><p><strong>Categorical Input, Categorical Output:</strong> This is a case of classification predictive modelling with categorical Input variables.</p>
