@@ -1,3 +1,11 @@
+---
+title: Feature Selection Techniques in Machine Learning
+author: Sadashiv
+date: 09-30-2024
+# image: machine-learning-algorithms.jpeg
+---
+
+
 > *Feature selection is a way of selecting the subset of the most relevant features from the original features set by removing the redundant, irrelevant, or noisy features.*
 
 - While developing the machine learning model, **only a few variables in the dataset are useful** for building the model, and the rest features are either redundant or irrelevant.
