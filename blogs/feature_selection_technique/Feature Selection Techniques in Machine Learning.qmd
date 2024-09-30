@@ -95,11 +95,6 @@ The advantage of using filter methods is that it needs low computational time an
 
 Some common techniques of Filter methods are as follows:
 
-- Information Gain
-- Chi-square Test
-- Fisher's Score
-- Missing Value Ratio
-
 - **Information Gain:**
 	Information gain determines the reduction in entropy while transforming the dataset. It can be used as a feature selection technique by calculating the information gain of each variable with respect to the target variable.
 
@@ -170,6 +165,3 @@ Below are some univariate statistical measures, which can be used for filter-bas
 | Categorical |  Numerical | - Kendall's rank coefficient (linear). <br> - ANOVA correlation coefficient (nonlinear).|
 | Categorical | Categorical | - Chi-Squared test (contingency tables). <br> - Mutual Information.|
 
-
-## Reference Reading
-[Feature Selection Techniques in Machine Learning - Javatpoint](https://www.javatpoint.com/feature-selection-techniques-in-machine-learning)
