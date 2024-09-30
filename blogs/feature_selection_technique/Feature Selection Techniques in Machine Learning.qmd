@@ -94,6 +94,7 @@ The advantage of using filter methods is that it needs low computational time an
 ![](https://static.javatpoint.com/tutorial/machine-learning/images/feature-selection-techniques-in-machine-learning4.png)
 
 Some common techniques of Filter methods are as follows:
+
 - Information Gain
 - Chi-square Test
 - Fisher's Score
@@ -132,13 +133,13 @@ These methods are also iterative, which evaluates each iteration, and optimally 
 ## How to choose a Feature Selection Method?
 For machine learning engineers, it is very important to understand that which feature selection method will work properly for their model. The more we know the datatypes of variables, the easier it is to choose the appropriate statistical measure for feature selection.
 
-![[Feature_Selection_Flow_Chart.png]]
+![Feature_Selection_Flow_Chart](Feature_Selection_Flow_Chart.png)
 
 To know this, we need to first identify the type of input and output variables. In machine learning, variables are of mainly two types:
 
 - **Numerical Variables:** 
 	Variable with continuous values such as integer, float
-	
+
 - **Categorical Variables:**
 	Variables with categorical values such as Boolean, ordinal, nominals.
 
@@ -152,7 +153,7 @@ Below are some univariate statistical measures, which can be used for filter-bas
 2.  **Numerical Input, Categorical Output:**
 	Numerical Input with categorical output is the case for classification predictive modelling problem**s.** In this case, also, correlation-based techniques should be used, but with categorical output.
 	- **ANOVA correlation coefficient (linear).**
-	- - **Kendall's rank coefficient (nonlinear).**
+	- **Kendall's rank coefficient (nonlinear).**
 
 3. **Categorical Input, Numerical Output:**
 	This is the case of regression predictive modelling with categorical input. It is a different example of a regression problem. We can use the same measures as discussed in the above case but in reverse order.
