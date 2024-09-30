@@ -1,15 +1,16 @@
 [
   {
-    "listing": "/projects.html",
-    "items": [
-      "/projects/Introduction to Algorithm.html"
-    ]
-  },
-  {
     "listing": "/blogs.html",
     "items": [
       "/blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html",
       "/blogs/Introduction_to_Algorithm/Introduction to Algorithm.html"
+    ]
+  },
+  {
+    "listing": "/projects.html",
+    "items": [
+      "/projects/Vegetable_Recognition/Vegetable_Recognition.html",
+      "/projects/Introduction to Algorithm.html"
     ]
   }
 ]
