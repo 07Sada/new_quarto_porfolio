@@ -8,6 +8,7 @@
   {
     "listing": "/blogs.html",
     "items": [
+      "/blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html",
       "/blogs/Introduction_to_Algorithm/Introduction to Algorithm.html"
     ]
   }

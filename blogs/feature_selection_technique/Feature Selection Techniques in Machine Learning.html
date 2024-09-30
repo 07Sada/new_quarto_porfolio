@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Sadashiv">
+<meta name="dcterms.date" content="2024-09-30">
 
-<title>Blogs – Sadashiv Nandanikar</title>
+<title>Feature Selection Techniques in Machine Learning – Sadashiv Nandanikar</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,27 +25,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./images/luffy.jpg" rel="icon" type="image/jpeg">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/luffy.jpg" rel="icon" type="image/jpeg">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,35 +70,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -130,17 +101,17 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Sadashiv Nandanikar</span>
     </a>
   </div>
@@ -151,19 +122,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./projects.html"> 
+    <a class="nav-link" href="../../projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./blogs.html" aria-current="page"> 
+    <a class="nav-link" href="../../blogs.html"> 
 <span class="menu-text">Blogs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./resume.html"> 
+    <a class="nav-link" href="../../resume.html"> 
 <span class="menu-text">Resume</span></a>
   </li>  
 </ul>
@@ -187,102 +158,171 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Blogs</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta column-page-left">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Feature Selection Techniques in Machine Learning</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sadashiv </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 30, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
 
 
+</header>
 
 
+<blockquote class="blockquote">
+<p><em>Feature selection is a way of selecting the subset of the most relevant features from the original features set by removing the redundant, irrelevant, or noisy features.</em></p>
+</blockquote>
+<ul>
+<li>While developing the machine learning model, <strong>only a few variables in the dataset are useful</strong> for building the model, and the rest features are either redundant or irrelevant.</li>
+<li>If we input the dataset with all these redundant and irrelevant features, it may negatively impact and reduce the overall performance and accuracy of the model.</li>
+<li>Hence it is very important to identify and select the most appropriate features from the data and remove the irrelevant or less important features, which is done with the help of feature selection in machine learning.</li>
+</ul>
+<p><img src="https://static.javatpoint.com/tutorial/machine-learning/images/feature-selection-techniques-in-machine-learning.png" class="img-fluid"></p>
+<p>Let’s first understand some basics of feature selection.</p>
+<ul>
+<li><strong>What is Feature Selection?</strong></li>
+<li><strong>Need for Feature Selection</strong></li>
+<li><strong>Feature Selection Methods/Techniques</strong></li>
+<li><strong>Feature Selection statistics</strong></li>
+</ul>
+<section id="what-is-feature-selection" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-feature-selection">What is Feature Selection?</h2>
+<p>A&nbsp;feature is an attribute that has an impact on a problem or is useful for the problem, and choosing the important features for the model is known as feature selection.</p>
+<p>Each machine learning process depends on feature engineering, which mainly contains two processes; which are Feature Selection and Feature Extraction. Although feature selection and extraction processes may have the same objective, both are completely different from each other.</p>
+<ul>
+<li>The main difference between them is that feature selection is about selecting the subset of the original feature set, whereas feature extraction creates new features.</li>
+<li>Feature selection is a way of reducing the input variable for the model by using only relevant data in order to reduce overfitting in the model.</li>
+</ul>
+<p>So, we can define feature Selection as, “<strong><em>It is a process of automatically or manually selecting the subset of most appropriate and relevant features to be used in model building</em></strong>.” Feature selection is performed by either including the important features or excluding the irrelevant features in the dataset without changing them.</p>
+</section>
+<section id="need-for-feature-selection" class="level2">
+<h2 class="anchored" data-anchor-id="need-for-feature-selection">Need for Feature Selection</h2>
+<ul>
+<li><p>As we know, in machine learning, it is necessary to provide a pre-processed and good input dataset in order to get better outcomes. We collect a huge amount of data to train our model and help it to learn better.</p></li>
+<li><p>Generally, the dataset consists of noisy data, irrelevant data, and some part of useful data.</p></li>
+<li><p>Moreover, the huge amount of data also slows down the training process of the model, and with noise and irrelevant data, the model may not predict and perform well.</p></li>
+<li><p>So, it is very necessary to remove such noises and less-important data from the dataset and to do this, and Feature selection techniques are used.</p></li>
+</ul>
+<p>Selecting the best features helps the model to perform well. For example, Suppose we want to create a model that automatically decides which car should be crushed for a spare part, and to do this, we have a dataset. This dataset contains a Model of the car, Year, Owner’s name, Miles. So, in this dataset, the name of the owner does not contribute to the model performance as it does not decide if the car should be crushed or not, so we can remove this column and select the rest of the features(column) for the model building.</p>
+<p><strong><em>Below are some benefits of using feature selection in machine learning:</em></strong> - It helps in avoiding the [[Curse of Dimensionality]]. - It helps in the simplification of the model so that it can be easily interpreted by the researchers. - It reduces the training time. - It reduces overfitting hence enhance the generalization.</p>
+</section>
+<section id="feature-selection-techniques" class="level2">
+<h2 class="anchored" data-anchor-id="feature-selection-techniques">Feature Selection Techniques</h2>
+<p>There are mainly two types of Feature Selection techniques, which are: - <strong>Supervised Feature Selection technique</strong> Supervised Feature selection techniques consider the target variable and can be used for the labelled dataset. - <strong>Unsupervised Feature Selection technique</strong> Unsupervised Feature selection techniques ignore the target variable and can be used for the unlabeled dataset.</p>
+<p>![[Feature_Selection_Techniques_Drawing]]</p>
+<p>There are mainly three techniques under supervised feature Selection: ### 1. Wrapper Methods In wrapper methodology, selection of features is done by considering it as a search problem, in which different combinations are made, evaluated, and compared with other combinations. It trains the algorithm by using the subset of features iteratively. <img src="https://static.javatpoint.com/tutorial/machine-learning/images/feature-selection-techniques-in-machine-learning3.png" class="img-fluid"> On the basis of the output of the model, features are added or subtracted, and with this feature set, the model has trained again.</p>
+<p>Some techniques of wrapper methods are: - <strong>Forward selection</strong>: Forward selection is an iterative process, which begins with an empty set of features. After each iteration, it keeps adding on a feature and evaluates the performance to check whether it is improving the performance or not. The process continues until the addition of a new variable/feature does not improve the performance of the model. ^71dca8 - <strong>Backward elimination</strong>: Backward elimination is also an iterative approach, but it is the opposite of forward selection. This technique begins the process by considering all the features and removes the least significant feature. This elimination process continues until removing the features does not improve the performance of the model.</p>
+<ul>
+<li><p><strong>Exhaustive Feature Selection</strong>: Exhaustive feature selection is one of the best feature selection methods, which evaluates each feature set as brute-force. It means this method tries &amp; make each possible combination of features and return the best performing feature set.</p></li>
+<li><p><strong>Recursive Feature Elimination</strong>: Recursive feature elimination is a recursive greedy optimization approach, where features are selected by recursively taking a smaller and smaller subset of features. Now, an estimator is trained with each set of features, and the importance of each feature is determined using&nbsp;<em>coef_attribute</em>&nbsp;or through a&nbsp;_feature_importances_attribute.</p></li>
+</ul>
+<section id="filter-methods" class="level3">
+<h3 class="anchored" data-anchor-id="filter-methods">2. Filter Methods</h3>
+<p>In Filter Method, features are selected on the basis of statistics measures. This method does not depend on the learning algorithm and chooses the features as a pre-processing step.</p>
+<p>The filter method filters out the irrelevant feature and redundant columns from the model by using different metrics through ranking.</p>
+<p>The advantage of using filter methods is that it needs low computational time and does not overfit the data.</p>
+<p><img src="https://static.javatpoint.com/tutorial/machine-learning/images/feature-selection-techniques-in-machine-learning4.png" class="img-fluid"> Some common techniques of Filter methods are as follows: - Information Gain - Chi-square Test - Fisher’s Score - Missing Value Ratio</p>
+<ul>
+<li><p><strong>Information Gain:</strong> Information gain determines the reduction in entropy while transforming the dataset. It can be used as a feature selection technique by calculating the information gain of each variable with respect to the target variable.</p></li>
+<li><p><strong>Chi-square Test:</strong> Chi-square test is a technique to determine the relationship between the categorical variables. The chi-square value is calculated between each feature and the target variable, and the desired number of features with the best chi-square value is selected.</p></li>
+<li><p><strong>Fisher’s Score:</strong> Fisher’s score is one of the popular supervised technique of features selection. It returns the rank of the variable on the fisher’s criteria in descending order. Then we can select the variables with a large fisher’s score.</p></li>
+<li><p><strong>Missing Value Ratio:</strong> The value of the missing value ratio can be used for evaluating the feature set against the threshold value. The formula for obtaining the missing value ratio is the number of missing values in each column divided by the total number of observations. The variable is having more than the threshold value can be dropped. <span class="math display">\[\text{Missing Value Ratio} = \frac{\text{Number of Missing Values} \times 100}{\text{Total Number of Observations}}
+  \]</span></p></li>
+</ul>
+</section>
+<section id="embedded-methods" class="level3">
+<h3 class="anchored" data-anchor-id="embedded-methods">3. Embedded Methods</h3>
+<p>Embedded methods combined the advantages of both filter and wrapper methods by considering the interaction of features along with low computational cost. These are fast processing methods similar to the filter method but more accurate than the filter method.</p>
+<p><img src="https://static.javatpoint.com/tutorial/machine-learning/images/feature-selection-techniques-in-machine-learning6.png" class="img-fluid"> These methods are also iterative, which evaluates each iteration, and optimally finds the most important features that contribute the most to training in a particular iteration. Some techniques of embedded methods are:</p>
+<ul>
+<li><p><strong>Regularization</strong>: <em>Regularization adds a penalty term to different parameters of the machine learning model for avoiding overfitting in the model.</em> This penalty term is added to the coefficients; hence it shrinks some coefficients to zero. Those features with zero coefficients can be removed from the dataset. The types of regularization techniques are L1 Regularization (Lasso Regularization) or Elastic Nets (L1 and L2 regularization).</p></li>
+<li><p><strong>Random Forest Importance</strong>: <em>Different tree-based methods of feature selection help us with feature importance to provide a way of selecting features.</em> Here, feature importance specifies which feature has more importance in model building or has a great impact on the target variable. Random Forest is such a tree-based method, which is a type of bagging algorithm that aggregates a different number of decision trees. It automatically ranks the nodes by their performance or decrease in the impurity (Gini impurity) over all the trees. Nodes are arranged as per the impurity values, and thus it allows to pruning of trees below a specific node. The remaining nodes create a subset of the most important features.</p></li>
+</ul>
+</section>
+</section>
+<section id="how-to-choose-a-feature-selection-method" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-choose-a-feature-selection-method">How to choose a Feature Selection Method?</h2>
+<p>For machine learning engineers, it is very important to understand that which feature selection method will work properly for their model. The more we know the datatypes of variables, the easier it is to choose the appropriate statistical measure for feature selection.</p>
+<p>![[Feature_Selection_Flow_Chart.png]]</p>
+<p>To know this, we need to first identify the type of input and output variables. In machine learning, variables are of mainly two types:</p>
+<ul>
+<li><strong>Numerical Variables:</strong> Variable with continuous values such as integer, float</li>
+<li><strong>Categorical Variables:</strong> Variables with categorical values such as Boolean, ordinal, nominals.</li>
+</ul>
+<p>Below are some univariate statistical measures, which can be used for filter-based feature selection: 1. <strong>Numerical Input, Numerical Output:</strong> Numerical Input variables are used for predictive regression modelling. The common method to be used for such a case is the Correlation coefficient. - Pearson’s correlation coefficient (For linear Correlation). - Spearman’s rank coefficient (for non-linear correlation). 2. &nbsp;<strong>Numerical Input, Categorical Output:</strong> Numerical Input with categorical output is the case for classification predictive modelling problem<strong>s.</strong>&nbsp;In this case, also, correlation-based techniques should be used, but with categorical output. - <strong>ANOVA correlation coefficient (linear).</strong> - - <strong>Kendall’s rank coefficient (nonlinear).</strong> 3. <strong>Categorical Input, Numerical Output:</strong> This is the case of regression predictive modelling with categorical input. It is a different example of a regression problem. We can use the same measures as discussed in the above case but in reverse order. 4. <strong>Categorical Input, Categorical Output:</strong> This is a case of classification predictive modelling with categorical Input variables.</p>
+<pre><code>The commonly used technique for such a case is Chi-Squared Test. We can also use Information gain in this case.</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Input Variable</th>
+<th>Output Variable</th>
+<th>Feature Selection technique</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Numerical</td>
+<td>Numerical</td>
+<td>- Pearson’s correlation coefficient (For linear Correlation).<br>- Pearson’s correlation coefficient (For linear Correlation)</td>
+</tr>
+<tr class="even">
+<td>Numerical</td>
+<td>Categorical</td>
+<td>- ANOVA correlation coefficient (linear). <br> - Kendall’s rank coefficient (nonlinear).</td>
+</tr>
+<tr class="odd">
+<td>Categorical</td>
+<td>Numerical</td>
+<td>- Kendall’s rank coefficient (linear). <br> - ANOVA correlation coefficient (nonlinear).</td>
+</tr>
+<tr class="even">
+<td>Categorical</td>
+<td>Categorical</td>
+<td>- Chi-Squared test (contingency tables). <br> - Mutual Information.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="reference-reading" class="level2">
+<h2 class="anchored" data-anchor-id="reference-reading">Reference Reading</h2>
+<p><a href="https://www.javatpoint.com/feature-selection-techniques-in-machine-learning">Feature Selection Techniques in Machine Learning - Javatpoint</a></p>
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1727654400000" data-listing-file-modified-sort="1727711064260" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1729">
-<div class="thumbnail">
-<p><a href="./blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html" class="no-external"></a></p><a href="./blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html" class="no-external">
-<p class="card-img-top"><img src="https://static.javatpoint.com/tutorial/machine-learning/images/feature-selection-techniques-in-machine-learning.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html" class="no-external">Feature Selection Techniques in Machine Learning</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html" class="no-external"><em>Feature selection is a way of selecting the subset of the most relevant features from the original features set by removing the redundant, irrelevant, or noisy features.</em></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html" class="no-external">
-<div class="listing-date">
-Sep 30, 2024
-</div>
-<div class="listing-author">
-Sadashiv
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1727308800000" data-listing-file-modified-sort="1727711064260" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="477">
-<div class="thumbnail">
-<p><a href="./blogs/Introduction_to_Algorithm/Introduction to Algorithm.html" class="no-external"></a></p><a href="./blogs/Introduction_to_Algorithm/Introduction to Algorithm.html" class="no-external">
-<p><img loading="lazy" src="./blogs/Introduction_to_Algorithm/machine-learning-algorithms.jpeg" class="thumbnail-image"></p>
-</a><p><a href="./blogs/Introduction_to_Algorithm/Introduction to Algorithm.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blogs/Introduction_to_Algorithm/Introduction to Algorithm.html" class="no-external">Introduction to Algorithm</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./blogs/Introduction_to_Algorithm/Introduction to Algorithm.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./blogs/Introduction_to_Algorithm/Introduction to Algorithm.html" class="no-external">In machine learning and deep learning, there are several types of algorithms, each with its own purpose and characteristics. Here’s a simple overview of some common types:</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./blogs/Introduction_to_Algorithm/Introduction to Algorithm.html" class="no-external">
-<div class="listing-date">
-Sep 26, 2024
-</div>
-<div class="listing-author">
-Sadashiv
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
