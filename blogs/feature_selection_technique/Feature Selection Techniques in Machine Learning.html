@@ -236,13 +236,26 @@ window.Quarto = {
 <section id="feature-selection-techniques" class="level2">
 <h2 class="anchored" data-anchor-id="feature-selection-techniques">Feature Selection Techniques</h2>
 <p>There are mainly two types of Feature Selection techniques, which are: - <strong>Supervised Feature Selection technique</strong> Supervised Feature selection techniques consider the target variable and can be used for the labelled dataset. - <strong>Unsupervised Feature Selection technique</strong> Unsupervised Feature selection techniques ignore the target variable and can be used for the unlabeled dataset.</p>
-<p>![[Feature_Selection_Techniques_Drawing]]</p>
-<p>There are mainly three techniques under supervised feature Selection: ### 1. Wrapper Methods In wrapper methodology, selection of features is done by considering it as a search problem, in which different combinations are made, evaluated, and compared with other combinations. It trains the algorithm by using the subset of features iteratively. <img src="https://static.javatpoint.com/tutorial/machine-learning/images/feature-selection-techniques-in-machine-learning3.png" class="img-fluid"> On the basis of the output of the model, features are added or subtracted, and with this feature set, the model has trained again.</p>
-<p>Some techniques of wrapper methods are: - <strong>Forward selection</strong>: Forward selection is an iterative process, which begins with an empty set of features. After each iteration, it keeps adding on a feature and evaluates the performance to check whether it is improving the performance or not. The process continues until the addition of a new variable/feature does not improve the performance of the model. ^71dca8 - <strong>Backward elimination</strong>: Backward elimination is also an iterative approach, but it is the opposite of forward selection. This technique begins the process by considering all the features and removes the least significant feature. This elimination process continues until removing the features does not improve the performance of the model.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="blogs\feature_selection_technique\feature_selection_technique.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Feature_Selection_Techniques_Drawing</figcaption>
+</figure>
+</div>
+<p>There are mainly three techniques under supervised feature Selection:</p>
+<section id="wrapper-methods" class="level3">
+<h3 class="anchored" data-anchor-id="wrapper-methods">1. Wrapper Methods</h3>
+<p>In wrapper methodology, selection of features is done by considering it as a search problem, in which different combinations are made, evaluated, and compared with other combinations. It trains the algorithm by using the subset of features iteratively.</p>
+<p><img src="https://static.javatpoint.com/tutorial/machine-learning/images/feature-selection-techniques-in-machine-learning3.png" class="img-fluid"></p>
+<p>On the basis of the output of the model, features are added or subtracted, and with this feature set, the model has trained again.</p>
+<p>Some techniques of wrapper methods are:</p>
 <ul>
+<li><p><strong>Forward selection</strong>: Forward selection is an iterative process, which begins with an empty set of features. After each iteration, it keeps adding on a feature and evaluates the performance to check whether it is improving the performance or not. The process continues until the addition of a new variable/feature does not improve the performance of the model. ^71dca8</p></li>
+<li><p><strong>Backward elimination</strong>: Backward elimination is also an iterative approach, but it is the opposite of forward selection. This technique begins the process by considering all the features and removes the least significant feature. This elimination process continues until removing the features does not improve the performance of the model.</p></li>
 <li><p><strong>Exhaustive Feature Selection</strong>: Exhaustive feature selection is one of the best feature selection methods, which evaluates each feature set as brute-force. It means this method tries &amp; make each possible combination of features and return the best performing feature set.</p></li>
 <li><p><strong>Recursive Feature Elimination</strong>: Recursive feature elimination is a recursive greedy optimization approach, where features are selected by recursively taking a smaller and smaller subset of features. Now, an estimator is trained with each set of features, and the importance of each feature is determined using&nbsp;<em>coef_attribute</em>&nbsp;or through a&nbsp;_feature_importances_attribute.</p></li>
 </ul>
+</section>
 <section id="filter-methods" class="level3">
 <h3 class="anchored" data-anchor-id="filter-methods">2. Filter Methods</h3>
 <p>In Filter Method, features are selected on the basis of statistics measures. This method does not depend on the learning algorithm and chooses the features as a pre-processing step.</p>
