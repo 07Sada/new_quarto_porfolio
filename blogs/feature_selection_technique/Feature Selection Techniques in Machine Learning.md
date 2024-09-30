@@ -31,7 +31,7 @@ Each machine learning process depends on feature engineering, which mainly conta
 
 So, we can define feature Selection as, "**_It is a process of automatically or manually selecting the subset of most appropriate and relevant features to be used in model building_**." Feature selection is performed by either including the important features or excluding the irrelevant features in the dataset without changing them.
 
----
+
 ## Need for Feature Selection
 - As we know, in machine learning, it is necessary to provide a pre-processed and good input dataset in order to get better outcomes. We collect a huge amount of data to train our model and help it to learn better.
 
@@ -49,7 +49,7 @@ Selecting the best features helps the model to perform well. For example, Suppos
 - It reduces the training time.
 - It reduces overfitting hence enhance the generalization.
 
----
+
 ## Feature Selection Techniques
 There are mainly two types of Feature Selection techniques, which are:
 - **Supervised Feature Selection technique**
@@ -79,7 +79,7 @@ Some techniques of wrapper methods are:
 - **Recursive Feature Elimination**: 
 	Recursive feature elimination is a recursive greedy optimization approach, where features are selected by recursively taking a smaller and smaller subset of features. Now, an estimator is trained with each set of features, and the importance of each feature is determined using _coef_attribute_ or through a _feature_importances_attribute.
 
----
+
 ### 2. Filter Methods
 In Filter Method, features are selected on the basis of statistics measures. This method does not depend on the learning algorithm and chooses the features as a pre-processing step.
 
@@ -107,7 +107,7 @@ Some common techniques of Filter methods are as follows:
 	The value of the missing value ratio can be used for evaluating the feature set against the threshold value. The formula for obtaining the missing value ratio is the number of missing values in each column divided by the total number of observations. The variable is having more than the threshold value can be dropped. 
 	$$\text{Missing Value Ratio} = \frac{\text{Number of Missing Values} \times 100}{\text{Total Number of Observations}}
 	$$
----
+
 
 ### 3. Embedded Methods
 Embedded methods combined the advantages of both filter and wrapper methods by considering the interaction of features along with low computational cost. These are fast processing methods similar to the filter method but more accurate than the filter method.
@@ -121,7 +121,7 @@ These methods are also iterative, which evaluates each iteration, and optimally 
 - **Random Forest Importance**: 
 	*Different tree-based methods of feature selection help us with feature importance to provide a way of selecting features.* Here, feature importance specifies which feature has more importance in model building or has a great impact on the target variable. Random Forest is such a tree-based method, which is a type of bagging algorithm that aggregates a different number of decision trees. It automatically ranks the nodes by their performance or decrease in the impurity (Gini impurity) over all the trees. Nodes are arranged as per the impurity values, and thus it allows to pruning of trees below a specific node. The remaining nodes create a subset of the most important features.
 
----
+
 ## How to choose a Feature Selection Method?
 For machine learning engineers, it is very important to understand that which feature selection method will work properly for their model. The more we know the datatypes of variables, the easier it is to choose the appropriate statistical measure for feature selection.
 
@@ -157,6 +157,6 @@ Below are some univariate statistical measures, which can be used for filter-bas
 | Categorical |  Numerical | - Kendall's rank coefficient (linear). <br> - ANOVA correlation coefficient (nonlinear).|
 | Categorical | Categorical | - Chi-Squared test (contingency tables). <br> - Mutual Information.|
 
----
+
 ## Reference Reading
 [Feature Selection Techniques in Machine Learning - Javatpoint](https://www.javatpoint.com/feature-selection-techniques-in-machine-learning)
