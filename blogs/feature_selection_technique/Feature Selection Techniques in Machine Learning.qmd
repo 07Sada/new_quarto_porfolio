@@ -58,15 +58,19 @@ There are mainly two types of Feature Selection techniques, which are:
 	Unsupervised Feature selection techniques ignore the target variable and can be used for the unlabeled dataset.
 
 
-![[Feature_Selection_Techniques_Drawing]]
+![Feature_Selection_Techniques_Drawing](blogs\feature_selection_technique\feature_selection_technique.jpeg)
 
 There are mainly three techniques under supervised feature Selection:
+
 ### 1. Wrapper Methods
 In wrapper methodology, selection of features is done by considering it as a search problem, in which different combinations are made, evaluated, and compared with other combinations. It trains the algorithm by using the subset of features iteratively.
+
 ![](https://static.javatpoint.com/tutorial/machine-learning/images/feature-selection-techniques-in-machine-learning3.png)
+
 On the basis of the output of the model, features are added or subtracted, and with this feature set, the model has trained again.
 
 Some techniques of wrapper methods are:
+
 - **Forward selection**: 
 	Forward selection is an iterative process, which begins with an empty set of features. After each iteration, it keeps adding on a feature and evaluates the performance to check whether it is improving the performance or not. The process continues until the addition of a new variable/feature does not improve the performance of the model.
  ^71dca8
