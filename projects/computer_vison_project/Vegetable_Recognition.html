@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Sadashiv">
 
-<title>Blogs – Sadashiv Nandanikar</title>
+<title>Vegetable_Recognition – Sadashiv Nandanikar</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,27 +24,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./images/luffy.jpg" rel="icon" type="image/jpeg">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/luffy.jpg" rel="icon" type="image/jpeg">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,77 +69,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Sadashiv Nandanikar</span>
     </a>
   </div>
@@ -151,19 +92,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./projects.html"> 
+    <a class="nav-link" href="../../projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./blogs.html" aria-current="page"> 
+    <a class="nav-link" href="../../blogs.html"> 
 <span class="menu-text">Blogs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./resume.html"> 
+    <a class="nav-link" href="../../resume.html"> 
 <span class="menu-text">Resume</span></a>
   </li>  
 </ul>
@@ -187,102 +128,428 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Blogs</h1>
-                      </div>
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Vegetable_Recognition</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sadashiv </p>
+          </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
-
-      
     
-      
-    </div>
-    
+  </div>
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
-<!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div></div></div>
-<!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
 
+</header>
 
 
+<section id="vegetable_recognition" class="level1">
+<h1>Vegetable_Recognition</h1>
+<section id="downloading-the-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="downloading-the-dataset">Downloading the dataset</h2>
+<div id="cell-5" class="cell" data-outputid="5e0b5d21-5871-45ec-ce66-6276c718691e">
+<div class="cell-output cell-output-stdout">
+<pre><code>Downloading vegetable-image-dataset.zip to ./vegetable-image-dataset</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>100%|██████████| 534M/534M [00:04&lt;00:00, 117MB/s]</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code></code></pre>
+</div>
+</div>
+</section>
+<section id="introduction-to-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-dataset">Introduction to Dataset</h2>
+<div id="cell-8" class="cell" data-outputid="881815f7-ef91-4fa3-a8c4-b6a21418f216">
+<div class="cell-output cell-output-stdout">
+<pre><code>Total Categories in the dataset: 15
+{'Cucumber': 1000, 'Capsicum': 1000, 'Papaya': 1000, 'Tomato': 1000, 'Cabbage': 1000, 'Pumpkin': 1000, 'Bitter_Gourd': 1000, 'Radish': 1000, 'Broccoli': 1000, 'Cauliflower': 1000, 'Bean': 1000, 'Carrot': 1000, 'Bottle_Gourd': 1000, 'Potato': 1000, 'Brinjal': 1000}
+
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Vegetable_Recognition_files/figure-html/cell-6-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="importing-the-dataset-into-pytorch" class="level2">
+<h2 class="anchored" data-anchor-id="importing-the-dataset-into-pytorch">Importing the dataset into pytorch</h2>
+<div id="cell-10" class="cell" data-outputid="aca57d80-8b70-4f46-bfcf-70b32368ff12">
+<div class="cell-output cell-output-stdout">
+<pre><code>torch version: 2.0.1+cu118</code></pre>
+</div>
+</div>
+<div id="cell-11" class="cell" data-outputid="8c9a3de9-80ee-40be-c842-16f4a4d82a68">
+<div class="cell-output cell-output-stdout">
+<pre><code>Total images in train dataset: 15000
+
+Sample image from train dataset</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Vegetable_Recognition_files/figure-html/cell-8-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-12" class="cell" data-outputid="06b3fc23-d1f3-4f41-f2c9-9d926c8f856e">
+<div class="cell-output cell-output-stdout">
+<pre><code>Total images in train dataset: 3000
+
+Sample image from validation_dataset</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Vegetable_Recognition_files/figure-html/cell-9-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Image transformation</p>
+<div id="cell-16" class="cell" data-outputid="ad229b6e-b924-4c6e-f671-c0f685119d89">
+<div class="cell-output cell-output-stdout">
+<pre><code>Shape of the image: torch.Size([3, 64, 64])
+
+The image after transformation
+(tensor([[[0.7098, 0.6980, 0.7216,  ..., 0.6157, 0.6000, 0.6118],
+         [0.7137, 0.7020, 0.7255,  ..., 0.6157, 0.5922, 0.5961],
+         [0.7216, 0.7098, 0.7255,  ..., 0.6078, 0.5686, 0.5686],
+         ...,
+         [0.7765, 0.7804, 0.8000,  ..., 0.7490, 0.7922, 0.7882],
+         [0.7686, 0.7882, 0.8235,  ..., 0.7843, 0.7882, 0.7843],
+         [0.7569, 0.7843, 0.8275,  ..., 0.8078, 0.7843, 0.7843]],
+
+        [[0.6431, 0.6392, 0.6706,  ..., 0.4431, 0.4353, 0.4353],
+         [0.6510, 0.6431, 0.6745,  ..., 0.4392, 0.4314, 0.4314],
+         [0.6627, 0.6510, 0.6706,  ..., 0.4314, 0.4196, 0.4196],
+         ...,
+         [0.6078, 0.6039, 0.6039,  ..., 0.6627, 0.7098, 0.7059],
+         [0.5804, 0.5804, 0.5725,  ..., 0.6980, 0.7059, 0.6980],
+         [0.5725, 0.5686, 0.5529,  ..., 0.7255, 0.6980, 0.7020]],
+
+        [[0.8235, 0.8118, 0.8431,  ..., 0.4627, 0.4667, 0.4627],
+         [0.8275, 0.8196, 0.8471,  ..., 0.4588, 0.4627, 0.4588],
+         [0.8392, 0.8275, 0.8431,  ..., 0.4471, 0.4549, 0.4549],
+         ...,
+         [0.6353, 0.6314, 0.6275,  ..., 0.7647, 0.8039, 0.7961],
+         [0.6078, 0.6078, 0.5922,  ..., 0.8000, 0.7961, 0.7804],
+         [0.5961, 0.5922, 0.5725,  ..., 0.8235, 0.7882, 0.7765]]]), 0)
 
 
+Sample image</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Vegetable_Recognition_files/figure-html/cell-12-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="dataloader" class="level2">
+<h2 class="anchored" data-anchor-id="dataloader">DataLoader</h2>
+<div id="cell-18" class="cell" data-outputid="071eb38b-99d8-4ac0-ed7b-393ca12d0b8c">
+<div class="cell-output cell-output-stdout">
+<pre><code>cpu_count in machine: 2</code></pre>
+</div>
+</div>
+<div id="cell-19" class="cell" data-outputid="7864ac8e-e374-4d90-bca8-5c156899d91d">
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>(torch.Size([32, 3, 64, 64]), torch.Size([32]))</code></pre>
+</div>
+</div>
+</section>
+<section id="visualize-some-images-from-dataloader" class="level2">
+<h2 class="anchored" data-anchor-id="visualize-some-images-from-dataloader">Visualize some images from dataloader</h2>
+<div id="cell-21" class="cell" data-outputid="cb2b1d8f-24f9-4cea-cf80-7011be0456b0">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Vegetable_Recognition_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-22" class="cell" data-outputid="1dc669a0-ee91-4e8b-8f1d-238d09383e53">
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>'cuda'</code></pre>
+</div>
+</div>
+</section>
+<section id="model-training" class="level2">
+<h2 class="anchored" data-anchor-id="model-training">Model Training</h2>
+<div id="cell-28" class="cell" data-outputid="bad5aa82-0bbf-4bff-b421-7ed4953fa407">
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>ResNet9(
+  (conv1): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+  )
+  (conv2): Sequential(
+    (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+    (3): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  )
+  (res1): Sequential(
+    (0): Sequential(
+      (0): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU(inplace=True)
+    )
+    (1): Sequential(
+      (0): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU(inplace=True)
+    )
+  )
+  (conv3): Sequential(
+    (0): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+    (3): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  )
+  (conv4): Sequential(
+    (0): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+    (3): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  )
+  (res2): Sequential(
+    (0): Sequential(
+      (0): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU(inplace=True)
+    )
+    (1): Sequential(
+      (0): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU(inplace=True)
+    )
+  )
+  (classifier): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+    (2): Dropout(p=0.2, inplace=False)
+    (3): Linear(in_features=512, out_features=15, bias=True)
+  )
+)</code></pre>
+</div>
+</div>
+<div id="cell-29" class="cell" data-outputid="84f2426f-0dcf-4159-c8ea-01a4c2e21823">
+<div class="cell-output cell-output-stdout">
+<pre><code>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Collecting torchinfo
+  Downloading torchinfo-1.8.0-py3-none-any.whl (23 kB)
+Installing collected packages: torchinfo
+Successfully installed torchinfo-1.8.0</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="38">
+<pre><code>==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+ResNet9                                  [1, 15]                   --
+├─Sequential: 1-1                        [1, 64, 64, 64]           --
+│    └─Conv2d: 2-1                       [1, 64, 64, 64]           1,792
+│    └─BatchNorm2d: 2-2                  [1, 64, 64, 64]           128
+│    └─ReLU: 2-3                         [1, 64, 64, 64]           --
+├─Sequential: 1-2                        [1, 128, 32, 32]          --
+│    └─Conv2d: 2-4                       [1, 128, 64, 64]          73,856
+│    └─BatchNorm2d: 2-5                  [1, 128, 64, 64]          256
+│    └─ReLU: 2-6                         [1, 128, 64, 64]          --
+│    └─MaxPool2d: 2-7                    [1, 128, 32, 32]          --
+├─Sequential: 1-3                        [1, 128, 32, 32]          --
+│    └─Sequential: 2-8                   [1, 128, 32, 32]          --
+│    │    └─Conv2d: 3-1                  [1, 128, 32, 32]          147,584
+│    │    └─BatchNorm2d: 3-2             [1, 128, 32, 32]          256
+│    │    └─ReLU: 3-3                    [1, 128, 32, 32]          --
+│    └─Sequential: 2-9                   [1, 128, 32, 32]          --
+│    │    └─Conv2d: 3-4                  [1, 128, 32, 32]          147,584
+│    │    └─BatchNorm2d: 3-5             [1, 128, 32, 32]          256
+│    │    └─ReLU: 3-6                    [1, 128, 32, 32]          --
+├─Sequential: 1-4                        [1, 256, 16, 16]          --
+│    └─Conv2d: 2-10                      [1, 256, 32, 32]          295,168
+│    └─BatchNorm2d: 2-11                 [1, 256, 32, 32]          512
+│    └─ReLU: 2-12                        [1, 256, 32, 32]          --
+│    └─MaxPool2d: 2-13                   [1, 256, 16, 16]          --
+├─Sequential: 1-5                        [1, 512, 8, 8]            --
+│    └─Conv2d: 2-14                      [1, 512, 16, 16]          1,180,160
+│    └─BatchNorm2d: 2-15                 [1, 512, 16, 16]          1,024
+│    └─ReLU: 2-16                        [1, 512, 16, 16]          --
+│    └─MaxPool2d: 2-17                   [1, 512, 8, 8]            --
+├─Sequential: 1-6                        [1, 512, 8, 8]            --
+│    └─Sequential: 2-18                  [1, 512, 8, 8]            --
+│    │    └─Conv2d: 3-7                  [1, 512, 8, 8]            2,359,808
+│    │    └─BatchNorm2d: 3-8             [1, 512, 8, 8]            1,024
+│    │    └─ReLU: 3-9                    [1, 512, 8, 8]            --
+│    └─Sequential: 2-19                  [1, 512, 8, 8]            --
+│    │    └─Conv2d: 3-10                 [1, 512, 8, 8]            2,359,808
+│    │    └─BatchNorm2d: 3-11            [1, 512, 8, 8]            1,024
+│    │    └─ReLU: 3-12                   [1, 512, 8, 8]            --
+├─Sequential: 1-7                        [1, 15]                   --
+│    └─AdaptiveAvgPool2d: 2-20           [1, 512, 1, 1]            --
+│    └─Flatten: 2-21                     [1, 512]                  --
+│    └─Dropout: 2-22                     [1, 512]                  --
+│    └─Linear: 2-23                      [1, 15]                   7,695
+==========================================================================================
+Total params: 6,577,935
+Trainable params: 6,577,935
+Non-trainable params: 0
+Total mult-adds (G): 1.52
+==========================================================================================
+Input size (MB): 0.05
+Forward/backward pass size (MB): 24.12
+Params size (MB): 26.31
+Estimated Total Size (MB): 50.48
+==========================================================================================</code></pre>
+</div>
+</div>
+<div id="cell-30" class="cell" data-outputid="56934cb9-757b-4c1a-b72a-ee6113e1df76">
+<div class="cell-output cell-output-stdout">
+<pre><code>image shape:  torch.Size([32, 3, 64, 64])
+images device:  cpu
+preds.shape torch.Size([32, 15])</code></pre>
+</div>
+</div>
+<div id="cell-31" class="cell" data-outputid="83976aa3-fcb6-4ea0-d94c-950878474d95">
+<div class="cell-output cell-output-display" data-execution_count="40">
+<pre><code>[{'validation_loss': 2.708531379699707,
+  'validation_accuracy': 0.06648936122655869}]</code></pre>
+</div>
+</div>
+<div id="cell-33" class="cell" data-outputid="5a373e52-f9a8-44d0-827a-ef39f94f9817">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Vegetable_Recognition_files/figure-html/cell-26-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-35" class="cell" data-outputid="98e3a622-a853-49fa-d154-989f482704e8">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Vegetable_Recognition_files/figure-html/cell-28-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-36" class="cell" data-outputid="e4c9f1f5-71ad-4d3e-a476-2136e281b0b7">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Vegetable_Recognition_files/figure-html/cell-29-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-40" class="cell" data-outputid="276a326c-2393-4dd6-db79-cf7ba0dbf51d">
+<div class="cell-output cell-output-stdout">
+<pre><code>Target: Bean
+Prediction: Bean</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Vegetable_Recognition_files/figure-html/cell-33-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-41" class="cell" data-outputid="4f5e60fd-c850-4d31-9529-7acb3cb8e51d">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Vegetable_Recognition_files/figure-html/cell-34-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-43" class="cell" data-outputid="beaca154-86ab-4d59-fdc8-bad11e005270">
+<div class="cell-output cell-output-stdout">
+<pre><code>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Collecting onnx
+  Downloading onnx-1.14.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (14.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.6/14.6 MB 86.8 MB/s eta 0:00:00
+Requirement already satisfied: numpy in /usr/local/lib/python3.10/dist-packages (from onnx) (1.22.4)
+Requirement already satisfied: protobuf&gt;=3.20.2 in /usr/local/lib/python3.10/dist-packages (from onnx) (3.20.3)
+Requirement already satisfied: typing-extensions&gt;=3.6.2.1 in /usr/local/lib/python3.10/dist-packages (from onnx) (4.5.0)
+Installing collected packages: onnx
+Successfully installed onnx-1.14.0</code></pre>
+</div>
+</div>
+<div id="cell-44" class="cell" data-outputid="63e44ba9-48cd-4741-f7bd-19f8f03d363d">
+<div class="cell-output cell-output-stdout">
+<pre><code>============= Diagnostic Run torch.onnx.export version 2.0.1+cu118 =============
+verbose: False, log level: Level.ERROR
+======================= 0 NONE 0 NOTE 0 WARNING 0 ERROR ========================
+</code></pre>
+</div>
+</div>
+<div id="cell-45" class="cell" data-outputid="7848eac4-2ddf-49ed-ff89-a047ec8a62f1">
+<div class="cell-output cell-output-stdout">
+<pre><code>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0.0/5.9 MB ? eta -:--:--     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺ 5.8/5.9 MB 174.3 MB/s eta 0:00:01     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.9/5.9 MB 93.9 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 46.0/46.0 kB 5.6 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 86.8/86.8 kB 11.2 MB/s eta 0:00:00</code></pre>
+</div>
+</div>
+<div id="cell-47" class="cell" data-outputid="1ef981b4-ffd5-4a6c-d84e-59c048e68b66">
+<div class="cell-output cell-output-stdout">
+<pre><code>Predicted class: Carrot</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Vegetable_Recognition_files/figure-html/cell-40-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-48" class="cell" data-outputid="1ce14986-21a4-44f2-911c-f98cec5d0d8c">
+<div class="cell-output cell-output-stdout">
+<pre><code>Predicted class: Pumpkin</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Vegetable_Recognition_files/figure-html/cell-41-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
+</section>
+</section>
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1727654400000" data-listing-file-modified-sort="1731076382640" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1710">
-<div class="thumbnail">
-<p><a href="./blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html" class="no-external"></a></p><a href="./blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html" class="no-external">
-<p class="card-img-top"><img src="https://static.javatpoint.com/tutorial/machine-learning/images/feature-selection-techniques-in-machine-learning.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html" class="no-external">Feature Selection Techniques in Machine Learning</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html" class="no-external"><em>Feature selection is a way of selecting the subset of the most relevant features from the original features set by removing the redundant, irrelevant, or noisy features.</em></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html" class="no-external">
-<div class="listing-date">
-Sep 30, 2024
-</div>
-<div class="listing-author">
-Sadashiv
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1727308800000" data-listing-file-modified-sort="1731076382640" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="477">
-<div class="thumbnail">
-<p><a href="./blogs/Introduction_to_Algorithm/Introduction to Algorithm.html" class="no-external"></a></p><a href="./blogs/Introduction_to_Algorithm/Introduction to Algorithm.html" class="no-external">
-<p><img loading="lazy" src="./blogs/Introduction_to_Algorithm/machine-learning-algorithms.jpeg" class="thumbnail-image"></p>
-</a><p><a href="./blogs/Introduction_to_Algorithm/Introduction to Algorithm.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blogs/Introduction_to_Algorithm/Introduction to Algorithm.html" class="no-external">Introduction to Algorithm</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./blogs/Introduction_to_Algorithm/Introduction to Algorithm.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./blogs/Introduction_to_Algorithm/Introduction to Algorithm.html" class="no-external">In machine learning and deep learning, there are several types of algorithms, each with its own purpose and characteristics. Here’s a simple overview of some common types:</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./blogs/Introduction_to_Algorithm/Introduction to Algorithm.html" class="no-external">
-<div class="listing-date">
-Sep 26, 2024
-</div>
-<div class="listing-author">
-Sadashiv
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
