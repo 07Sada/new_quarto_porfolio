@@ -201,26 +201,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="vegetable-recognition" class="level1">
-<h1>Vegetable Recognition</h1>
 <p>This notebook demonstrates a deep learning approach to classifying vegetable types from images, a task with applications in agriculture and retail. The model is built using PyTorch and features a custom ResNet9 architecture tailored for effective image classification. The notebook outlines the key steps in data preprocessing, model architecture, training, and evaluation, providing a comprehensive walkthrough of the process.</p>
 <section id="downloading-the-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="downloading-the-dataset">Downloading the dataset</h2>
-<div id="cell-4" class="cell">
+<div id="cell-3" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># installing opendatasets to download the dataset from kaggle</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install opendatasets <span class="op">-</span>q</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-5" class="cell">
+<div id="cell-4" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># installing albumentations library for image transformation</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install albumentations <span class="op">-</span>q</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-6" class="cell" data-outputid="5e0b5d21-5871-45ec-ce66-6276c718691e">
+<div id="cell-5" class="cell" data-outputid="5e0b5d21-5871-45ec-ce66-6276c718691e">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># importing opendatasets</span></span>
@@ -242,7 +240,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code></code></pre>
 </div>
 </div>
-<div id="cell-7" class="cell">
+<div id="cell-6" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># imorting dependancies</span></span>
@@ -268,7 +266,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="introduction-to-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-to-dataset">Introduction to Dataset</h2>
-<div id="cell-9" class="cell" data-outputid="881815f7-ef91-4fa3-a8c4-b6a21418f216">
+<div id="cell-8" class="cell" data-outputid="881815f7-ef91-4fa3-a8c4-b6a21418f216">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dataset path</span></span>
@@ -307,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="importing-the-dataset-into-pytorch" class="level2">
 <h2 class="anchored" data-anchor-id="importing-the-dataset-into-pytorch">Importing the dataset into pytorch</h2>
-<div id="cell-11" class="cell" data-outputid="aca57d80-8b70-4f46-bfcf-70b32368ff12">
+<div id="cell-10" class="cell" data-outputid="aca57d80-8b70-4f46-bfcf-70b32368ff12">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># importing pytorch</span></span>
@@ -323,7 +321,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>torch version: 2.0.1+cu118</code></pre>
 </div>
 </div>
-<div id="cell-12" class="cell" data-outputid="8c9a3de9-80ee-40be-c842-16f4a4d82a68">
+<div id="cell-11" class="cell" data-outputid="8c9a3de9-80ee-40be-c842-16f4a4d82a68">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>train_dataset <span class="op">=</span> ImageFolder(root<span class="op">=</span>TRAIN_DATASET)</span>
@@ -351,7 +349,7 @@ Sample image from train dataset</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-13" class="cell" data-outputid="06b3fc23-d1f3-4f41-f2c9-9d926c8f856e">
+<div id="cell-12" class="cell" data-outputid="06b3fc23-d1f3-4f41-f2c9-9d926c8f856e">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>validation_dataset <span class="op">=</span> ImageFolder(root<span class="op">=</span>VALIDATION_DATASET)</span>
@@ -380,7 +378,7 @@ Sample image from validation_dataset</code></pre>
 </div>
 </div>
 <p>Image transformation</p>
-<div id="cell-15" class="cell">
+<div id="cell-14" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a class for image transformation with albumentations library</span></span>
@@ -435,7 +433,7 @@ Sample image from validation_dataset</code></pre>
 <span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-16" class="cell">
+<div id="cell-15" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Applying transformation on training_dataset and validation_dataset</span></span>
@@ -443,7 +441,7 @@ Sample image from validation_dataset</code></pre>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>validation_dataset <span class="op">=</span> ImageFolder(root_dir<span class="op">=</span>VALIDATION_DATASET, transform<span class="op">=</span>transform)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-17" class="cell" data-outputid="ad229b6e-b924-4c6e-f671-c0f685119d89">
+<div id="cell-16" class="cell" data-outputid="ad229b6e-b924-4c6e-f671-c0f685119d89">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># checking a random image from train_dataset</span></span>
@@ -500,7 +498,7 @@ Sample image</code></pre>
 </section>
 <section id="dataloader" class="level2">
 <h2 class="anchored" data-anchor-id="dataloader">DataLoader</h2>
-<div id="cell-19" class="cell" data-outputid="071eb38b-99d8-4ac0-ed7b-393ca12d0b8c">
+<div id="cell-18" class="cell" data-outputid="071eb38b-99d8-4ac0-ed7b-393ca12d0b8c">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># importing DataLoader</span></span>
@@ -527,7 +525,7 @@ Sample image</code></pre>
 <pre><code>cpu_count in machine: 2</code></pre>
 </div>
 </div>
-<div id="cell-20" class="cell" data-outputid="7864ac8e-e374-4d90-bca8-5c156899d91d">
+<div id="cell-19" class="cell" data-outputid="7864ac8e-e374-4d90-bca8-5c156899d91d">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get image and label from train_dataloader</span></span>
@@ -543,7 +541,7 @@ Sample image</code></pre>
 </section>
 <section id="visualize-some-images-from-dataloader" class="level2">
 <h2 class="anchored" data-anchor-id="visualize-some-images-from-dataloader">Visualize some images from dataloader</h2>
-<div id="cell-22" class="cell" data-outputid="cb2b1d8f-24f9-4cea-cf80-7011be0456b0">
+<div id="cell-21" class="cell" data-outputid="cb2b1d8f-24f9-4cea-cf80-7011be0456b0">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision.utils <span class="im">import</span> make_grid <span class="co"># Make a grid of images.</span></span>
@@ -565,7 +563,7 @@ Sample image</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-23" class="cell" data-outputid="1dc669a0-ee91-4e8b-8f1d-238d09383e53">
+<div id="cell-22" class="cell" data-outputid="1dc669a0-ee91-4e8b-8f1d-238d09383e53">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># device setup</span></span>
@@ -579,7 +577,7 @@ Sample image</code></pre>
 </section>
 <section id="model-training" class="level2">
 <h2 class="anchored" data-anchor-id="model-training">Model Training</h2>
-<div id="cell-25" class="cell">
+<div id="cell-24" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
@@ -622,7 +620,7 @@ Sample image</code></pre>
 <span id="cb27-38"><a href="#cb27-38" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> torch.tensor(torch.<span class="bu">sum</span>(preds <span class="op">==</span> labels).item()<span class="op">/</span> <span class="bu">len</span>(preds))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-26" class="cell">
+<div id="cell-25" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="at">@torch.no_grad</span>() <span class="co"># Context-manager that disabled gradient calculation.</span></span>
@@ -655,7 +653,7 @@ Sample image</code></pre>
 <span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> history</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-27" class="cell">
+<div id="cell-26" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">##Model Building</span></span>
@@ -671,7 +669,7 @@ Sample image</code></pre>
 <span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> nn.Sequential(<span class="op">*</span>layers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-28" class="cell">
+<div id="cell-27" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ResNet9(ImageClassificationBase):</span>
@@ -705,7 +703,7 @@ Sample image</code></pre>
 <span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-29" class="cell" data-outputid="bad5aa82-0bbf-4bff-b421-7ed4953fa407">
+<div id="cell-28" class="cell" data-outputid="bad5aa82-0bbf-4bff-b421-7ed4953fa407">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> ResNet9(<span class="dv">3</span>, <span class="bu">len</span>(train_dataset.class_names)).to(device)</span>
@@ -769,7 +767,7 @@ Sample image</code></pre>
 )</code></pre>
 </div>
 </div>
-<div id="cell-30" class="cell" data-outputid="84f2426f-0dcf-4159-c8ea-01a4c2e21823">
+<div id="cell-29" class="cell" data-outputid="84f2426f-0dcf-4159-c8ea-01a4c2e21823">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install torchinfo, import if it's available</span></span>
@@ -852,7 +850,7 @@ Estimated Total Size (MB): 50.48
 ==========================================================================================</code></pre>
 </div>
 </div>
-<div id="cell-31" class="cell" data-outputid="56934cb9-757b-4c1a-b72a-ee6113e1df76">
+<div id="cell-30" class="cell" data-outputid="56934cb9-757b-4c1a-b72a-ee6113e1df76">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>torch.cuda.empty_cache() <span class="co"># Releases all unoccupied cached memory currently held by the caching allocator so that those can be used in other GPU application and visible in nvidia-smi.</span></span>
@@ -872,7 +870,7 @@ images device:  cpu
 preds.shape torch.Size([32, 15])</code></pre>
 </div>
 </div>
-<div id="cell-32" class="cell" data-outputid="83976aa3-fcb6-4ea0-d94c-950878474d95">
+<div id="cell-31" class="cell" data-outputid="83976aa3-fcb6-4ea0-d94c-950878474d95">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> [evaluate(model.to(device),</span>
@@ -884,7 +882,7 @@ preds.shape torch.Size([32, 15])</code></pre>
   'validation_accuracy': 0.06648936122655869}]</code></pre>
 </div>
 </div>
-<div id="cell-33" class="cell">
+<div id="cell-32" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>history <span class="op">+=</span> fit(epochs<span class="op">=</span><span class="dv">5</span>,</span>
@@ -895,7 +893,7 @@ preds.shape torch.Size([32, 15])</code></pre>
 <span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>               opt_func<span class="op">=</span>torch.optim.Adam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-34" class="cell" data-outputid="5a373e52-f9a8-44d0-827a-ef39f94f9817">
+<div id="cell-33" class="cell" data-outputid="5a373e52-f9a8-44d0-827a-ef39f94f9817">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_accuracies(history):</span>
@@ -915,7 +913,7 @@ preds.shape torch.Size([32, 15])</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-35" class="cell">
+<div id="cell-34" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>history <span class="op">+=</span> fit(epochs<span class="op">=</span><span class="dv">10</span>,</span>
@@ -926,7 +924,7 @@ preds.shape torch.Size([32, 15])</code></pre>
 <span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>               opt_func<span class="op">=</span>torch.optim.Adam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-36" class="cell" data-outputid="98e3a622-a853-49fa-d154-989f482704e8">
+<div id="cell-35" class="cell" data-outputid="98e3a622-a853-49fa-d154-989f482704e8">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_accuracies(history):</span>
@@ -947,7 +945,7 @@ preds.shape torch.Size([32, 15])</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-37" class="cell" data-outputid="e4c9f1f5-71ad-4d3e-a476-2136e281b0b7">
+<div id="cell-36" class="cell" data-outputid="e4c9f1f5-71ad-4d3e-a476-2136e281b0b7">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_losses(history):</span>
@@ -970,13 +968,13 @@ preds.shape torch.Size([32, 15])</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-38" class="cell">
+<div id="cell-37" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>xb <span class="op">=</span> img.unsqueeze(<span class="dv">0</span>).to(device)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-39" class="cell">
+<div id="cell-38" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test with individual Images</span></span>
@@ -991,7 +989,7 @@ preds.shape torch.Size([32, 15])</code></pre>
 <span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> classes[preds[<span class="dv">0</span>].item()]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-40" class="cell">
+<div id="cell-39" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_image_prediction(img, label):</span>
@@ -1001,7 +999,7 @@ preds.shape torch.Size([32, 15])</code></pre>
 <span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">'Prediction:'</span>, pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-41" class="cell" data-outputid="276a326c-2393-4dd6-db79-cf7ba0dbf51d">
+<div id="cell-40" class="cell" data-outputid="276a326c-2393-4dd6-db79-cf7ba0dbf51d">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>show_image_prediction(<span class="op">*</span>validation_dataset[<span class="dv">23</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1018,7 +1016,7 @@ Prediction: Bean</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-42" class="cell" data-outputid="4f5e60fd-c850-4d31-9529-7acb3cb8e51d">
+<div id="cell-41" class="cell" data-outputid="4f5e60fd-c850-4d31-9529-7acb3cb8e51d">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>img, _ <span class="op">=</span> validation_dataset[<span class="dv">23</span>]</span>
@@ -1032,7 +1030,7 @@ Prediction: Bean</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-43" class="cell">
+<div id="cell-42" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>dummy_input <span class="op">=</span> torch.randn(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">64</span>, <span class="dv">64</span>).to(device)</span>
@@ -1040,7 +1038,7 @@ Prediction: Bean</code></pre>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>output_names <span class="op">=</span> [ <span class="st">"output"</span> ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-44" class="cell" data-outputid="beaca154-86ab-4d59-fdc8-bad11e005270">
+<div id="cell-43" class="cell" data-outputid="beaca154-86ab-4d59-fdc8-bad11e005270">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install onnx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1057,7 +1055,7 @@ Installing collected packages: onnx
 Successfully installed onnx-1.14.0</code></pre>
 </div>
 </div>
-<div id="cell-45" class="cell" data-outputid="63e44ba9-48cd-4741-f7bd-19f8f03d363d">
+<div id="cell-44" class="cell" data-outputid="63e44ba9-48cd-4741-f7bd-19f8f03d363d">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>torch.onnx.export(model,</span>
@@ -1074,7 +1072,7 @@ verbose: False, log level: Level.ERROR
 </code></pre>
 </div>
 </div>
-<div id="cell-46" class="cell" data-outputid="7848eac4-2ddf-49ed-ff89-a047ec8a62f1">
+<div id="cell-45" class="cell" data-outputid="7848eac4-2ddf-49ed-ff89-a047ec8a62f1">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install onnxruntime <span class="op">-</span>q</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1085,7 +1083,7 @@ verbose: False, log level: Level.ERROR
      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 86.8/86.8 kB 11.2 MB/s eta 0:00:00</code></pre>
 </div>
 </div>
-<div id="cell-47" class="cell">
+<div id="cell-46" class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> onnxruntime</span>
@@ -1143,7 +1141,7 @@ verbose: False, log level: Level.ERROR
 <span id="cb58-53"><a href="#cb58-53" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-48" class="cell" data-outputid="1ef981b4-ffd5-4a6c-d84e-59c048e68b66">
+<div id="cell-47" class="cell" data-outputid="1ef981b4-ffd5-4a6c-d84e-59c048e68b66">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function with the image path</span></span>
@@ -1161,7 +1159,7 @@ verbose: False, log level: Level.ERROR
 </div>
 </div>
 </div>
-<div id="cell-49" class="cell" data-outputid="1ce14986-21a4-44f2-911c-f98cec5d0d8c">
+<div id="cell-48" class="cell" data-outputid="1ce14986-21a4-44f2-911c-f98cec5d0d8c">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>image_path <span class="op">=</span> <span class="st">'/content/vegetable-image-dataset/Vegetable Images/validation/Pumpkin/1209.jpg'</span></span>
@@ -1180,7 +1178,6 @@ verbose: False, log level: Level.ERROR
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
