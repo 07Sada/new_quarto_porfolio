@@ -1,3 +1,10 @@
+---
+title: Brand Detection
+author: Sadashiv
+date: 11-11-2024
+image: https://user-images.githubusercontent.com/112761379/235088788-8aacd18f-cd43-49a2-a501-63b161ebc520.png
+---
+
 # Brand Detection
 Visual content, such as videos and images, plays a significant role in modern-day marketing. Traditionally, brands have had to pay content creators to feature their brand logo in their content. However, marketers can now leverage ML-powered computer vision to identify and recognize their products in various forms of content, including videos and images. This technology enables marketers to extract valuable insights from the content and understand the audience's behaviour better. With this understanding, brands can improve their advertising strategies and achieve higher ROI by targeting their audience more effectively and personalizing their messaging. The potential benefits of ML-powered computer vision in marketing make it an exciting area of exploration for brands and marketers.
 
