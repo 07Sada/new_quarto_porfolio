@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sadashiv">
-<meta name="dcterms.date" content="2024-09-26">
+<meta name="dcterms.date" content="2024-11-18">
 
 <title>Introduction to Algorithm – Sadashiv Nandanikar</title>
 <style>
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -155,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 26, 2024</p>
+      <p class="date">November 18, 2024</p>
     </div>
   </div>
   
@@ -167,68 +201,270 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction-to-algorithm" class="level2">
-<h2 class="anchored" data-anchor-id="introduction-to-algorithm">Introduction to Algorithm</h2>
-<p><img src="machine-learning-algorithms.jpeg" class="img-fluid"></p>
+<section id="what-is-docker" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-docker">What is Docker?</h2>
+<p>Docker is a platform designed to help developers build, share, and run container applications.</p>
+<p><img src="docker-logo-blue.svg" class="img-fluid" width="800"></p>
+</section>
+<section id="why-do-we-need-dockers" class="level2">
+<h2 class="anchored" data-anchor-id="why-do-we-need-dockers">Why do we need Dockers?</h2>
+<section id="consistency-across-environments" class="level4">
+<h4 class="anchored" data-anchor-id="consistency-across-environments">Consistency Across Environments</h4>
+<p><img src="Pasted image 20241115192235.png" class="img-fluid" width="100"></p>
 <ul>
-<li><p>In the context of machine learning and deep learning, an algorithm is like a set of step-by-step instructions that a computer follows to learn from data or make predictions.</p></li>
-<li><p>It’s a recipe for the computer to process information, find patterns, and make decisions.</p></li>
-<li><p>Think of it as a smart way for a computer to solve problems or make sense of complex data.</p></li>
-<li><p>These algorithms help us build models that can recognize patterns, understand language, or even play games, among many other things.</p></li>
-<li><h2 id="so-in-a-nutshell-algorithms-are-like-the-brains-behind-the-magic-of-machine-learning-and-deep-learning." class="anchored">So, in a nutshell, algorithms are like the brains behind the magic of machine learning and deep learning.</h2></li>
+<li><p><strong>Problem</strong>: Applications often behave differently in development, testing, and production environments due to variations in configurations, dependencies, and infrastructure.</p></li>
+<li><p><strong>Solution</strong>: Docker containers encapsulate all the necessary components, ensuring the application runs consistently across all environments.</p></li>
 </ul>
-<section id="types-of-algorithms" class="level3">
-<h3 class="anchored" data-anchor-id="types-of-algorithms">Types of Algorithms</h3>
-<p>In machine learning and deep learning, there are several types of algorithms, each with its own purpose and characteristics. Here’s a simple overview of some common types:</p>
+</section>
+<section id="isolation" class="level4">
+<h4 class="anchored" data-anchor-id="isolation">Isolation</h4>
+<p><img src="Pasted image 20241115192335.png" class="img-fluid" width="100"></p>
+<ul>
+<li><strong>Problem</strong>: Running multiple applications on the same host can lead to conflicts, such as dependency clashes or resource contention.</li>
+<li><strong>Solution</strong>: Docker provides isolated environments for each application, preventing interference and ensuring stable performance.</li>
+</ul>
+</section>
+<section id="scalability" class="level4">
+<h4 class="anchored" data-anchor-id="scalability">Scalability</h4>
+<p><img src="Pasted image 20241115192754.png" class="img-fluid" width="100"></p>
+<ul>
+<li><strong>Problem</strong>: Scaling applications to handle increased load can be challenging, requiring manual intervention and configuration.</li>
+<li><strong>Solution</strong>: Docker makes it easy to scale applications horizontally by running multiple container instances, allowing for quick and efficient scaling.</li>
+</ul>
+</section>
+</section>
+<section id="how-exactly-docker-is-used" class="level2">
+<h2 class="anchored" data-anchor-id="how-exactly-docker-is-used">How exactly Docker is used?</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://media.geeksforgeeks.org/wp-content/uploads/20230419170724/Docker-hub-registry.webp" class="img-fluid figure-img"></p>
+<figcaption>Image credit: Geeksforgeeks</figcaption>
+</figure>
+</div>
+<section id="docker-engine" class="level3">
+<h3 class="anchored" data-anchor-id="docker-engine">Docker Engine</h3>
+<p>Docker Engine is the core component of the Docker platform, responsible for creating, running, and managing Docker containers. It serves as the runtime that powers Docker’s containerization capabilities. Here’s an in-depth look at the Docker Engine:</p>
+<p><img src="https://k21academy.com/wp-content/uploads/2020/05/2020-05-12-16_36_49-PowerPoint-Slide-Show-Azure_AZ104_M01_Compute_ed1-1.png" class="img-fluid"></p>
+<section id="components-of-docker-engine" class="level4">
+<h4 class="anchored" data-anchor-id="components-of-docker-engine">Components of Docker Engine</h4>
+<section id="docker-daemon-dockerd" class="level5">
+<h5 class="anchored" data-anchor-id="docker-daemon-dockerd">1. Docker Daemon (dockerd):</h5>
+<ul>
+<li><strong>Function</strong> : The Docker daemon is the background service running on the host machine. It manages Docker objects such as images, containers, networks, and volumes.</li>
+<li><strong>Interaction</strong> : It listens for Docker API requests and processes them, handling container lifecycle operations (start, stop, restart, etc.).</li>
+</ul>
+</section>
+<section id="docker-cli-docker" class="level5">
+<h5 class="anchored" data-anchor-id="docker-cli-docker">2. Docker CLI (docker):</h5>
+<ul>
+<li><strong>Function</strong> : The Docker Command Line Interface (CLI) is the tool that users interact with to communicate with the Docker daemon.</li>
+<li><strong>Usage</strong> : Users run Docker commands through the CLI to perform tasks like building images, running containers, and managing Docker resources.</li>
+</ul>
+</section>
+<section id="rest-api" class="level5">
+<h5 class="anchored" data-anchor-id="rest-api">3. REST API :</h5>
+<ul>
+<li><strong>Function</strong> : The Docker REST API allows communication between the Docker CLI and the Docker daemon. It also enables programmatic interaction with Docker.</li>
+<li><strong>Usage</strong> : Developers can use the API to automate Docker operations or integrate Docker functionality into their applications.</li>
+</ul>
+</section>
+</section>
+<section id="docker-image" class="level4">
+<h4 class="anchored" data-anchor-id="docker-image">Docker Image</h4>
+<p>A Docker image is a lightweight, stand-alone, and executable software package that includes everything needed to run a piece of software, such as the code, runtime, libraries, environment variables, and configuration files. Images are used to create Docker containers, which are instances of these images.</p>
+<section id="components-of-a-docker-image" class="level5">
+<h5 class="anchored" data-anchor-id="components-of-a-docker-image">Components of a Docker Image</h5>
 <ol type="1">
-<li><strong>[[Supervised Learning Algorithms]]</strong>:
-<ul>
-<li>These algorithms learn from labeled data, where the input and the desired output are known.</li>
-<li>Common algorithms include Linear Regression, Decision Trees, and Support Vector Machines (SVM). <br></li>
-</ul></li>
-<li><strong>[[Unsupervised Learning Algorithms]]</strong>:
-<ul>
-<li>These algorithms work with unlabeled data, aiming to find hidden patterns or group similar data points.</li>
-<li>Examples include K-Means Clustering and Principal Component Analysis (PCA).</li>
-</ul></li>
-<li><strong>Deep Learning Algorithms</strong>:
-<ul>
-<li>Deep learning is a subset of machine learning that uses neural networks with many layers (deep networks) to learn from data.</li>
-<li>Common deep learning algorithms include Convolutional Neural Networks (CNNs) for image analysis and Recurrent Neural Networks (RNNs) for sequence data.</li>
-</ul></li>
-<li><strong>Reinforcement Learning Algorithms</strong>:
-<ul>
-<li>These algorithms are used in scenarios where an agent learns to take actions to maximize rewards in an environment.</li>
-<li>Well-known algorithms include Q-Learning and Deep Q-Networks (DQNs).</li>
-</ul></li>
-<li><strong>Semi-Supervised and Self-Supervised Learning</strong>:
-<ul>
-<li>These approaches combine elements of supervised and unsupervised learning, making use of both labeled and unlabeled data.</li>
-</ul></li>
-<li><strong>Transfer Learning</strong>:
-<ul>
-<li>Transfer learning involves using a pre-trained model on a related task as a starting point for a new task, saving training time and resources.</li>
-</ul></li>
-<li><strong>Ensemble Methods</strong>:
-<ul>
-<li>Ensemble methods combine multiple models to improve prediction accuracy. Examples include Random Forests and Gradient Boosting.</li>
-</ul></li>
-<li><strong>Natural Language Processing (NLP) Algorithms</strong>:
-<ul>
-<li>These are specialized algorithms for working with text data, such as sentiment analysis and named entity recognition.</li>
-</ul></li>
-<li><strong>Deep Reinforcement Learning</strong>:
-<ul>
-<li>This combines deep learning and reinforcement learning, often used in complex tasks like game playing (e.g., AlphaGo).</li>
-</ul></li>
-<li><strong>Dimensionality Reduction</strong>:
-<ul>
-<li>Algorithms like t-SNE and UMAP are used to reduce the number of features in high-dimensional data while preserving important relationships.</li>
-</ul></li>
+<li><p><strong>Base Image</strong> : The starting point for building an image. It could be a minimal OS image like alpine, a full-fledged OS like ubuntu, or even another application image like python or node.</p></li>
+<li><p><strong>Application Code</strong> : The actual code and files necessary for the application to run.</p></li>
+<li><p><strong>Dependencies</strong> : Libraries, frameworks, and packages required by the application.</p></li>
+<li><p><strong>Metadata</strong> : Information about the image, such as environment variables, labels, and exposed ports.</p></li>
 </ol>
-<p>These are just some of the many types of algorithms used in machine learning and deep learning. The choice of algorithm depends on the specific problem you’re trying to solve and the type of data you have.</p>
+</section>
+<section id="docker-image-lifecycle" class="level5">
+<h5 class="anchored" data-anchor-id="docker-image-lifecycle">Docker Image Lifecycle</h5>
+<p><img src="Pasted image 20241115195324.png" class="img-fluid" width="100"><br>
+<strong>Creation</strong> : Images are created using the docker build command, which processes the instructions in a Dockerfile to create the image layers.</p>
+<p><img src="Pasted image 20241115195633.png" class="img-fluid" width="100"><br>
+<strong>Storage</strong> : Images are stored locally on the host machine. They can also be pushed to and pulled from Docker registries like Docker Hub, AWS ECR, or Google Container Registry.</p>
+<p><img src="Pasted image 20241115195753.png" class="img-fluid" width="100"><br>
+<strong>Distribution</strong> : Images can be shared by pushing them to a Docker registry, allowing others to pull and use the same image.</p>
+<p><img src="Pasted image 20241115200007.png" class="img-fluid" width="100"><br>
+<strong>Execution</strong> : Images are executed by running containers, which are instances of these images.</p>
+</section>
+</section>
+<section id="dockerfile" class="level4">
+<h4 class="anchored" data-anchor-id="dockerfile">Dockerfile</h4>
+<p>A Dockerfile is a text file that contains a series of instructions used to build a Docker image. Each instruction in a Dockerfile creates a layer in the image, allowing for efficient image creation and reuse of layers. Dockerfiles are used to automate the image creation process, ensuring consistency and reproducibility.</p>
+<section id="key-components-of-a-dockerfile" class="level5">
+<h5 class="anchored" data-anchor-id="key-components-of-a-dockerfile">Key Components of a Dockerfile</h5>
+<ul>
+<li><strong>Base Image (FROM)</strong> : Specifies the starting point for the image, which could be a minimal operating system, a specific version of a language runtime, or another image.<br>
+Example: <code>FROM ubuntu:20.04</code></li>
+<li><strong>Labels (LABEL)</strong> : Adds metadata to the image, such as version, description, or maintainer.<br>
+Example: <code>LABEL version="1.0" description="My application"</code></li>
+<li><strong>Run Commands (RUN)</strong> : Executes commands in the image during the build process, typically used to install software packages. Example: <code>docker RUN apt-get update &amp;&amp; apt-get install -y python3</code></li>
+<li><strong>Copy Files (COPY)</strong>: Copies files or directories from the host system to the image.<br>
+Example: <code>COPY . /app</code></li>
+<li><strong>Environment Variables (ENV)</strong> : Sets environment variables in the image.<br>
+Example: <code>ENV PATH /app/bin:$PATH</code></li>
+<li><strong>Work Directory (WORKDIR)</strong> : Sets the working directory for subsequent instructions.<br>
+Example: <code>WORKDIR /app</code></li>
+<li><strong>Expose Ports (EXPOSE)</strong> : Informs Docker that the container listens on specified network ports.<br>
+Example: <code>EXPOSE 8080</code></li>
+<li><strong>Command (CMD)</strong> : Provides a default command to run when the container starts.<br>
+Example: <code>CMD ["python", "app.py"]</code></li>
+<li><strong>Volume (VOLUME)</strong> : Creates a mount point with a specified path and marks it as holding externally mounted volumes from the host or other containers.<br>
+Example: <code>VOLUME ["/data"]</code></li>
+<li><strong>Arguments (ARG)</strong> : Defines build-time variables.<br>
+Example: <code>ARG VERSION=1.0</code></li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use an Official python runtime as a base image</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> python:3.8-slim</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the working directory in the container</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">WORKDIR</span> /app </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy the current directory contents into the container at /app </span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> . /app </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the needed packages specified in requirements.txt</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">pip</span> install <span class="at">-no-cache-dir</span> <span class="at">-r</span> requirements.txt </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Make port 80 available to the world outside this container </span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="kw">EXPOSE</span> 80</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Define enviroment vaiable</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="kw">ENV</span> NAME world</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Run app.py when the container launches </span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="kw">CMD</span> [<span class="st">"python"</span>, <span class="st">"app.py"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="docker-container" class="level4">
+<h4 class="anchored" data-anchor-id="docker-container">Docker Container</h4>
+<p>A Docker container is a lightweight, portable, and isolated environment that encapsulates an application and its dependencies, allowing it to run consistently across different computing environments. Containers are created from Docker images, which are immutable and contain all the necessary components for the application to run.<br>
+</p>
+</section>
+</section>
+<section id="registry" class="level3">
+<h3 class="anchored" data-anchor-id="registry">Registry</h3>
+<p>A Docker registry is a service that stores and distributes Docker images. It acts as a repository where users can push, pull, and manage Docker images. Docker Hub is the most well-known public registry, but private registries can also be set up to securely store and manage images within an organization.</p>
+<section id="key-components-of-a-docker-registry" class="level4">
+<h4 class="anchored" data-anchor-id="key-components-of-a-docker-registry">Key Components of a Docker Registry:</h4>
+<ul>
+<li><strong>Repositories</strong> : A repository is a collection of related Docker images, typically different versions of the same application. Each repository can hold multiple tags, representing different versions of an image.</li>
+<li><strong>Tags</strong> : Tags are used to version images within a repository.<br>
+For example, <code>myapp:1.0</code>, <code>myapp:2.0</code>, and <code>myapp:latest</code> are tags for different versions of the myapp image.</li>
+</ul>
+</section>
+<section id="types-of-docker-registries" class="level4">
+<h4 class="anchored" data-anchor-id="types-of-docker-registries">Types of Docker Registries</h4>
+<ol type="1">
+<li><strong>Docker Hub</strong>:<br>
+
+<ol type="1">
+<li><strong>Description</strong> : The default public registry provided by Docker, which hosts a vast number of public images and also supports private repositories.<br>
+</li>
+<li><strong>URL</strong> : hub.docker.com<br>
+</li>
+<li><strong>Use Case</strong> : Publicly sharing images and accessing a large collection of pre-built images from the community and official repositories.</li>
+</ol></li>
+<li><strong>Private Registries</strong> :<br>
+
+<ol type="1">
+<li><strong>Description</strong> : Custom registries set up by organizations to securely store and manage their own Docker images.<br>
+</li>
+<li><strong>Use Case</strong> : Ensuring security and control over image distribution within an organization.</li>
+</ol></li>
+<li><strong>Third-Party Registries</strong> :<br>
+
+<ol type="1">
+<li><strong>Examples</strong> : Amazon Elastic Container Registry (ECR), Google Container Registry (GCR), Azure Container Registry (ACR).<br>
+</li>
+<li><strong>Use Case</strong> : Integrating with cloud platforms for seamless deployment and management of images within cloud infrastructure.</li>
+</ol></li>
+</ol>
+</section>
+<section id="benefits-of-using-docker-registries" class="level4">
+<h4 class="anchored" data-anchor-id="benefits-of-using-docker-registries">Benefits of Using Docker Registries</h4>
+<p><strong>1. Centralized Image Management</strong></p>
+<p><img src="Pasted image 20241115210136.png" class="img-fluid" width="100"><br>
+Registries provide a centralized location to store and manage Docker images, making it easier to organize and distribute them.</p>
+<p><strong>2. Version Control</strong> :</p>
+<p><img src="Pasted image 20241115210252.png" class="img-fluid" width="100"><br>
+Using tags, registries allow version control of images, enabling users to easily roll back to previous versions if needed.</p>
+<p><strong>3. Collaboration</strong>:</p>
+<p><img src="Pasted image 20241115210358.png" class="img-fluid" width="100"><br>
+Public registries like Docker Hub facilitate collaboration by allowing users to share images with the community or within teams.</p>
+<p><strong>4. Security</strong> :</p>
+<p><img src="Pasted image 20241115210501.png" class="img-fluid" width="100"><br>
+Private registries ensure that sensitive images are stored securely and access is controlled within an organization.</p>
+<p><strong>5. Integration with CI/CD</strong> :</p>
+<p><img src="Pasted image 20241115210646.png" class="img-fluid" width="100"><br>
+Registries integrate seamlessly with CI/CD pipelines, automating the process of building, storing, and deploying Docker images.</p>
+</section>
+</section>
+<section id="use-cases" class="level3">
+<h3 class="anchored" data-anchor-id="use-cases">Use-cases</h3>
+<section id="microservices-architecture" class="level4">
+<h4 class="anchored" data-anchor-id="microservices-architecture">1. Microservices Architecture</h4>
+<p><img src="Pasted image 20241115211036.png" class="img-fluid" width="100"></p>
+<ul>
+<li><p><strong>Description</strong> : Microservices break down applications into smaller, independent services, each running in its own container.</p></li>
+<li><p><strong>Benefits</strong> : Simplifies deployment, scaling, and maintenance. Each service can be developed, updated, and deployed independently.</p></li>
+</ul>
+</section>
+<section id="continuous-integration-and-continuous-deployment-cicd" class="level4">
+<h4 class="anchored" data-anchor-id="continuous-integration-and-continuous-deployment-cicd">2. Continuous Integration and Continuous Deployment (CI/CD)</h4>
+<p><img src="Pasted image 20241115211204.png" class="img-fluid" width="100"></p>
+<ul>
+<li><p><strong>Description</strong> : Docker ensures a consistent environment from development through testing to production.</p></li>
+<li><p><strong>Benefits</strong> : Streamlines the CI/CD pipeline, reduces discrepancies between environments, and speeds up testing and deployment processes.</p></li>
+</ul>
+</section>
+<section id="cloud-migration" class="level4">
+<h4 class="anchored" data-anchor-id="cloud-migration">3. Cloud Migration</h4>
+<p><img src="Pasted image 20241115211359.png" class="img-fluid" width="100"></p>
+<ul>
+<li><p><strong>Description</strong> : Containerizing applications to move them to the cloud.</p></li>
+<li><p><strong>Benefits</strong> : Simplifies the migration process, allows applications to run consistently across different cloud providers, and optimizes resource usage.</p></li>
+</ul>
+</section>
+<section id="scalable-web-applications" class="level4">
+<h4 class="anchored" data-anchor-id="scalable-web-applications">4. Scalable Web Applications</h4>
+<p><img src="Pasted image 20241115211540.png" class="img-fluid" width="100"></p>
+<ul>
+<li><p><strong>Description</strong> : Deploying web applications in containers for easy scaling.</p></li>
+<li><p><strong>Benefits</strong> : Simplifies scaling up or down based on traffic, ensures consistent deployment, and enhances resource utilization.</p></li>
+</ul>
+</section>
+<section id="testing-and-qa" class="level4">
+<h4 class="anchored" data-anchor-id="testing-and-qa">5. Testing and QA</h4>
+<p><img src="Pasted image 20241115211723.png" class="img-fluid" width="100"></p>
+<ul>
+<li><p><strong>Description</strong> : Creating consistent environments for testing applications.</p></li>
+<li><p><strong>Benefits</strong> : Ensures tests are run in environments identical to production, speeds up the setup of test environments, and facilitates automated testing.</p></li>
+</ul>
+</section>
+<section id="machine-learning-and-ai" class="level4">
+<h4 class="anchored" data-anchor-id="machine-learning-and-ai">6. Machine Learning and AI</h4>
+<p><img src="Pasted image 20241115211934.png" class="img-fluid" width="100"></p>
+<ul>
+<li><p><strong>Description</strong> : Deploying machine learning models and AI applications in containers.</p></li>
+<li><p><strong>Benefits</strong> : Ensures consistency in the runtime environment, simplifies scaling of model training and inference, and facilitates collaboration and reproducibility.</p></li>
+</ul>
+</section>
+<section id="api-development-and-deployment" class="level4">
+<h4 class="anchored" data-anchor-id="api-development-and-deployment">7. API Development and Deployment</h4>
+<p><img src="Pasted image 20241115212037.png" class="img-fluid" width="100"></p>
+<ul>
+<li><p><strong>Description</strong> : Developing and deploying APIs in containers.</p></li>
+<li><p><strong>Benefits</strong> : Ensures APIs run consistently across environments, simplifies scaling, and improves deployment speed and reliability.</p></li>
+</ul>
 
 
+</section>
 </section>
 </section>
 
