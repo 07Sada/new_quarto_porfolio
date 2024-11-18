@@ -1,5 +1,5 @@
 ---
-title: Introduction to Algorithm
+title: Introduction to Docker
 author: Sadashiv
 date: 11-18-2024
 image: docker-logo-blue.svg
