@@ -2,46 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://07Sada.github.io/new_quarto_porfolio/blogs.html</loc>
-    <lastmod>2024-11-19T13:56:31.962Z</lastmod>
+    <lastmod>2024-11-19T14:02:49.581Z</lastmod>
   </url>
   <url>
     <loc>https://07Sada.github.io/new_quarto_porfolio/blogs/Introduction_to_Algorithm/Introduction to Algorithm.html</loc>
-    <lastmod>2024-11-19T13:56:31.962Z</lastmod>
+    <lastmod>2024-11-19T14:02:49.581Z</lastmod>
   </url>
   <url>
-    <loc>https://07Sada.github.io/new_quarto_porfolio/blogs/Introduction_to_Docker/Introduction_to_Docker.html</loc>
-    <lastmod>2024-11-19T13:56:31.966Z</lastmod>
-  </url>
-  <url>
-    <loc>https://07Sada.github.io/new_quarto_porfolio/projects.html</loc>
-    <lastmod>2024-11-19T13:56:31.974Z</lastmod>
-  </url>
-  <url>
-    <loc>https://07Sada.github.io/new_quarto_porfolio/projects/Brand Detection/Brand_Detection.html</loc>
-    <lastmod>2024-11-19T13:56:31.974Z</lastmod>
-  </url>
-  <url>
-    <loc>https://07Sada.github.io/new_quarto_porfolio/resume.html</loc>
-    <lastmod>2024-11-19T13:56:31.986Z</lastmod>
-  </url>
-  <url>
-    <loc>https://07Sada.github.io/new_quarto_porfolio/projects/computer_vison_project/Vegetable_Recognition.html</loc>
-    <lastmod>2024-11-19T13:56:31.986Z</lastmod>
-  </url>
-  <url>
-    <loc>https://07Sada.github.io/new_quarto_porfolio/about.html</loc>
-    <lastmod>2024-11-19T13:56:31.962Z</lastmod>
+    <loc>https://07Sada.github.io/new_quarto_porfolio/blogs/Unsupervised_Learning_Algorithms/Unsupervised Learning Algorithms.html</loc>
+    <lastmod>2024-11-19T14:02:49.585Z</lastmod>
   </url>
   <url>
     <loc>https://07Sada.github.io/new_quarto_porfolio/index.html</loc>
-    <lastmod>2024-11-19T13:56:31.974Z</lastmod>
+    <lastmod>2024-11-19T14:02:49.589Z</lastmod>
+  </url>
+  <url>
+    <loc>https://07Sada.github.io/new_quarto_porfolio/about.html</loc>
+    <lastmod>2024-11-19T14:02:49.581Z</lastmod>
+  </url>
+  <url>
+    <loc>https://07Sada.github.io/new_quarto_porfolio/projects/computer_vison_project/Vegetable_Recognition.html</loc>
+    <lastmod>2024-11-19T14:02:49.601Z</lastmod>
+  </url>
+  <url>
+    <loc>https://07Sada.github.io/new_quarto_porfolio/resume.html</loc>
+    <lastmod>2024-11-19T14:02:49.601Z</lastmod>
+  </url>
+  <url>
+    <loc>https://07Sada.github.io/new_quarto_porfolio/projects/Brand Detection/Brand_Detection.html</loc>
+    <lastmod>2024-11-19T14:02:49.589Z</lastmod>
+  </url>
+  <url>
+    <loc>https://07Sada.github.io/new_quarto_porfolio/projects.html</loc>
+    <lastmod>2024-11-19T14:02:49.589Z</lastmod>
+  </url>
+  <url>
+    <loc>https://07Sada.github.io/new_quarto_porfolio/blogs/Introduction_to_Docker/Introduction_to_Docker.html</loc>
+    <lastmod>2024-11-19T14:02:49.581Z</lastmod>
   </url>
   <url>
     <loc>https://07Sada.github.io/new_quarto_porfolio/blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html</loc>
-    <lastmod>2024-11-19T13:56:31.970Z</lastmod>
+    <lastmod>2024-11-19T14:02:49.585Z</lastmod>
   </url>
   <url>
     <loc>https://07Sada.github.io/new_quarto_porfolio/blogs/Supervised_Learning_Algorithms/Supervised Learning Algorithms.html</loc>
-    <lastmod>2024-11-19T13:56:31.970Z</lastmod>
+    <lastmod>2024-11-19T14:02:49.585Z</lastmod>
   </url>
 </urlset>
