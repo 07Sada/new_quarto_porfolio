@@ -6,7 +6,6 @@ image: https://databasetown.com/wp-content/uploads/2023/05/Supervised-Learning-1
 ---
 
 **What's Supervised Learning?**
-
 Imagine teaching a computer like a teacher instructs a student. In supervised learning, we provide the computer with labeled examples. It's like showing it the right answers and letting it figure out how to get there.
 
 ![supervised learning](https://databasetown.com/wp-content/uploads/2023/05/Supervised-Learning-1024x726.jpg)
