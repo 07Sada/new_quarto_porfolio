@@ -2,6 +2,7 @@
   {
     "listing": "/blogs.html",
     "items": [
+      "/blogs/Supervised_Learning_Algorithms/Supervised Learning Algorithms.html",
       "/blogs/Introduction_to_Docker/Introduction_to_Docker.html",
       "/blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html",
       "/blogs/Introduction_to_Algorithm/Introduction to Algorithm.html"

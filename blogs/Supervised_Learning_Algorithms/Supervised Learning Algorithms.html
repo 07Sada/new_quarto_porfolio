@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Sadashiv">
+<meta name="dcterms.date" content="2024-11-19">
 
-<title>Projects – Sadashiv Nandanikar</title>
+<title>Supervised Learning Algorithms – Sadashiv Nandanikar</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,27 +25,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./images/luffy.jpg" rel="icon" type="image/jpeg">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/luffy.jpg" rel="icon" type="image/jpeg">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,77 +70,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Sadashiv Nandanikar</span>
     </a>
   </div>
@@ -151,19 +93,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./projects.html" aria-current="page"> 
+    <a class="nav-link" href="../../projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blogs.html"> 
+    <a class="nav-link" href="../../blogs.html"> 
 <span class="menu-text">Blogs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./resume.html"> 
+    <a class="nav-link" href="../../resume.html"> 
 <span class="menu-text">Resume</span></a>
   </li>  
 </ul>
@@ -187,102 +129,87 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Projects</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta column-page-left">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Supervised Learning Algorithms</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sadashiv </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 19, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
 
 
+</header>
 
 
+<p><strong>What’s Supervised Learning?</strong></p>
+<p>Imagine teaching a computer like a teacher instructs a student. In supervised learning, we provide the computer with labeled examples. It’s like showing it the right answers and letting it figure out how to get there.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://databasetown.com/wp-content/uploads/2023/05/Supervised-Learning-1024x726.jpg" class="img-fluid figure-img"></p>
+<figcaption>supervised learning</figcaption>
+</figure>
+</div>
+<p><strong>Why Do We Use It?</strong></p>
+<p>Supervised learning helps the computer make predictions, classify things, and make decisions based on past experiences.</p>
+<p><strong>Meet the Superstars!</strong></p>
+<ul>
+<li><p><em>[[Linear Regression in Machine Learning|Linear Regression]]</em>: Think of it as drawing a straight line through dots on a graph to make predictions, like guessing a house’s price based on its size.</p></li>
+<li><p><em>[[Decision Tree|Decision Trees]]</em>: Imagine playing 20 Questions. It’s like that but for sorting things, such as deciding if an email is spam or not.</p></li>
+<li><p><em>Support Vector Machines (SVM)</em>: Picture separating different groups of data with a clear line. It’s used in things like sorting images or categorizing text.</p></li>
+</ul>
+<p><strong>How It Works</strong></p>
+<ul>
+<li><p><strong>Training</strong>: We teach the algorithm using a dataset with examples and their correct answers. It learns by finding patterns in this training data.</p></li>
+<li><p><strong>Testing</strong>: After training, we test it on new, unseen data to see how well it can predict or classify.</p></li>
+</ul>
+<p><strong>In the Real World</strong></p>
+<ul>
+<li>Predicting stock prices based on past trends.</li>
+<li>Deciding if an email is junk or not.</li>
+<li>Recognizing handwritten numbers in ZIP codes.</li>
+</ul>
+<p><strong>Pros and Cons</strong></p>
+<ul>
+<li><p><strong>Pros</strong>: It’s widely used and can be very accurate if the training data is good.</p></li>
+<li><p><strong>Cons</strong>: You need labeled data (which can be costly), and it might not work well if the data is messy or the problem is tricky.</p></li>
+</ul>
+<p><strong>Takeaway</strong></p>
+<p>Supervised learning is like training a pet with treats. It’s essential in machine learning, especially when you know what the right answers should be. It’s like the foundation of our machine learning journey!</p>
+<hr>
+<section id="reference-reading" class="level3">
+<h3 class="anchored" data-anchor-id="reference-reading">Reference Reading</h3>
+<p><a href="https://databasetown.com/supervised-learning-algorithms/"># Supervised Learning: Algorithms, Examples, and How It Works</a></p>
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1731283200000" data-listing-file-modified-sort="1732024232701" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="76">
-<div class="thumbnail">
-<p><a href="./projects/computer_vison_project/Vegetable_Recognition.html" class="no-external"></a></p><a href="./projects/computer_vison_project/Vegetable_Recognition.html" class="no-external">
-<p><img loading="lazy" src="https://pyimagesearch.com/wp-content/uploads/2023/02/vegetable-images-visualise.png" class="thumbnail-image"></p>
-</a><p><a href="./projects/computer_vison_project/Vegetable_Recognition.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./projects/computer_vison_project/Vegetable_Recognition.html" class="no-external">Vegetable Recognition</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./projects/computer_vison_project/Vegetable_Recognition.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./projects/computer_vison_project/Vegetable_Recognition.html" class="no-external">This notebook demonstrates a deep learning approach to classifying vegetable types from images, a task with applications in agriculture and retail. The model is built using…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./projects/computer_vison_project/Vegetable_Recognition.html" class="no-external">
-<div class="listing-date">
-Nov 11, 2024
-</div>
-<div class="listing-author">
-Sadashiv
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1731283200000" data-listing-file-modified-sort="1732024232689" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="160">
-<div class="thumbnail">
-<p><a href="./projects/Brand Detection/Brand_Detection.html" class="no-external"></a></p><a href="./projects/Brand Detection/Brand_Detection.html" class="no-external">
-<p><img loading="lazy" src="https://user-images.githubusercontent.com/112761379/235088788-8aacd18f-cd43-49a2-a501-63b161ebc520.png" class="thumbnail-image"></p>
-</a><p><a href="./projects/Brand Detection/Brand_Detection.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./projects/Brand Detection/Brand_Detection.html" class="no-external">Brand Detection</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./projects/Brand Detection/Brand_Detection.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./projects/Brand Detection/Brand_Detection.html" class="no-external">Visual content, such as videos and images, plays a significant role in modern-day marketing. Traditionally, brands have had to pay content creators to feature their brand…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./projects/Brand Detection/Brand_Detection.html" class="no-external">
-<div class="listing-date">
-Nov 11, 2024
-</div>
-<div class="listing-author">
-Sadashiv
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
