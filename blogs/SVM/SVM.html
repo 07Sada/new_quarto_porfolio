@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Sadashiv">
+<meta name="dcterms.date" content="2024-11-20">
+
+<title>Support Vector Machines – Sadashiv Nandanikar</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/luffy.jpg" rel="icon" type="image/jpeg">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Sadashiv Nandanikar</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blogs.html"> 
+<span class="menu-text">Blogs</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resume.html"> 
+<span class="menu-text">Resume</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sadashiv-nandanikar-406484292"> <i class="bi bi-linkedin" role="img" aria-label="Quarto LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/07Sada"> <i class="bi bi-github" role="img" aria-label="Quarto Github">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Support Vector Machines</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sadashiv </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 20, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>SVM is a powerful supervised machine learning algorithm that works best on smaller dataset but on complex ones. Support Vector Machine, abbreviated as SVM can be used for both classification and regression tasks, but generally, they generally works best in classification problems.</p>
+</section>
+<section id="what-is-support-vector-machines" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-support-vector-machines">What is Support Vector Machines?</h3>
+<p><em>It is a supervised machine learning algorithm where we try to find the hyperplane that best separates the two classes</em></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<blockquote class="blockquote">
+<p>Don’t get confused between logistic regression and SVM. Both the algorithms find the best hyperplane, but the main difference is logistic regression is <strong>probabilistic approach</strong> whereas the support vector machine based on statistical approaches.</p>
+</blockquote>
+</div>
+</div>
+<p>Now the question is which hyperplane does is select? There can be infinite number of hyperplanes passing through a point and classifying the two classes perfectly. <em>So which one is the best?</em> Well, <font color="#05EBF6">SVM does this by finding the maximum margin between the hyperplanes</font> that means maximum distance between the two classes.</p>
+</section>
+<section id="logistic-regression-vs-support-vector-machine-svm" class="level3">
+<h3 class="anchored" data-anchor-id="logistic-regression-vs-support-vector-machine-svm">Logistic Regression Vs Support Vector Machine (SVM)</h3>
+<p>Depending the number of features you have you can either choose [[Logistic Regression]] or SVM.</p>
+<p>SVM works best when the dataset is small and complex. It is usually advisable to first use [[Logistic Regression|logistic regression]] and see how does it performs, if it fails give good accuracy you can go for SVM without any Kernel.<font color="#05EBF6"> Logistic Regression and SVM without any kernel have similar performance but depending on your features, one may be more efficient than the other.</font></p>
+</section>
+<section id="types-of-support-vector-machine-svm-algorithms" class="level3">
+<h3 class="anchored" data-anchor-id="types-of-support-vector-machine-svm-algorithms">Types of Support Vector Machine (SVM) Algorithms</h3>
+<ul>
+<li><strong>Linear SVM</strong>:
+<ul>
+<li>When the data is perfectly linearly separable only then we can use Linear SVM.</li>
+<li>Perfectly linearly separable means that the data points can be classified into 2 classes by using a single straight line (if 2D).</li>
+</ul></li>
+<li><strong>Non-Linear SVM</strong>:
+<ul>
+<li>When the data is not linearly separable then we can use non-linear SVM.</li>
+<li>Which means when the data points can not be separated into 2 classes by using a straight line (if 2D) then we use some advanced techniques like kernel trick to classify them. In most real-world applications we don’t find linearly separable data points hence we use kernel trick to solve them.</li>
+</ul></li>
+</ul>
+</section>
+<section id="important-terms" class="level3">
+<h3 class="anchored" data-anchor-id="important-terms">Important Terms:</h3>
+<ul>
+<li><strong>Support Vectors</strong> :
+<ul>
+<li>These are the data points that are closest to the hyperplane.</li>
+<li>A separating line will be defined with the help of these data points.</li>
+</ul></li>
+<li><strong>Margin</strong> :
+<ul>
+<li>It is the distance between the hyperplane and observation closest to the hyperplane (support vectors). In SVM large margin is considered to a good margin. There are two types of margin <em>hard margin</em> and <em>soft margin</em></li>
+</ul></li>
+</ul>
+<p><img src="Pasted image 20240417193515.png" class="img-fluid" width="450"></p>
+</section>
+<section id="how-does-support-vector-machine-works" class="level3">
+<h3 class="anchored" data-anchor-id="how-does-support-vector-machine-works">How does Support Vector Machine works?</h3>
+<p>SVM is defined such that it is defined in terms of support vectors only, we don’t have to worry about other observations since the margin is made using the points which are closest to the hyperplane (support vectors), where as in [[Logistic Regression|Logistic Regression]] the classifier is defined over all the points. <em>Hence SVM enjoys the some natural speed-up.</em></p>
+<p>Let’s understand the SVM using an example. Suppose we have a dataset that has two classes (green and blue). We want to classify that the new data point is either blue or green.</p>
+<p><img src="Pasted image 20240417194126.png" class="img-fluid" width="350"></p>
+<p>To classify these data points, we can have many decision boundaries, but the question is which is the best, and how do we find it.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<blockquote class="blockquote">
+<p>Since we are plotting the data points in a 2-dimensional graph we call this decision boundary straight line but if we have more dimensions, we call this decision boundary a <strong>“hyperplane”</strong></p>
+</blockquote>
+</div>
+</div>
+<p><img src="Pasted image 20240417194532.png" class="img-fluid" width="350"></p>
+<p>The best hyperplane is that plane that has the most distance from both the classes, and this is the main aim of SVM. This is done by finding different hyperplanes which classify the labels in the best way then it will choose the one which is farthest from the data points or the one which has a maximum margin.</p>
+<p>!<img src="Pasted image 20240417194810.png" class="img-fluid" width="350"></p>
+</section>
+<section id="mathematical-intuition-behind-support-vector-machine" class="level3">
+<h3 class="anchored" data-anchor-id="mathematical-intuition-behind-support-vector-machine">Mathematical Intuition Behind Support Vector Machine</h3>
+<section id="understanding-dot-product" class="level4">
+<h4 class="anchored" data-anchor-id="understanding-dot-product">Understanding Dot Product</h4>
+<ul>
+<li>We know that vector is a quantity that has magnitude as well as direction and just like numbers we can use mathematical operations such as addition, multiplication.</li>
+<li>The multiplications of vectors can be done in two ways <em>dot product</em> and <em>cross product</em>.</li>
+<li>The difference is only that the dot product is used to get a scaler value as a resultant whereas cross-product is used to obtain a vector again.</li>
+</ul>
+<p>The dot product can be defined as the projection of one vector along with another, multiply by the product of another vector.</p>
+<p><img src="Pasted image 20240417195531.png" class="img-fluid" width="300"></p>
+<p>Here a and b are two vectors, to find the dot product between these two vectors we first find the magnitude of both the vectors and to find the magnitude we use Pythagorean theorem or the distance formula.</p>
+<p>After find the magnitude we simply multiply it with cosine angle between both the vectors. Mathematically it can be written as:</p>
+<p><span class="math inline">\(\mathbf{A} \cdot \mathbf{B}=\left | A \right |\cos \Theta *\left |B  \right |\)</span> Where <span class="math inline">\(\left | A \right |\cos \Theta\)</span> is the projection of A on B and <span class="math inline">\(\left |B  \right |\)</span> is the magnitude of Vector B</p>
+<p>Now in SVM we just need the projection of A not the magnitude of B. To just get the projection we can simply take the unit vector B because it will be in the direction of B but its magnitude will be 1. Hence now the equation becomes <span class="math inline">\(\mathbf{A} \cdot \mathbf{B}=\left | A \right |\cos \Theta * \text{unit vector B}\)</span></p>
+<p>Now let’s move to the next part and see how we will use this in SVM.</p>
+</section>
+<section id="use-of-dot-product-in-svm" class="level4">
+<h4 class="anchored" data-anchor-id="use-of-dot-product-in-svm">Use of Dot Product in SVM</h4>
+<p>Consider a random point X we want to whether it lies on the right side of the plane or left side of the plane (positive or negative).</p>
+<p><img src="Pasted image 20240418084314.png" class="img-fluid" width="350"></p>
+<p>To find this first we assume this point is a vector (X) and then we make a vector (w) which is perpendicular to the hyperplane. Let’s say the distance of vector w from origin to decision boundary is ‘c’. Now we take the projection of X vector on w.</p>
+<p><img src="Pasted image 20240418084624.png" class="img-fluid" width="350"></p>
+<p><span class="math inline">\(\large \vec{X} \cdot \vec{w} = \text{c } \text{(the point lies on the dicision boundray)}\)</span> <span class="math inline">\(\large \vec{X} \cdot \vec{w} &gt; \text{c } \text{(positive samples)}\)</span> <span class="math inline">\(\large \vec{X} \cdot \vec{w} &lt; \text{c } \text{(negative samples)}\)</span></p>
+<p>You must have this doubt that why did we take this perpendicular <em>vector w</em> to the hyperplane? So what we want is distance of vector X from the decision boundary and there can be infinite number points on the boundary to measure the distance from. So that’s why we come to standard, we simply take perpendicular and use it as a reference then take projections of all other data points on this perpendicular vector and then compare the distance.</p>
+<p>In SVM we also have a concept of margin. We will see how we find the equation of a hyperplane and what exactly do we need to optimize in SVM.</p>
+</section>
+</section>
+<section id="margin-in-support-vector-machine" class="level3">
+<h3 class="anchored" data-anchor-id="margin-in-support-vector-machine">Margin in Support Vector Machine</h3>
+<p>We all the equation of a hyperplane is <span class="math inline">\(\mathbf{w} \cdot \mathbf{x} + \mathbf{b} = 0\)</span> where <em>w</em> is vector normal to the hyperplane, and b is an offset.</p>
+<p><img src="Pasted image 20240418090041.png" class="img-fluid" width="350"></p>
+<p>To classify a point as negative or positive we need to define a decision rule. We can define the decision rule as;</p>
+<p><span class="math display">\[\large \vec{X} \cdot \vec{w} - c \ge0\]</span> <span class="math display">\[\text{putting -c as b, we get}\]</span> <span class="math display">\[\large \vec{X} \cdot \vec{w} + b \ge0\]</span> <span class="math display">\[\text{hence}\]</span> <span class="math display">\[
+y = \begin{cases}
++1, &amp; \text{if} \quad \vec{X} \cdot \vec{w} + b \geq 0 \\
+-1, &amp; \text{if} \quad \vec{X} \cdot \vec{w} + b &lt; 0
+\end{cases}
+\]</span></p>
+<p>If we value of <span class="math inline">\(\mathbf{w} \cdot \mathbf{x} + b&gt;0\)</span> then we can say it is a positive points otherwise it is a negative point. Now we need (w, b) such that the margin has a maximum distance. Let’s say this distance is ‘d’. !<img src="Pasted image 20240418091949.png" class="img-fluid" width="350"></p>
+<p>To calculate ‘d’ we need the equation L1 and L2. For this, we will take few assumptions that the equation of L1 is <span class="math inline">\(\mathbf{w} \cdot \mathbf{x} + b = 1\)</span> for L2 it is <span class="math inline">\(\mathbf{w} \cdot \mathbf{x} + b = -1\)</span>.</p>
+<p>Now the question comes - Why the magnitude is equal, why didn’t we take 1 and -2? - Why did we only take 1 and -1, why not any other value like 24 and -100? - Why did we assume this line?</p>
+<section id="lets-try-to-answer-these-questions" class="level4">
+<h4 class="anchored" data-anchor-id="lets-try-to-answer-these-questions">Let’s try to answer these questions</h4>
+<ul>
+<li>We want our plane to have equal distance from both the classes that means L should pass through the center of L1 and L2 that’s why we take magnitude equal.</li>
+<li>Let’s say the equation of our hyperplane is 2x+y=2, we observe that even if we multiply the whole equation with some other number the line doesn’t change (try plotting on a graph). Hence for mathematical convenience, we take it as 1.</li>
+<li>Now the main question is exactly why there’s a need to assume only this line? To answer this, I’ll try to take the help of graphs.</li>
+</ul>
+<p>Suppose the equation of our hyperplane is 2x+y=2</p>
+<p><img src="Pasted image 20240418103433.png" class="img-fluid" width="350"></p>
+<p>Let’s create margin for this hyperplane,</p>
+<p><img src="Pasted image 20240418103530.png" class="img-fluid" width="350"></p>
+<p>If you multiply these equations by 10, we will see that the parallel line (red and green) gets closer to our hyperplane. For more clarity look at this graph (<a href="https://www.desmos.com/calculator/dvjo3vacyp" class="uri">https://www.desmos.com/calculator/dvjo3vacyp</a>)</p>
+<p>We also observe that if we divide this equation by 10 then these parallel lines get bigger. Look at this graph (<a href="https://www.desmos.com/calculator/15dbwehq9g" class="uri">https://www.desmos.com/calculator/15dbwehq9g</a>).</p>
+<p>By this I wanted to show you that the parallel lines depend on (w, b) of our hyperplane, if we multiply the equation of hyperplane with a factor greater than 1 then the parallel lines will shrink and if we multiply with a factor less than 1, they expand.</p>
+<p>We can now say that these lines will move as we do changes in (w, b) and this is how this gets optimized. But what is the optimization function? Let’s calculate it.</p>
+<p>We know that the aim of SVM is to maximize this margin that means distance (d). But there are few constraints for this distance (d). Let’s look at what these constraints are.</p>
+</section>
+<section id="optimization-function-and-its-constraints" class="level4">
+<h4 class="anchored" data-anchor-id="optimization-function-and-its-constraints">Optimization&nbsp;Function and its Constraints</h4>
+<p>In order to get our optimization function, there are few constraints to consider. That constraint is that&nbsp;<strong>“We’ll calculate the distance (d) in such a way that no positive or negative point can cross the margin line”.</strong>&nbsp;Let’s write these constraints mathematically:</p>
+<p><img src="Pasted image 20240418103703.png" class="img-fluid" width="500"></p>
+<p>Rather than taking 2 constraints forward, we’ll now try to simplify these two constraints into 1. We assume that negative classes have&nbsp;<strong><em>y=-1</em></strong>&nbsp;and positive classes have&nbsp;<em>y=1</em></p>
+<p>We can say that for every point to be correctly classified this condition should always be true:</p>
+<p><img src="Pasted image 20240418103745.png" class="img-fluid" width="200"></p>
+<p>Suppose a green point is correctly classified that means it will follow&nbsp;<strong>w.x+b&gt;=1,</strong>&nbsp;if we multiply this with&nbsp;<strong>y=1</strong>&nbsp;we get this same equation mentioned above. Similarly, if we do this with a red point with&nbsp;<strong>y=-1</strong>&nbsp;we will again get this equation<strong>.</strong>&nbsp;Hence, we can say that we need to maximize (d) such that this constraint holds true.</p>
+<p>We will take 2 support vectors, 1 from the negative class and 2nd&nbsp;from the positive class. The distance between these two vectors x1 and x2 will be&nbsp;<em>(x2-x1) vector</em>. What we need is, the shortest distance between these two points which can be found using a trick we used in the dot product. We take a vector ‘w’ perpendicular to the hyperplane and then find the projection of (x2-x1) vector on ‘w’.&nbsp; <strong>Note:</strong>&nbsp;this perpendicular vector should be a unit vector then only this will work. Why this should be a unit vector? This has been explained in the dot-product section. To make this ‘w’ a unit vector we divide this with the norm of ‘w’.</p>
+<p><img src="Pasted image 20240418103849.png" class="img-fluid" width="350"></p>
+</section>
+<section id="finding-projection-of-a-vector-on-another-vector-using-dot-product" class="level4">
+<h4 class="anchored" data-anchor-id="finding-projection-of-a-vector-on-another-vector-using-dot-product">Finding Projection of a Vector on Another Vector Using Dot Product</h4>
+<p>We already know how to find the projection of a vector on another vector. We do this by dot-product of both vectors. So let’s see how</p>
+<p><img src="Pasted image 20240418103939.png" class="img-fluid" width="350"></p>
+<p>Since x2 and x1 are support vectors and they lie on the hyperplane, hence they will follow&nbsp;<strong>yi* (2.x+b)=1</strong>&nbsp;so we can write it as:</p>
+<p><img src="Pasted image 20240418104008.png" class="img-fluid" width="350"></p>
+<p>Putting equations (2) and (3) in equation (1) we get:</p>
+<p><img src="Pasted image 20240418104034.png" class="img-fluid" width="350"></p>
+<p>Hence the equation which we have to maximize is:</p>
+<p><img src="Pasted image 20240418104054.png" class="img-fluid" width="450"></p>
+<p>We have now found our optimization function but there is a catch here that we don’t find this type of perfectly linearly separable data in the industry, there is hardly any case we get this type of data and hence we fail to use this condition we proved here. The type of problem which we just studied is called&nbsp;<strong>Hard Margin SVM</strong>&nbsp;now we shall study soft margin which is similar to this but there are few more interesting tricks we use in&nbsp;<strong>Soft Margin SVM.</strong></p>
+</section>
+</section>
+<section id="soft-margin-svm" class="level3">
+<h3 class="anchored" data-anchor-id="soft-margin-svm">Soft Margin SVM</h3>
+<p>In real-life applications, we rarely encounter datasets that are perfectly linearly separable. Instead, we often come across datasets that are either nearly linearly separable or entirely non-linearly separable. Unfortunately, the trick demonstrated above for linearly separable datasets is not applicable in these cases. This is where Support Vector Machines (SVM) come into play. These are a powerful tool in machine learning that can effectively handle both almost linearly separable and non-linearly separable datasets, providing a robust solution to classification problems in diverse real-world scenarios.</p>
+<p>To tackle this problem what we do is modify that equation in such a way that it allows few misclassifications that means it allows few points to be wrongly classified.</p>
+<p>We know that&nbsp;<em>max[f(x)]</em>&nbsp;can also be written as&nbsp;<em>min[1/f(x)]</em>, it is common practice to minimize a cost function for optimization problems; therefore, we can invert the function. <img src="Pasted image 20240418104153.png" class="img-fluid" width="450"></p>
+<p>To make a soft margin equation we add 2 more terms to this equation which is&nbsp;<strong>zeta</strong>&nbsp;and multiply that by a&nbsp;<strong>hyperparameter ‘c’</strong></p>
+<p><img src="Pasted image 20240418104234.png" class="img-fluid" width="350"></p>
+<p>For all the&nbsp;<strong><em>correctly classified</em></strong>&nbsp;points our&nbsp;<strong>zeta</strong>&nbsp;will be equal to 0 and for all the&nbsp;<strong><em>incorrectly classified</em></strong>&nbsp;points the&nbsp;<strong>zeta</strong>&nbsp;is simply the distance of that particular point from its correct hyperplane that means if we see the wrongly classified green points the value of&nbsp;<strong>zeta</strong>&nbsp;will be the distance of these points from L1 hyperplane and for wrongly classified red point&nbsp;<strong>zeta</strong>&nbsp;will be the distance of that point from L2 hyperplane.</p>
+<p><img src="Pasted image 20240418104313.png" class="img-fluid" width="350"></p>
+<p>So now we can say that our that are&nbsp;<strong>SVM Error = Margin Error + Classification Error.</strong>&nbsp;The higher the margin, the lower would-be margin error, and vice versa.</p>
+<p>Let’s say you take a high value of ‘c’ =1000, this would mean that you don’t want to focus on margin error and just want a model which doesn’t misclassify any data point.</p>
+<p>Look at the figure below:</p>
+<p><img src="Pasted image 20240418104343.png" class="img-fluid" width="600"></p>
+<p><strong>If someone asks you which is a better model, the one where the margin is maximum and has 2 misclassified points or the one where the margin is very less, and all the points are correctly classified?</strong></p>
+<p>Well, there’s no correct answer to this question, but rather we can use&nbsp;<em>SVM Error = Margin Error + Classification Error to</em>&nbsp;justify this. If you don’t want any misclassification in the model then you can choose&nbsp;<em>figure 2</em>. That means we’ll increase ‘c’ to decrease Classification Error but if you want that your margin should be maximized then the value of ‘c’ should be minimized. That’s why ‘c’ is a hyperparameter and we find the optimal value of ‘c’ using GridsearchCV and cross-validation.</p>
+</section>
+<section id="kernels-in-support-vector-machine" class="level2">
+<h2 class="anchored" data-anchor-id="kernels-in-support-vector-machine">Kernels in Support Vector Machine</h2>
+<p>The most interesting feature of SVM is that it can even work with a non-linear dataset and for this, we use “Kernel Trick” which makes it easier to classifies the points. Suppose we have a dataset like this:</p>
+<p><img src="Pasted image 20240418104501.png" class="img-fluid" width="600"></p>
+<p>Here we see we cannot draw a single line or say hyperplane which can classify the points correctly. So what we do is try converting this lower dimension space to a higher dimension space using some quadratic functions which will allow us to find a decision boundary that clearly divides the data points. These functions which help us do this are called Kernels and which kernel to use is purely determined by hyperparameter tuning.</p>
+<p><img src="Pasted image 20240418104542.png" class="img-fluid" width="600"></p>
+<section id="different-kernel-functions" class="level3">
+<h3 class="anchored" data-anchor-id="different-kernel-functions"><strong>Different Kernel Functions</strong></h3>
+<p>Some kernel functions which you can use in SVM are given below: #### <strong>1.</strong>&nbsp;Polynomial Kernel Following is the formula for the polynomial kernel:</p>
+<p><img src="Pasted image 20240418104621.png" class="img-fluid" width="300"></p>
+<p>Here d is the degree of the polynomial, which we need to specify manually.</p>
+<p>Suppose we have two features X1 and X2 and output variable as Y, so using polynomial kernel we can write it as:</p>
+<p><img src="Pasted image 20240418104649.png" class="img-fluid" width="350"></p>
+<p>So we basically need to find X12&nbsp;, X22&nbsp;and X1.X2, and now we can see that 2 dimensions got converted into 5 dimensions.</p>
+<p><img src="Pasted image 20240418104728.png" class="img-fluid" width="600"></p>
+<section id="sigmoid-kernel" class="level4">
+<h4 class="anchored" data-anchor-id="sigmoid-kernel"><strong>2.</strong>&nbsp;Sigmoid Kernel</h4>
+<p>We can use it as the proxy for neural networks. Equation is: <img src="Pasted image 20240418104807.png" class="img-fluid" width="400"></p>
+<p>It is just taking your input, mapping them to a value of 0 and 1 so that they can be separated by a simple straight line.</p>
+<p><img src="Pasted image 20240418104839.png" class="img-fluid" width="400"></p>
+</section>
+<section id="rbf-kernel" class="level4">
+<h4 class="anchored" data-anchor-id="rbf-kernel"><strong>3.</strong>&nbsp;RBF Kernel</h4>
+<p>What it actually does is to create non-linear combinations of our features to lift your samples onto a higher-dimensional feature space where we can use a linear decision boundary to separate your classes It is the most used kernel in SVM classifications, the following formula explains it mathematically:</p>
+<p><img src="Pasted image 20240418104919.png" class="img-fluid" width="400"></p>
+<p>where,</p>
+<ol type="1">
+<li><span class="math inline">\(σ\)</span> is the variance and our hyperparameter<br>
+</li>
+<li><span class="math inline">\(||X_₁ – X_₂||\)</span>&nbsp;is the Euclidean Distance between two points X₁ and X₂</li>
+</ol>
+<p><img src="Pasted image 20240418104953.png" class="img-fluid" width="400"></p>
+</section>
+<section id="bessel-function-kernel" class="level4">
+<h4 class="anchored" data-anchor-id="bessel-function-kernel"><strong>4. Bessel function kernel</strong></h4>
+<p>It is mainly used for eliminating the cross term in mathematical functions. Following is the formula of the Bessel function kernel:</p>
+<p><img src="Pasted image 20240418105030.png" class="img-fluid" width="300"></p>
+</section>
+<section id="anova-kernel" class="level4">
+<h4 class="anchored" data-anchor-id="anova-kernel">5. <strong>Anova Kernel</strong></h4>
+<p>It performs well on multidimensional regression problems. The formula for this kernel function is:</p>
+<p><img src="Pasted image 20240418105100.png" class="img-fluid" width="400"></p>
+</section>
+</section>
+<section id="how-to-choose-the-right-kernel" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-choose-the-right-kernel">How to Choose the Right Kernel?</h3>
+<p>I am well aware of the fact that you must be having this doubt about how to decide which kernel function will work efficiently for your dataset. It is necessary to choose a good kernel function because the performance of the model depends on it.</p>
+<p>Choosing a kernel totally depends on what kind of dataset are you working on. If it is linearly separable then you must opt. for linear kernel function since it is very easy to use and the complexity is much lower compared to other kernel functions. I’d recommend you start with a hypothesis that your data is linearly separable and choose a linear kernel function.</p>
+<p>You can then&nbsp;work your way up towards the more complex kernel functions. Usually, we use SVM with RBF and linear kernel function because other kernels like polynomial kernel are rarely used due to poor efficiency. But what if linear and RBF both give approximately similar results? Which kernel do we choose now?</p>
+<section id="example" class="level4">
+<h4 class="anchored" data-anchor-id="example">Example</h4>
+<p>Let’s understand this with the help of an example, for simplicity I’ll only take 2 features that mean 2 dimensions only. In the figure below I have plotted the decision boundary of a linear SVM on 2 features of the iris dataset:</p>
+<p><img src="Pasted image 20240418105152.png" class="img-fluid" width="500"></p>
+<p>Here we see that a linear kernel works fine on this dataset, but now let’s see how will RBF kernel work.</p>
+<p><img src="Pasted image 20240418105224.png" class="img-fluid" width="500"></p>
+<p>We can observe that both the kernels give similar results, both work well with our dataset but which one should we choose? Linear SVM is a parametric model.&nbsp;A Parametric Model is a concept used to describe a model in which all its data is represented within its parameters.&nbsp; In short, the only information needed to predict the future from the current value is the parameters.</p>
+<p>The complexity of the RBF kernel grows as the training data size increases.&nbsp;In addition to the fact that it is more expensive to prepare RBF kernel,&nbsp;we also have to keep the kernel matrix around, and the projection into this “infinite” higher dimensional space where the data becomes linearly separable is more expensive as well during prediction. If the dataset is not linear then using linear kernel doesn’t make sense we’ll get a very low accuracy if we do so.</p>
+<p><img src="Pasted image 20240418105303.png" class="img-fluid" width="500"></p>
+<p>So for this kind of dataset, we can use RBF without even a second thought because it makes decision boundary like this:</p>
+<p><img src="Pasted image 20240418105346.png" class="img-fluid" width="500"></p>
+</section>
+<section id="advantages-of-svm" class="level4">
+<h4 class="anchored" data-anchor-id="advantages-of-svm"><strong>Advantages of SVM</strong></h4>
+<ul>
+<li>SVM works better when the data is Linear</li>
+<li>It is more effective in high dimensions</li>
+<li>With the help of the kernel trick, we can solve any complex problem</li>
+<li>SVM is not sensitive to outliers</li>
+<li>Can help us with Image classification</li>
+</ul>
+</section>
+<section id="disadvantages-of-svm" class="level4">
+<h4 class="anchored" data-anchor-id="disadvantages-of-svm"><strong>Disadvantages of SVM</strong></h4>
+<ul>
+<li>Choosing a good kernel is not easy</li>
+<li>It doesn’t show good results on a big dataset</li>
+<li>The SVM hyperparameters are Cost -C and gamma. It is not that easy to fine-tune these hyper-parameters. It is hard to visualize their impact</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>In this article, we looked at a very powerful machine learning algorithm, Support Vector Machine in detail. I discussed its concept of working, math intuition behind SVM, implementation in python, the tricks to classify non-linear datasets, Pros and cons, and finally, we solved a problem with the help of SVM.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/07Sada\.github\.io\/new_quarto_porfolio\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><span class="container"><strong>Made with <a href="https://quarto.org/" target="_blank">Posit Quarto</a></strong></span></p>
+</div>   
+    <div class="nav-footer-center">
+<p><span class="container"><strong><a href="mailto:nandanikar.sadashiv0712@gmail.com" target="_blank">Contact Sadashiv Nandanikar</a></strong></span></p>
+</div>
+    <div class="nav-footer-right">
+<p><span class="container"><strong><a href="https://github.com/07Sada" target="_blank">Github Repo</a></strong></span></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

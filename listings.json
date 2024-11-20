@@ -2,6 +2,7 @@
   {
     "listing": "/blogs.html",
     "items": [
+      "/blogs/SVM/SVM.html",
       "/blogs/Unsupervised_Learning_Algorithms/Unsupervised Learning Algorithms.html",
       "/blogs/Supervised_Learning_Algorithms/Supervised Learning Algorithms.html",
       "/blogs/Introduction_to_Docker/Introduction_to_Docker.html",
