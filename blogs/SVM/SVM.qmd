@@ -200,7 +200,8 @@ In real-life applications, we rarely encounter datasets that are perfectly linea
 
 To tackle this problem what we do is modify that equation in such a way that it allows few misclassifications that means it allows few points to be wrongly classified.
 
-We know that *max\[f(x)\]* can also be written as *min\[1/f(x)\]*, it is common practice to minimize a cost function for optimization problems; therefore, we can invert the function. ![](Pasted%20image%2020240418104153.png){width="450"}
+We know that $max\[f(x)\]$ can also be written as $min\[1/f(x)\]$, it is common practice to minimize a cost function for optimization problems; therefore, we can invert the function. 
+![](Pasted%20image%2020240418104153.png){width="450"}
 
 To make a soft margin equation we add 2 more terms to this equation which is **zeta** and multiply that by a **hyperparameter ‘c’**
 
@@ -210,7 +211,9 @@ For all the ***correctly classified*** points our **zeta** will be equal to 
 
 ![](Pasted%20image%2020240418104313.png){width="350"}
 
-So now we can say that our that are **SVM Error = Margin Error + Classification Error.** The higher the margin, the lower would-be margin error, and vice versa.
+So now we can say that our that are 
+**SVM Error = Margin Error + Classification Error.** 
+The higher the margin, the lower would-be margin error, and vice versa.
 
 Let’s say you take a high value of ‘c’ =1000, this would mean that you don’t want to focus on margin error and just want a model which doesn’t misclassify any data point.
 
@@ -220,7 +223,7 @@ Look at the figure below:
 
 **If someone asks you which is a better model, the one where the margin is maximum and has 2 misclassified points or the one where the margin is very less, and all the points are correctly classified?**
 
-Well, there’s no correct answer to this question, but rather we can use *SVM Error = Margin Error + Classification Error to* justify this. If you don’t want any misclassification in the model then you can choose *figure 2*. That means we’ll increase ‘c’ to decrease Classification Error but if you want that your margin should be maximized then the value of ‘c’ should be minimized. That’s why ‘c’ is a hyperparameter and we find the optimal value of ‘c’ using GridsearchCV and cross-validation.
+Well, there’s no correct answer to this question, but rather we can use *SVM Error = Margin Error + Classification Error* to justify this. If you don’t want any misclassification in the model then you can choose *figure 2*. That means we’ll increase ‘c’ to decrease Classification Error but if you want that your margin should be maximized then the value of ‘c’ should be minimized. That’s why ‘c’ is a hyperparameter and we find the optimal value of ‘c’ using GridsearchCV and cross-validation.
 
 ## Kernels in Support Vector Machine
 
@@ -250,7 +253,8 @@ So we basically need to find X12 , X22 and X1.X2, and now we can see that 2 di
 
 #### **2.** Sigmoid Kernel
 
-We can use it as the proxy for neural networks. Equation is: 
+We can use it as the proxy for neural networks. Equation is:
+ 
 ![](Pasted%20image%2020240418104807.png){width="400"}
 
 It is just taking your input, mapping them to a value of 0 and 1 so that they can be separated by a simple straight line.
