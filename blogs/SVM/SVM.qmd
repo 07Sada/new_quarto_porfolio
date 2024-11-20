@@ -79,9 +79,11 @@ Here a and b are two vectors, to find the dot product between these two vectors 
 
 After find the magnitude we simply multiply it with cosine angle between both the vectors. Mathematically it can be written as:
 
-$\mathbf{A} \cdot \mathbf{B}=\left | A \right |\cos \Theta *\left |B  \right |$ Where $\left | A \right |\cos \Theta$ is the projection of A on B and $\left |B  \right |$ is the magnitude of Vector B
+$\mathbf{A} \cdot \mathbf{B}=\left | A \right |\cos \Theta *\left |B  \right |$ 
+Where $\left | A \right |\cos \Theta$ is the projection of A on B and $\left |B  \right |$ is the magnitude of Vector B
 
-Now in SVM we just need the projection of A not the magnitude of B. To just get the projection we can simply take the unit vector B because it will be in the direction of B but its magnitude will be 1. Hence now the equation becomes $\mathbf{A} \cdot \mathbf{B}=\left | A \right |\cos \Theta * \text{unit vector B}$
+Now in SVM we just need the projection of A not the magnitude of B. To just get the projection we can simply take the unit vector B because it will be in the direction of B but its magnitude will be 1. Hence now the equation becomes 
+$\mathbf{A} \cdot \mathbf{B}=\left | A \right |\cos \Theta * \text{unit vector B}$
 
 Now let's move to the next part and see how we will use this in SVM.
 
@@ -95,7 +97,9 @@ To find this first we assume this point is a vector (X) and then we make a vecto
 
 ![](Pasted%20image%2020240418084624.png){width="350"}
 
-$\large \vec{X} \cdot \vec{w} = \text{c } \text{(the point lies on the dicision boundray)}$ $\large \vec{X} \cdot \vec{w} > \text{c } \text{(positive samples)}$ $\large \vec{X} \cdot \vec{w} < \text{c } \text{(negative samples)}$
+$\large \vec{X} \cdot \vec{w} = \text{c } \text{(the point lies on the dicision boundray)}$ 
+$\large \vec{X} \cdot \vec{w} > \text{c } \text{(positive samples)}$ 
+$\large \vec{X} \cdot \vec{w} < \text{c } \text{(negative samples)}$
 
 You must have this doubt that why did we take this perpendicular *vector w* to the hyperplane? So what we want is distance of vector X from the decision boundary and there can be infinite number points on the boundary to measure the distance from. So that's why we come to standard, we simply take perpendicular and use it as a reference then take projections of all other data points on this perpendicular vector and then compare the distance.
 
@@ -116,11 +120,17 @@ y = \begin{cases}
 \end{cases}
 $$
 
-If we value of $\mathbf{w} \cdot \mathbf{x} + b>0$ then we can say it is a positive points otherwise it is a negative point. Now we need (w, b) such that the margin has a maximum distance. Let's say this distance is 'd'. !![](Pasted%20image%2020240418091949.png){width="350"}
+If we value of $\mathbf{w} \cdot \mathbf{x} + b>0$ then we can say it is a positive points otherwise it is a negative point. Now we need (w, b) such that the margin has a maximum distance. Let's say this distance is 'd'. 
 
-To calculate 'd' we need the equation L1 and L2. For this, we will take few assumptions that the equation of L1 is $\mathbf{w} \cdot \mathbf{x} + b = 1$ for L2 it is $\mathbf{w} \cdot \mathbf{x} + b = -1$.
+![](Pasted%20image%2020240418091949.png){width="350"}
 
-Now the question comes - Why the magnitude is equal, why didn't we take 1 and -2? - Why did we only take 1 and -1, why not any other value like 24 and -100? - Why did we assume this line?
+To calculate 'd' we need the equation L1 and L2. 
+For this, we will take few assumptions that the equation of L1 is $\mathbf{w} \cdot \mathbf{x} + b = 1$ for L2 it is $\mathbf{w} \cdot \mathbf{x} + b = -1$.
+
+Now the question comes 
+- Why the magnitude is equal, why didn't we take 1 and -2? 
+- Why did we only take 1 and -1, why not any other value like 24 and -100? 
+- Why did we assume this line?
 
 #### Let's try to answer these questions
 
@@ -240,7 +250,8 @@ So we basically need to find X12 , X22 and X1.X2, and now we can see that 2 di
 
 #### **2.** Sigmoid Kernel
 
-We can use it as the proxy for neural networks. Equation is: ![](Pasted%20image%2020240418104807.png){width="400"}
+We can use it as the proxy for neural networks. Equation is: 
+![](Pasted%20image%2020240418104807.png){width="400"}
 
 It is just taking your input, mapping them to a value of 0 and 1 so that they can be separated by a simple straight line.
 
