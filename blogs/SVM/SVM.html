@@ -368,17 +368,17 @@ y = \begin{cases}
 <h3 class="anchored" data-anchor-id="soft-margin-svm">Soft Margin SVM</h3>
 <p>In real-life applications, we rarely encounter datasets that are perfectly linearly separable. Instead, we often come across datasets that are either nearly linearly separable or entirely non-linearly separable. Unfortunately, the trick demonstrated above for linearly separable datasets is not applicable in these cases. This is where Support Vector Machines (SVM) come into play. These are a powerful tool in machine learning that can effectively handle both almost linearly separable and non-linearly separable datasets, providing a robust solution to classification problems in diverse real-world scenarios.</p>
 <p>To tackle this problem what we do is modify that equation in such a way that it allows few misclassifications that means it allows few points to be wrongly classified.</p>
-<p>We know that&nbsp;<em>max[f(x)]</em>&nbsp;can also be written as&nbsp;<em>min[1/f(x)]</em>, it is common practice to minimize a cost function for optimization problems; therefore, we can invert the function. <img src="Pasted image 20240418104153.png" class="img-fluid" width="450"></p>
+<p>We know that&nbsp;<span class="math inline">\(max\[f(x)\]\)</span>&nbsp;can also be written as&nbsp;<span class="math inline">\(min\[1/f(x)\]\)</span>, it is common practice to minimize a cost function for optimization problems; therefore, we can invert the function. <img src="Pasted image 20240418104153.png" class="img-fluid" width="450"></p>
 <p>To make a soft margin equation we add 2 more terms to this equation which is&nbsp;<strong>zeta</strong>&nbsp;and multiply that by a&nbsp;<strong>hyperparameter ‘c’</strong></p>
 <p><img src="Pasted image 20240418104234.png" class="img-fluid" width="350"></p>
 <p>For all the&nbsp;<strong><em>correctly classified</em></strong>&nbsp;points our&nbsp;<strong>zeta</strong>&nbsp;will be equal to 0 and for all the&nbsp;<strong><em>incorrectly classified</em></strong>&nbsp;points the&nbsp;<strong>zeta</strong>&nbsp;is simply the distance of that particular point from its correct hyperplane that means if we see the wrongly classified green points the value of&nbsp;<strong>zeta</strong>&nbsp;will be the distance of these points from L1 hyperplane and for wrongly classified red point&nbsp;<strong>zeta</strong>&nbsp;will be the distance of that point from L2 hyperplane.</p>
 <p><img src="Pasted image 20240418104313.png" class="img-fluid" width="350"></p>
-<p>So now we can say that our that are&nbsp;<strong>SVM Error = Margin Error + Classification Error.</strong>&nbsp;The higher the margin, the lower would-be margin error, and vice versa.</p>
+<p>So now we can say that our that are&nbsp; <strong>SVM Error = Margin Error + Classification Error.</strong>&nbsp; The higher the margin, the lower would-be margin error, and vice versa.</p>
 <p>Let’s say you take a high value of ‘c’ =1000, this would mean that you don’t want to focus on margin error and just want a model which doesn’t misclassify any data point.</p>
 <p>Look at the figure below:</p>
 <p><img src="Pasted image 20240418104343.png" class="img-fluid" width="600"></p>
 <p><strong>If someone asks you which is a better model, the one where the margin is maximum and has 2 misclassified points or the one where the margin is very less, and all the points are correctly classified?</strong></p>
-<p>Well, there’s no correct answer to this question, but rather we can use&nbsp;<em>SVM Error = Margin Error + Classification Error to</em>&nbsp;justify this. If you don’t want any misclassification in the model then you can choose&nbsp;<em>figure 2</em>. That means we’ll increase ‘c’ to decrease Classification Error but if you want that your margin should be maximized then the value of ‘c’ should be minimized. That’s why ‘c’ is a hyperparameter and we find the optimal value of ‘c’ using GridsearchCV and cross-validation.</p>
+<p>Well, there’s no correct answer to this question, but rather we can use&nbsp;<em>SVM Error = Margin Error + Classification Error</em> to&nbsp;justify this. If you don’t want any misclassification in the model then you can choose&nbsp;<em>figure 2</em>. That means we’ll increase ‘c’ to decrease Classification Error but if you want that your margin should be maximized then the value of ‘c’ should be minimized. That’s why ‘c’ is a hyperparameter and we find the optimal value of ‘c’ using GridsearchCV and cross-validation.</p>
 </section>
 <section id="kernels-in-support-vector-machine" class="level2">
 <h2 class="anchored" data-anchor-id="kernels-in-support-vector-machine">Kernels in Support Vector Machine</h2>
@@ -397,7 +397,8 @@ y = \begin{cases}
 <p><img src="Pasted image 20240418104728.png" class="img-fluid" width="600"></p>
 <section id="sigmoid-kernel" class="level4">
 <h4 class="anchored" data-anchor-id="sigmoid-kernel"><strong>2.</strong>&nbsp;Sigmoid Kernel</h4>
-<p>We can use it as the proxy for neural networks. Equation is: <img src="Pasted image 20240418104807.png" class="img-fluid" width="400"></p>
+<p>We can use it as the proxy for neural networks. Equation is:</p>
+<p><img src="Pasted image 20240418104807.png" class="img-fluid" width="400"></p>
 <p>It is just taking your input, mapping them to a value of 0 and 1 so that they can be separated by a simple straight line.</p>
 <p><img src="Pasted image 20240418104839.png" class="img-fluid" width="400"></p>
 </section>
