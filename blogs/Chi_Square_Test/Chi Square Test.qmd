@@ -1,0 +1,127 @@
+---
+title: Chi Square Test
+author: Sadashiv
+date: 11-21-2024
+image: th.jpg
+---
+
+## **Chi Square Test**
+
+The chi-square test is a statistical test used to determine whether there is a significant difference between the expected frequencies and the observed frequencies in one or more categorical variables. It is commonly used to determine whether there is a significant association between two categorical variables
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LZzq1zSL1bs?si=KGWjnDpFAEDjDRIc&amp;start=14778&amp;end=15872" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+
+</iframe>
+
+### **Explanation with Example:**
+
+Example of how the chi-square test can be used to determine whether there is a significant association between two categorical variables:
+
+Suppose we are interested in **studying the relationship between diet and heart disease**. We collect data on 100 people and record their diet (healthy or unhealthy) and whether they have heart disease (yes or no). The data looks like this:
+
+| Diet      | Heart Disease | Heart Disease |
+|-----------|---------------|---------------|
+| Healthy   | Yes           | 20            |
+| Healthy   | No            | 10            |
+| Unhealthy | Yes           | 30            |
+| Unhealthy | No            | 40            |
+
+We can use the chi-square test to determine whether there is a significant association between diet and heart disease. **Our null hypothesis is that there is no significant association between the two variables.**
+
+To perform the chi-square test, we first need to calculate the expected frequencies for each cell in the table. The expected frequency for a cell is the product of the row total and the column total for that cell, divided by the overall total.
+
+For example, the expected frequency for the cell "Healthy, No Heart Disease" is: $$(20 + 10) * (30 + 40) / 100 = 25$$ We can calculate the expected frequencies for all cells in the table as follows:
+
+| Diet      | Heart Disease | Expected Frequency |
+|-----------|---------------|--------------------|
+| Healthy   | Yes           | 25                 |
+| Healthy   | No            | 25                 |
+| Unhealthy | Yes           | 50                 |
+| Unhealthy | No            | 50                 |
+
+Next, we calculate the chi-square statistic as follows:
+
+$\Large\sum\left(\frac{(Observed\ Frequency - Expected\ Frequency)^2}{Expected\ Frequency}\right)$
+
+$= \Large\frac{(20 - 25)^2}{25} + \frac{(10 - 25)^2}{25} + \frac{(30 - 50)^2}{50} + \frac{(40 - 50)^2}{50} = 7.20$
+
+Finally, we compare the chi-square statistic to a critical value from a chi-square distribution table or by using a computer program. **If the chi-square statistic is greater than the critical value, we reject the null hypothesis** and conclude that there is a significant association between diet and heart disease. **If the chi-square statistic is less than the critical value, we fail to reject the null hypothesis** and conclude that there is no significant association between the two variables.
+
+------------------------------------------------------------------------
+
+### **The Role of the Chi-Square Test in Machine Learning**
+
+The chi-square test is often used in machine learning **to evaluate the performance of a classification model.** It is used to determine whether the predicted class labels from the model are significantly different from the true class labels. **This can help you ensure that your model is making fair and accurate predictions** and improve its overall performance.
+
+The chi-square test can also be **used to select the best features for a machine learning model.** **By measuring the correlation between each feature and the target variable,** you can identify the most relevant and predictive features for your model. This can help improve the performance of your model by using only the most relevant and predictive features.
+
+------------------------------------------------------------------------
+
+### **The Use of the Chi-Square Test in Machine Learning**
+
+For example, suppose you have trained a classification model to predict whether a customer will churn (i.e., stop using your service). You can use the chi-square test to compare the predicted churn rates for different groups of customers (e.g., by age, gender, location) to the observed churn rates. If the predicted churn rates are significantly different from the observed churn rates, this may indicate that the model is making biased or inaccurate predictions.
+
+The chi-square test can also be used to select the best features for a machine learning model. By measuring the correlation between each feature and the target variable, you can identify the most relevant and predictive features for your model.
+
+------------------------------------------------------------------------
+
+### **Feature Selection with Chi-Square Test**
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_AWQ4Myxlcg?si=l9geeljgyaWsZ9HC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+
+</iframe>
+
+**Reference Article** [Chi-Square Test for Feature Selection in Machine learning \| by sampath kumar gajawada \| Towards Data Science](https://towardsdatascience.com/chi-square-test-for-feature-selection-in-machine-learning-206b1f0b8223)
+
+**Practical Implementation** \[\[Feature_Selection_004_Chi-Square Test#Practical Implementation\]\]
+
+---
+
+### Interview Questions
+
+-   **1.** **What is the chi-square test and how is it used in machine learning?**
+
+    The chi-square test is a statistical test that is used to determine whether there is a significant **association between two categorical variables**. In machine learning, it is often used to **evaluate the performance of a classification model** and to **select the best features for a model.**
+
+-   **2. When would you use the chi-square test in machine learning?**
+
+    The chi-square test is typically used in machine learning when you want to **e*valuate the performance of a classification model or when you want to select the best features for a model.*** *It is particularly useful when the data do not meet the assumptions of other statistical tests, such as normality or equal variance.*
+
+-   **3. How do you interpret the results of a chi-square test in machine learning?**
+
+    ***The chi-square test returns a p-value,*** which indicates the probability of obtaining the observed results if the null hypothesis (i.e., the variables are independent) is true. ***If the p-value is less than a predetermined threshold (e.g., 0.05), you can reject the null hypothesis*** and conclude that there is a significant association between the variables. ***If the p-value is greater than the threshold, you cannot reject the null hypothesis*** and conclude that there is no significant association.
+
+-   **4. How can you use the chi-square test to select the best features for a machine learning model?**
+
+    The chi-square test can be used to select the best features for a machine learning model by evaluating the statistical significance of the relationship between each feature and the target variable. **Features with a significant relationship to the target variable are more likely to be useful for predicting the target variable and are therefore more likely to be selected.**
+
+    Here are the steps on how to use the chi-square test to select the best features for a machine learning model:
+
+    1.  **Gather data.** The first step is to gather data that includes the features you want to evaluate and the target variable.
+    2.  **Prepare the data**. The data should be prepared in a way that is compatible with the chi-square test. This may involve converting categorical variables to binary variables and removing features with missing values.
+    3.  **Calculate the chi-square statistic.** The chi-square statistic is calculated by comparing the observed frequencies of each feature with the expected frequencies if there was no relationship between the feature and the target variable.
+    4.  **Determine the p-value.** The p-value is the probability of getting a chi-square statistic as extreme or more extreme than the one we calculated, assuming that there is no relationship between the two variables.
+    5.  **Select features**. Features with a p-value less than a predetermined significance level are selected. The significance level is typically set to 0.05, which means that there is a 5% chance of selecting a feature that is not actually related to the target variable.
+
+    The chi-square test is a powerful tool that can be used to select the best features for a machine learning model. However, it is important to note that the chi-square test is only a statistical test and does not guarantee that the selected features will be useful for predicting the target variable. It is important to evaluate the performance of the selected features on a machine learning model to ensure that they are actually useful.
+
+-   **5.** **How does the chi-square test compare to other statistical tests (e.g., t-test, ANOVA) in terms of its assumptions and power?**
+
+    ***The chi-square test is a nonparametric test that does not assume a specific distribution or shape of the data.*** It is often used to evaluate the performance of a classification model or to select the best features for a machine learning model.
+
+    In comparison to other statistical tests, such as the t-test and ANOVA, the chi-square test has different assumptions and power. ***The t-test and ANOVA are parametric tests that assume that the data are normally distributed and have equal variances, respectively.These tests may be more powerful than the chi-square test when these assumptions are met, but may be less robust when the assumptions are violated.***
+
+    In summary, the chi-square test is a nonparametric test that does not assume a specific distribution or shape of the data, and may be less powerful but more robust than parametric tests such as the t-test and ANOVA.
+
+-   **6. What are some advantages and limitations of using the chi-square test in machine learning?**
+
+    -   Some **advantages of using the chi-square** test in machine learning include:
+        1.  It is a widely used and well-established statistical test.
+        2.  It is relatively ***easy to understandand implement**.*
+        3.  It can be used to ***evaluate the performance*** of a ***classification model** or **select the best features*** for a machine learning model.
+        4.  It is ***generally more robust than parametric tests*****,** as it does not assume a specific distribution or shape of the data.
+    -   However, there are also some **limitations of using the chi-square** test in machine learning:
+        1.  It may be less powerful than parametric tests, and ***may not be as sensitive to detecting differences in the data.***
+        2.  It is ***only applicable to categorical data**,* and cannot be used with continuous or ordinal data.
+        3.  It ***requires a large sample size to be effective,*** and may not be reliable with small sample sizes.
+        4.  It may ***not be suitable for comparing more than two groups or categories.***
