@@ -88,7 +88,9 @@ In neuropsychology, linguistics, and the philosophy of language, [a natural lang
 -   **Knowledge Graph and QA Systems**\
     NLP is used for knowledge graph and question-answering (QA) systems, [which involve organizing and connecting information from multiple sources to enable efficient information retrieval and answering of user queries.]{style="font-style: italic; color:#edd17e"} [Knowledge graphs represent knowledge as nodes and edges in a graph structure, which can be queried using natural language questions.]{style="font-style: italic; color:#92d050"} QA systems use NLP techniques such as entity recognition, relation extraction, and semantic parsing to understand user queries and retrieve relevant information from knowledge graphs or other sources. [The goal is to create intelligent systems that can provide accurate and comprehensive answers to user queries.]{style="font-style: italic; color:#f4925d"}
 
-    [**Click here**](https://www.atulhost.com/what-is-knowledge-graph) for more information ![](Screenshot_2023-04-10_135204.png)
+    [**Click here**](https://www.atulhost.com/what-is-knowledge-graph) for more information
+
+-   ![](Screenshot_2023-04-10_135204.png)
 
     ::: callout-note
     💡 We can teach computers to organize and understand information like we do using NLP. It's like creating a big brain for the computer! By connecting different pieces of information and understanding what we're asking, it can help us answer questions or find things we need. It's like having a really smart friend who knows everything and can help us learn new things too!
@@ -106,7 +108,9 @@ In neuropsychology, linguistics, and the philosophy of language, [a natural lang
 -   **Topic Modelling**\
     NLP is used for topic modelling, [which is a technique that identifies hidden topics or themes in a collection of documents. It involves grouping together similar words and phrases into topics, and then assigning each document a distribution of topics that best represents its content.]{style="font-style: italic; color:#edd17e"}NLP techniques such as clustering, latent Dirichlet allocation, and word frequency analysis are used to perform topic modelling. [Topic modelling is useful in various applications such as information retrieval, recommendation systems, and content analysis.]{style="font-style: italic; color:#da3ef9"} [It enables better organization and understanding of large collections of text data by identifying key themes and patterns.]{style="font-style: italic; color:#edd17e"}
 
-    [**Click here**](https://iq.opengenus.org/topic-modelling-techniques/) **for more information** ![](https://iq.opengenus.org/content/images/2020/01/1_taTOiaCpd_CzGugx_PticQ.png)
+    [**Click here**](https://iq.opengenus.org/topic-modelling-techniques/) **for more information**
+
+    ![](https://iq.opengenus.org/content/images/2020/01/1_taTOiaCpd_CzGugx_PticQ.png)
 
     ![](https://iq.opengenus.org/content/images/2020/01/1_2uj6t3gNv76SpHrWf5-z-A.jpeg){width="600"}
 
