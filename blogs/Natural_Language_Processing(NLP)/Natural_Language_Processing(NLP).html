@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Sadashiv">
+<meta name="dcterms.date" content="2024-11-27">
+
+<title>Natural Language Processing(NLP) – Sadashiv Nandanikar</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/luffy.jpg" rel="icon" type="image/jpeg">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c5c8e97dfaa57774b94f6b5f2c9b2a4f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-283a0ba947f1ad48e838dd614ba91c46.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Sadashiv Nandanikar</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blogs.html"> 
+<span class="menu-text">Blogs</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resume.html"> 
+<span class="menu-text">Resume</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sadashiv-nandanikar-406484292"> <i class="bi bi-linkedin" role="img" aria-label="Quarto LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/07Sada"> <i class="bi bi-github" role="img" aria-label="Quarto Github">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Natural Language Processing(NLP)</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sadashiv </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 27, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="what-is-nlp" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-nlp">What is NLP</h2>
+<p>Natural language processing is a <span style="font-style: italic; color:#92d050">subfield of linguistics, computer science, and artificial intelligence concerned</span> with the <span style="font-style: italic; color:#da3ef9">interactions between computers and human language,</span> in particular <span style="font-style: italic; color:#5DE2E7">how to program computers to process and analyze large amounts of natural language data.</span></p>
+<p><img src="Untitled 11.png" class="img-fluid" width="300"></p>
+</section>
+<section id="what-is-natural-language" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-natural-language">What is Natural Language</h2>
+<p>In neuropsychology, linguistics, and the philosophy of language, <span style="font-style: italic; color:#5DE2E7">a natural language or ordinary language is any language that has evolved naturally in humans through use and repetition without conscious planning or premeditation.</span> Natural languages can take different forms, such as speech or signing. They are distinguished from constructed and formal languages such as those used to program computers or to study logic</p>
+</section>
+<section id="real-world-applications" class="level2">
+<h2 class="anchored" data-anchor-id="real-world-applications">Real World Applications</h2>
+<ul>
+<li><p><strong>Contextual Advertisements</strong><br>
+Natural Language Processing (NLP) is used for contextual advertisements <span style="font-style: italic; color:#5DE2E7">by analyzing the text content of a webpage or a user’s search query to understand the context and intent behind it.</span> <span style="font-style: italic; color:#edd17e">Based on this analysis, relevant ads are shown to the user that match their interests and needs.</span> NLP techniques such as named entity recognition, sentiment analysis, and topic modeling are used to extract relevant information from the text and match it with suitable ads. <span style="font-style: italic; color:#92d050">This helps to provide a more personalized and relevant advertising experience to the user.</span></p></li>
+<li><p><strong>Email Clients - spam filtering, smart reply</strong><br>
+NLP is used for email clients in two main ways: spam filtering and smart reply. In spam filtering, NLP algorithms are used to analyze the content of incoming emails to <span style="font-style: italic; color:#5DE2E7">determine whether they are legitimate or spam.</span></p>
+<p>This is done by analyzing features such as the sender’s email address, the text content, and the presence of certain keywords.</p>
+<p>Smart reply, on the other hand, uses NLP to <span style="font-style: italic; color:#da3ef9">suggest relevant and personalized responses to emails based on the context and content of the message.</span></p>
+<p>NLP techniques such as text classification and natural language generation are used for this purpose, resulting in more efficient and effective email communication.</p></li>
+<li><p><strong>Social Media - removing adult content, opinion mining</strong><br>
+NLP is used in social media platforms for two primary purposes: removing adult content and opinion mining. In the first case, NLP algorithms are used to <span style="font-style: italic; color:#5DE2E7">analyze the text, images, and videos posted by users to identify and remove adult content, hate speech, and other inappropriate content.</span> In opinion mining, NLP techniques such as <span style="font-style: italic; color:#92d050">sentiment analysis are used to extract insights from the large volumes of text data generated by social media users.</span> This <span style="font-style: italic;  color:#edd17e">can help businesses and organizations understand customer opinions and preferences and make informed decisions based on them.</span></p></li>
+<li><p><strong>Search Engines</strong><br>
+NLP is used extensively in search engines to <span style="font-style: italic; color:#f4925d">improve the accuracy and relevance of search results.</span> NLP algorithms are used to analyze the text content of web pages and user queries to understand the underlying meaning and intent.<span style="font-style: italic; color:#f4925d">This is done by techniques such as natural language understanding, entity recognition, and text classification.</span> The search engine can then provide more relevant results to the user based on the context and meaning of their query, resulting in a better search experience. <span style="font-style: italic; color:#edd17e">NLP is also used for features such as auto-complete, query expansion, and personalized search results.</span></p></li>
+<li><p><strong>Chatbots</strong><br>
+<span style="font-style: italic; color:#5DE2E7">NLP is a crucial component of chatbots, which are designed to simulate human conversation and provide automated customer support.</span> NLP algorithms are used to understand user queries and generate appropriate responses. This is done by techniques such as natural language understanding, intent recognition, and named entity recognition. Chatbots can also use sentiment analysis to understand the user’s mood and personalize their response accordingly. By leveraging NLP, chatbots can provide fast and efficient customer support, 24/7, and handle a wide range of queries, leading to enhanced customer satisfaction.</p></li>
+</ul>
+</section>
+<section id="common-nlp-tasks" class="level2">
+<h2 class="anchored" data-anchor-id="common-nlp-tasks">Common NLP Tasks</h2>
+<ul>
+<li><p><strong>Document/Text Classification</strong><br>
+NLP is used for text classification, <span style="font-style: italic; color:#5DE2E7">which involves categorizing large volumes of text into predefined categories or classes.</span> This is useful for tasks such as document classification, spam filtering, and sentiment analysis. <span style="font-style: italic; color:#f4925d">NLP algorithms are used to analyze the text content and extract relevant features, such as the presence of certain keywords, the context of the text, and the structure of the document.</span>These features are then used to train machine learning models that can classify new text data into the appropriate categories. NLP-based text classification can be used across a wide range of industries, including finance, healthcare, and e-commerce, to automate processes and improve efficiency.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We do this by cleaning up the words, putting them in order, and showing the computer examples of what each group should look like. Then, the computer can sort new words into the right group based on what it learned before.</p>
+</div>
+</div></li>
+<li><p><strong>Sentiment analysis</strong><br>
+NLP is used for sentiment analysis, <span style="font-style: italic; color:#f4925d">which involves analyzing text data to determine the emotional tone or sentiment expressed by the author.</span><br>
+Sentiment analysis is <span style="font-style: italic; color:#92d050">useful in many applications, such as understanding customer feedback, monitoring social media sentiment, and predicting stock market trends.</span><br>
+NLP techniques such as natural language understanding and machine learning algorithms are used to identify sentiment-bearing words and phrases and classify them as positive, negative, or neutral.<br>
+<span style="font-style: italic; color:#edd17e">Sentiment analysis can provide valuable insights into customer attitudes and opinions, allowing businesses to make data-driven decisions and improve their products and services.</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 We can teach computers to read and <span style="font-style: italic; color:#5DE2E7">understand the feelings people express in their words using NLP</span>. It’s like teaching the computer to know whether someone is happy or sad based on the words they use. This helps us understand how people feel about things like movies, products, or events. It’s like asking your friends how they feel about something, but the computer can do it faster and with more words</p>
+</div>
+</div></li>
+<li><p><strong>Information Retrieval</strong><br>
+NLP is used for information retrieval, <span style="font-style: italic; color:#edd17e">which involves finding relevant information from large collections of unstructured text data.</span><span style="font-style: italic; color:#92d050">Information retrieval is useful in many applications, such as search engines, chatbots, and question-answering systems.</span> NLP techniques such as natural language understanding, text classification, and entity recognition are used to extract relevant information and understand the user’s query or intent. <span style="font-style: italic; color:#edd17e">This allows the system to retrieve the most relevant and useful information, leading to a better user experience and increased efficiency.</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 We can teach computers to find the <strong>best information for us by reading and understanding lots of text using NLP</strong>. It’s like teaching the computer to <span style="font-style: italic; color:#5DE2E7">look through a big book to find the answer to a question we have<em>. The</em> computer can find the information faster than we can</span> and give us the best answer. It’s like having a super smart helper who can find anything we need!</p>
+</div>
+</div></li>
+<li><p><strong>Parts of Speech Tagging</strong><br>
+NLP is used for Parts of Speech (POS) tagging, <span style="font-style: italic; color:#5DE2E7">which involves labeling each word in a sentence with its corresponding part of speech, such as noun, verb, adjective, etc.</span> <span style="font-style: italic; color:#edd17e">POS tagging is useful in many NLP applications, such as text-to-speech conversion, machine translation, and information retrieval.</span>NLP techniques such as rule-based tagging and statistical tagging are used to automatically assign POS tags to each word based on its context and other linguistic features. Accurate POS tagging helps improve the accuracy of downstream NLP tasks and is an important step in text analysis and understanding.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 We can teach computers to recognize the different types of words in a sentence using NLP. <span style="font-style: italic; color:#5DE2E7">It’s like teaching the computer to know whether a word is a person, a thing, an action, or a description.</span> By doing this, the computer can understand what the sentence is about and what each word is doing. It’s like having a robot assistant that can help us understand sentences better!</p>
+</div>
+</div></li>
+<li><p><strong>Language Detection And Machine Translation</strong><br>
+NLP is used for language detection and machine translation, which involves identifying the language of a text and translating it into another language. Language detection is useful in many applications, such as text classification, sentiment analysis, and content filtering. Machine translation is useful for cross-language communication and understanding, and can be used in applications such as international business and diplomacy.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 We can teach computers to understand and speak different languages using NLP. It’s like having a super-smart robot that can translate languages for us! By teaching the computer different languages and their grammar, it can help us understand what someone is saying in a different language, and even help us talk to them back in their own language. It’s like having a personal language tutor at our fingertips!</p>
+</div>
+</div></li>
+<li><p><strong>Conversational Agents</strong><br>
+NLP is used for conversational agents, <span style="font-style: italic; color:#5DE2E7">which are computer programs designed to simulate human-like conversations with users.</span> Conversational agents, also known as chatbots or virtual assistants, are used in many <span style="font-style: italic; color:#5DE2E7">applications, such as customer support, personal assistants, and language learning.</span> NLP techniques such as natural language understanding and generation, dialogue management, and sentiment analysis are used to enable conversational agents to understand and respond to user queries and generate appropriate responses. <span style="font-style: italic; color:#5DE2E7">The goal is to create conversational agents that are indistinguishable from human agents in their conversational abilities.</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 We can teach computers to talk to us like humans using NLP. It’s like having a computer friend we can ask questions to and get answers from! By teaching the computer how to understand what we’re saying and how to respond, it can help us with things like finding information, playing games, or just keeping us company. It’s like having a cool virtual assistant we can chat with anytime!</p>
+</div>
+</div></li>
+<li><p><strong>Knowledge Graph and QA Systems</strong><br>
+NLP is used for knowledge graph and question-answering (QA) systems, <span style="font-style: italic; color:#edd17e">which involve organizing and connecting information from multiple sources to enable efficient information retrieval and answering of user queries.</span> <span style="font-style: italic; color:#92d050">Knowledge graphs represent knowledge as nodes and edges in a graph structure, which can be queried using natural language questions.</span> QA systems use NLP techniques such as entity recognition, relation extraction, and semantic parsing to understand user queries and retrieve relevant information from knowledge graphs or other sources. <span style="font-style: italic; color:#f4925d">The goal is to create intelligent systems that can provide accurate and comprehensive answers to user queries.</span></p>
+<p><a href="https://www.atulhost.com/what-is-knowledge-graph"><strong>Click here</strong></a> for more information <img src="Screenshot_2023-04-10_135204.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 We can teach computers to organize and understand information like we do using NLP. It’s like creating a big brain for the computer! By connecting different pieces of information and understanding what we’re asking, it can help us answer questions or find things we need. It’s like having a really smart friend who knows everything and can help us learn new things too!</p>
+</div>
+</div></li>
+<li><p><strong>Text Summarization</strong><br>
+NLP is used for text summarization, <span style="font-style: italic; color:#f4925d">which involves automatically generating a condensed version of a longer piece of text while preserving its essential information.</span><span style="font-style: italic; color:#92d050">NLP techniques such as sentence scoring, text classification, and semantic analysis are used to identify and extract the most important sentences or phrases from a document and create a summary.</span> <span style="font-style: italic; color:#edd17e">Text summarization is used in various applications such as news articles, academic papers, and legal documents to enable efficient information consumption and understanding.</span> <span style="font-style: italic; color:#5DE2E7">The goal is to create accurate and concise summaries that capture the essence of the original text.</span></p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 We can teach computers to read long stories or articles and then make a short summary using NLP. <span style="font-style: italic; color:#5DE2E7">It’s like having a machine that can pick out the most important parts of a story and tell you what it’s about in just a few sentences.</span> It’s really helpful when you don’t have time to read the whole thing, but you still want to know what it’s about!</p>
+</div>
+</div></li>
+<li><p><strong>Topic Modelling</strong><br>
+NLP is used for topic modelling, <span style="font-style: italic; color:#edd17e">which is a technique that identifies hidden topics or themes in a collection of documents. It involves grouping together similar words and phrases into topics, and then assigning each document a distribution of topics that best represents its content.</span>NLP techniques such as clustering, latent Dirichlet allocation, and word frequency analysis are used to perform topic modelling. <span style="font-style: italic; color:#da3ef9">Topic modelling is useful in various applications such as information retrieval, recommendation systems, and content analysis.</span> <span style="font-style: italic; color:#edd17e">It enables better organization and understanding of large collections of text data by identifying key themes and patterns.</span></p>
+<p><a href="https://iq.opengenus.org/topic-modelling-techniques/"><strong>Click here</strong></a> <strong>for more information</strong> <img src="https://iq.opengenus.org/content/images/2020/01/1_taTOiaCpd_CzGugx_PticQ.png" class="img-fluid"></p>
+<p><img src="https://iq.opengenus.org/content/images/2020/01/1_2uj6t3gNv76SpHrWf5-z-A.jpeg" class="img-fluid" width="600"></p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 We can teach computers to find hidden topics or themes in a bunch of stories or articles using NLP. It’s like having a machine that can group together similar words and ideas to help us understand what the stories are all about. It’s really helpful when we have a lot of stories to read and want to find the important themes quickly!</p>
+</div>
+</div></li>
+<li><p><strong>Text Generation</strong><br>
+NLP is used for text generation, <span style="font-style: italic; color:#edd17e">which involves generating new text that is similar to the style and content of existing text.</span><span style="font-style: italic;  color:#92d050">This can be done using machine learning models that have been trained on large amounts of text data.</span> NLP techniques such as recurrent neural networks and generative adversarial networks are commonly used for text generation. <span style="font-style: italic; color:#f4925d">Text generation has various applications such as chatbots, automatic text completion, and content creation.</span><span style="font-style: italic; color:#f76464">It enables machines to produce human-like text that can be useful in various industries such as marketing and customer service.</span></p>
+<div style="text-align: left;">
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*Yg7_TNQ1jx1zOzfiAnx8MA.png" alt="Description" width="35%"></p>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 We can use NLP to teach machines to create new text. It’s like teaching a robot how to write stories or messages just like humans do.</p>
+</div>
+</div></li>
+<li><p><strong>Spell Checking And Grammar Correction</strong><br>
+NLP is used for spell checking and grammar correction <span style="font-style: italic; color:#f76464">by analyzing written text and comparing it to a database of correct spellings and grammar rules.</span> <span style="font-style: italic; color:#edd17e">This involves identifying and correcting spelling errors, as well as suggesting alternative words or phrasings that would improve grammar and overall readability.</span> By using NLP techniques, spell checking and grammar correction tools can quickly and accurately identify errors and suggest corrections, <span style="font-style: italic; color:#f4925d">making it easier for writers to produce high-quality written content.</span> <img src="https://www.nextdestinationunknown.com/wp-content/uploads/2020/01/Grammarly-Grammar-Check-980x513.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 Spell checking and grammar correction using NLP means using a computer to help us check if our writing is spelled correctly and if the grammar is right.</p>
+</div>
+</div></li>
+<li><p><strong>Text parsing</strong><br>
+<span style="font-style: italic; color:#f4925d">Text parsing is the process of breaking down text into smaller components to better understand its structure and meaning.</span><span style="font-style: italic; color:#92d050">In natural language processing (NLP), text parsing is used to analyze and extract important information from text, such as identifying the subject, object, and verb in a sentence.</span> It involves using algorithms and models to automatically analyze and categorize different parts of text, allowing for more efficient processing and analysis of large amounts of data. <span style="font-style: italic; color:#edd17e">Text parsing is used in a variety of NLP applications, including sentiment analysis, machine translation, and chatbots.</span></p>
+<p><img src="https://forum.huawei.com/enterprise/en/data/attachment/forum/201909/30/181435woc9n1k02lppco0r.png?main-qimg-6f34551002afa2a31aba8daf35068ba9.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 Text parsing with NLP means understanding the structure and meaning of sentences. Just like how we understand a story by reading it, NLP can help a computer understand what a sentence means and what it’s talking about.</p>
+</div>
+</div></li>
+<li><p><strong>Speech To Text</strong><br>
+<span style="font-style: italic; color:#5DE2E7">Speech to Text is a popular application of NLP that involves converting spoken language into text.</span> This technology uses techniques like audio signal processing and natural language understanding to accurately transcribe spoken words into written text. <span style="font-style: italic; color:#edd17e">Speech to Text is used in various applications like dictation software, automated subtitling for videos, and virtual assistants.</span></p>
+<div style="text-align: left;">
+<p><img src="https://th.bing.com/th/id/R.8e0bd6eba7703584fe9d02a4392e2fd0?rik=kVluap0ye3Xu5g&amp;riu=http://residencestyle.com/wp-content/uploads/2019/07/Benefits-of-Audio-to-Text-Converter-Online.png&amp;ehk=PZzd0e/MEYmkAxdKeJwMt5LO7BjjWoitTdJmk868M48=&amp;risl=&amp;pid=ImgRaw&amp;r=0" alt="Description" width="60%"></p>
+</div></li>
+</ul>
+</section>
+<section id="approaches-to-nlp" class="level2">
+<h2 class="anchored" data-anchor-id="approaches-to-nlp">Approaches to NLP</h2>
+<p>Over the years, Natural Language Processing (NLP) research has seen different approaches, each building upon the previous ones. Some of the major approaches include:</p>
+<section id="heuristic-methods" class="level3">
+<h3 class="anchored" data-anchor-id="heuristic-methods">Heuristic methods</h3>
+<p>Heuristic methods or heuristic technique, is any approach to problem solving or self-discovery that employs a practical method that is not guaranteed to be optimal, perfect, or rational, but is nevertheless sufficient for reaching an immediate, short-term goal or approximation. Where finding an optimal solution is impossible or impractical, heuristic methods can be used to speed up the process of finding a satisfactory solution.</p>
+<p><img src="https://res.cloudinary.com/springboard-images/image/upload/w_1080,c_limit,q_auto,f_auto,fl_lossy/wordpress/2021/05/shutterstock_1299826528-scaled.jpg" class="img-fluid" width="500"></p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>📌 In the early days of NLP, rule-based systems were the primary approach. These methods involved creating hand-crafted rules and heuristics to solve specific language processing problems. While these methods were simple to implement, they were often inflexible and limited by the available knowledge of the language.</p>
+</div>
+</div>
+</section>
+<section id="examples" class="level3">
+<h3 class="anchored" data-anchor-id="examples">Examples</h3>
+<ul>
+<li><p><strong>Regular Expression</strong><br>
+Regular regression is a classic statistical approach used in natural language processing (NLP) under the heuristic method. <span style="font-style: italic; color:#edd17e">In regular regression, a linear model is trained using a set of features extracted from the text data.</span> <span style="font-style: italic;  color:#92d050">These features are typically hand-crafted by domain experts and can include measures of word frequency, length, and syntax.</span> The trained model can then be used for tasks such as sentiment analysis, named entity recognition, and text classification. However, <span style="font-style: italic;  color:#edd17e">regular regression has some limitations, such as the need for expert feature engineering and its inability to capture complex relationships between words and sentences.</span></p></li>
+<li><p><strong>WordNet</strong><br>
+<span style="font-style: italic; color:#5DE2E7">WordNet is a lexical database of English words</span>, which was developed by researchers at Princeton University. <span style="font-style: italic; color:#f4925d">It organizes words into sets of synonyms called “synsets” and describes the semantic relationships between them</span>. Each synset contains a group of words that share a common meaning, and the relationships between synsets are captured in a network of nodes and edges.</p>
+<p>In NLP, WordNet is often used for tasks such as word sense disambiguation and semantic similarity analysis. <span style="font-style: italic; color:#5DE2E7">WordNet provides a way to group words with similar meanings, which can be helpful in determining the intended meaning of a word in context</span>. For example, <span style="color:#f4925d">if a sentence contains the word “bank,” WordNet can be used to identify whether it refers to a financial institution or a river bank,</span> <span style="color:#92d050">based on the surrounding words and the context of the sentence.</span></p>
+<p>Overall, WordNet is a useful tool for NLP researchers and practitioners who need to work with language data and want to leverage the relationships between words and concepts to improve their analyses.</p>
+<p><a href="https://www.codingninjas.com/codestudio/library/wordnet-in-nlp"><strong>Click here</strong></a> for more information</p>
+<p><img src="https://files.codingninjas.in/article_images/wordnet-in-nlp-0-1650344687.webp" class="img-fluid"></p></li>
+<li><p><strong>Open Mind Common Sense</strong><br>
+Open Mind Common Sense (OMCS) is a knowledge base developed by the MIT Media Lab, <span style="font-style: italic; color:#5DE2E7">which aims to provide a large, structured database of common-sense knowledge that can be used in natural language processing applications.</span> <span style="font-style: italic; color:#92d050">OMCS is created through crowdsourcing and allows people to enter statements about the world in natural language, which are then parsed and stored in a database.</span> This knowledge base can be used <span style="font-style: italic; color:#edd17e">to help NLP systems better understand the meaning behind natural language and make more accurate predictions about human behavior and actions.</span> The <span style="font-style: italic; color:#f4925d">heuristic approach of OMCS involves manually designing a structured database of knowledge, which can be queried and used to improve NLP applications.</span></p></li>
+</ul>
+</section>
+<section id="advantages" class="level3">
+<h3 class="anchored" data-anchor-id="advantages">Advantages</h3>
+<p>Heuristic methods in NLP have several advantages.</p>
+<ul>
+<li>First, they <span style="font-style: italic; color:#5DE2E7">do not require large amounts of labeled data</span>, which can be time-consuming and expensive to obtain.</li>
+<li>Second, heuristic methods <span style="font-style: italic; color:#5DE2E7">can be easily customized for specific applications and domains.</span></li>
+<li>Third, they are <span style="font-style: italic; color:#5DE2E7">often more interpretable than machine learning or deep learning methods</span>, allowing <span style="font-style: italic; color:#5DE2E7">for better understanding of how the system is making its decisions.</span></li>
+<li>Fourth, heuristic methods <span style="font-style: italic; color:#5DE2E7">can be faster to implement and run</span> than more complex approaches.</li>
+</ul>
+</section>
+<section id="current-applications-of-heuristic-methods-in-natural-language-processing" class="level3">
+<h3 class="anchored" data-anchor-id="current-applications-of-heuristic-methods-in-natural-language-processing">Current Applications of Heuristic Methods in Natural Language Processing</h3>
+<p>Heuristic methods have been used in Natural Language Processing (NLP) for decades, and they continue to be used in many current NLP applications. <span style="font-style: italic; color:#f4925d">One such application is sentiment analysis, where heuristic rules are used to identify positive, negative, or neutral sentiment in text.</span> Heuristic methods are also <span style="font-style: italic; color:#92d050">used in named entity recognition, where rules based on language patterns are used to identify and classify entities like names, organizations, and locations.</span> Another application is <span style="font-style: italic; color:#edd17e">question answering, where heuristic methods are used to generate answers based on patterns in the question and knowledge sources.</span></p>
+<p>In addition to these applications, heuristic methods are <span style="font-style: italic; color:#5DE2E7">also used for text classification, information extraction, and summarization.</span> While deep learning models have recently gained popularity in NLP, heuristic methods are still widely used because they are often more interpretable and easier to modify than complex neural networks. Furthermore, heuristic methods <span style="font-style: italic; color:#edd17e">can be useful in scenarios where large amounts of annotated data are not available, and rule-based methods can be created and fine-tuned with smaller datasets.</span></p>
+<p>Overall, heuristic methods continue to play an important role in NLP, and they are likely to remain a key component of NLP systems in the future.</p>
+</section>
+<section id="machine-learning-based-methods" class="level3">
+<h3 class="anchored" data-anchor-id="machine-learning-based-methods">Machine learning-based methods</h3>
+<p><img src="https://cloudxlab.com/blog/wp-content/uploads/2019/05/Machine-Learning-Approach.png" class="img-fluid"></p>
+<p>With the advent of machine learning, researchers began developing models that learned patterns and relationships in language data. These models could be trained on large datasets, allowing them to capture more complex language structures.</p>
+</section>
+<section id="advantages-of-machine-learning-methods-over-heuristic-methods-in-nlp" class="level3">
+<h3 class="anchored" data-anchor-id="advantages-of-machine-learning-methods-over-heuristic-methods-in-nlp">Advantages of Machine Learning Methods over Heuristic Methods in NLP</h3>
+<p>Machine learning methods have become increasingly popular in Natural Language Processing (NLP) due to their numerous advantages over heuristic methods. Some of the advantages are:</p>
+<ul>
+<li><p><strong>Learning from Data</strong> Machine learning algorithms can learn from large datasets and generalize well on unseen data, which is not possible with heuristic methods.</p></li>
+<li><p><strong>Adaptability</strong> Machine learning methods can adapt to new data and improve their performance over time, whereas heuristic methods require manual tuning for each task.</p></li>
+<li><p><strong>Higher Accuracy</strong> Machine learning methods can achieve higher accuracy compared to heuristic methods, especially in complex tasks such as speech recognition, sentiment analysis, and machine translation.</p></li>
+<li><p><strong>Time-Saving</strong> Machine learning methods can automate tasks that would be time-consuming or impossible to perform manually, such as text classification or clustering.</p></li>
+<li><p><strong>Scalability</strong> Machine learning methods can scale to large datasets and handle high-dimensional data, which is a challenge for heuristic methods.</p></li>
+</ul>
+<p>Machine learning methods can scale to large datasets and handle high-dimensional data, which is a challenge for heuristic methods.</p>
+<hr>
+</section>
+<section id="machine-learning-algorithms-used-in-nlp" class="level3">
+<h3 class="anchored" data-anchor-id="machine-learning-algorithms-used-in-nlp">Machine learning algorithms used in NLP</h3>
+<p>There are several machine learning algorithms used in NLP, some of which are <strong>Naive Bayes</strong> - a probabilistic algorithm that works well for text classification tasks such as spam filtering, sentiment analysis, and topic categorization.</p>
+<p><strong>Support Vector Machines (SVM)</strong> - a supervised learning algorithm that can be used for text classification and sequence labeling tasks.</p>
+<p><strong>Logistic Regression</strong> - A type of algorithm used for binary classification problems, where the goal is to predict whether a given input belongs to one of two possible classes.</p>
+<p><strong>LDA (Latent Dirichlet Allocation)</strong> - A probabilistic model used for topic modeling in NLP, where the goal is to identify topics within a collection of documents.</p>
+<p><strong>Hidden Markov Models</strong> - A statistical model used for sequence prediction problems, where the goal is to predict the sequence of states or outputs based on observed data. It is commonly used for speech recognition and named entity recognition.</p>
+<hr>
+</section>
+<section id="deep-learning-based-methods" class="level3">
+<h3 class="anchored" data-anchor-id="deep-learning-based-methods">Deep learning-based methods</h3>
+<p>Deep learning, a subset of machine learning, involves the use of artificial neural networks with multiple layers to learn increasingly complex patterns. Deep learning-based models, such as Recurrent Neural Networks (RNNs) and Convolutional Neural Networks (CNNs), have shown significant success in NLP tasks such as language modeling, machine translation, and sentiment analysis. These models require large amounts of data and computing power to train, but they have led to many breakthroughs in the field.</p>
+<p><img src="Differences-between-two-classification-approaches-of-sentiment-polarity-machine-learning.png" class="img-fluid" width="600"></p>
+</section>
+<section id="advantages-of-deep-learning-methods-in-nlp" class="level3">
+<h3 class="anchored" data-anchor-id="advantages-of-deep-learning-methods-in-nlp">Advantages of Deep Learning Methods in NLP</h3>
+<p>Deep learning methods have several advantages over traditional machine learning methods in NLP:</p>
+<ol type="1">
+<li><strong><code>Better performance:</code></strong> Deep learning models can achieve higher accuracy levels than traditional machine learning models in complex NLP tasks such as language translation and sentiment analysis.</li>
+<li><strong><code>Feature learning:</code></strong> Deep learning algorithms can automatically learn features from the data, eliminating the need for feature engineering, which is often required in traditional machine learning.</li>
+<li><strong><code>Handling large datasets:</code></strong> Deep learning algorithms are better suited for handling large datasets, as they can learn from a vast amount of data without overfitting or losing accuracy.</li>
+<li><strong><code>Generalization:</code></strong> Deep learning models can generalize better to unseen data, allowing them to make accurate predictions on new data points.</li>
+</ol>
+<hr>
+</section>
+<section id="common-neural-network-architectures-for-nlp" class="level3">
+<h3 class="anchored" data-anchor-id="common-neural-network-architectures-for-nlp">Common Neural Network Architectures for NLP</h3>
+<p>Neural networks have been very effective in natural language processing tasks. Here are some popular architectures used in NLP:</p>
+<ol type="1">
+<li><strong><code>Recurrent Neural Network (RNN)</code></strong>: It is a type of neural network where connections between nodes form a directed cycle. RNNs are useful for processing sequential data.</li>
+<li><strong><code>Long Short-Term Memory (LSTM)</code></strong>: It is a type of RNN that solves the vanishing gradient problem and allows the model to remember important information from earlier in the sequence.</li>
+<li><strong><code>Gated Recurrent Unit (GRU)/Convolutional Neural Network (CNN)</code></strong>: These are alternative RNN architectures that have been shown to work well for certain NLP tasks.</li>
+<li><strong><code>Transformers:</code></strong> It is a newer architecture that has gained popularity in recent years, especially in tasks such as language modeling and machine translation. It is based on a self-attention mechanism that allows the model to focus on different parts of the input sequence.</li>
+<li><strong><code>Autoencoders:</code></strong> It is a type of neural network that can be used for unsupervised learning tasks such as text generation or representation learning.</li>
+</ol>
+</section>
+</section>
+<section id="challenges-in-nlp" class="level2">
+<h2 class="anchored" data-anchor-id="challenges-in-nlp">Challenges in NLP</h2>
+<section id="ambiguity" class="level3">
+<h3 class="anchored" data-anchor-id="ambiguity">Ambiguity</h3>
+<p>One of the major challenges in Natural Language Processing (NLP) is the ambiguity of human language. <span style="font-style: italic; color:#5DE2E7">Ambiguity refers to situations where a word or a sentence can have multiple meanings or interpretations. For example, the word “bank” can refer to a financial institution or a riverbank.</span> Similarly, the sentence “I saw her duck” can mean “I saw the bird she owns” or “I saw her physically duck down.” This creates confusion for NLP models that rely on clear and unambiguous language. NLP researchers <span style="font-style: italic; color:#edd17e">tackle the challenge of ambiguity by developing algorithms that can understand the context in which words are used and disambiguate the multiple meanings based on the context.</span></p>
+</section>
+<section id="dealing-with-contextual-words" class="level3">
+<h3 class="anchored" data-anchor-id="dealing-with-contextual-words">Dealing with Contextual Words</h3>
+<p><span style="font-style: italic; color:#edd17e">Contextual words are words that take on different meanings depending on the context in which they are used.</span><span style="font-style: italic; color:#f4925d">This poses a major challenge in NLP as machines may not be able to accurately interpret the intended meaning of such words.</span> <span style="font-style: italic; color:#92d050">For example, the word “bank” can refer to a financial institution or a river bank. Another example is the word “bass” which can refer to a fish or a low-frequency sound in music.</span></p>
+<p><span style="font-style: italic; color:#f4925d">To address this challenge, NLP models are designed to consider the context of the word within the sentence, paragraph or document in order to determine the appropriate meaning.</span> Some popular techniques used to deal with contextual words include word sense disambiguation and named entity recognition. However, the complexity of language and the vast number of possible contexts means that this remains an ongoing challenge in NLP.</p>
+</section>
+<section id="colloquialisms-and-slang" class="level3">
+<h3 class="anchored" data-anchor-id="colloquialisms-and-slang">Colloquialisms and slang</h3>
+<p><span style="font-style: italic; color:#f4925d">Colloquialisms and slang are informal words and expressions used in everyday language, which can pose a challenge in NLP.</span> <span style="font-style: italic; color:#92d050">These words may not have a clear definition or meaning, and their usage can vary based on context and culture.</span> For example, the slang term “lit” can mean exciting or under the influence of drugs, depending on the context. Handling colloquialisms and slang is particularly important in social media analysis and chatbot development, where informal language is commonly used.</p>
+</section>
+<section id="synonyms" class="level3">
+<h3 class="anchored" data-anchor-id="synonyms">Synonyms</h3>
+<p>One of the major challenges in natural language processing (NLP) is dealing with <span style="font-style: italic; color:#92d050">synonyms, which are words that have similar meanings but are different in their spelling or usage. This creates ambiguity and difficulty in understanding the true meaning of a sentence.</span>For example, <span style="font-style: italic; color:#edd17e">“buy” and “purchase” are synonyms, but they may be used differently in different contexts, such as “I bought a new car” versus “I purchased a new house.”</span> NLP algorithms must be able to accurately identify and interpret synonyms in order to understand the intended meaning of a sentence.</p>
+</section>
+<section id="irony-sarcasm-and-tonal-differences" class="level3">
+<h3 class="anchored" data-anchor-id="irony-sarcasm-and-tonal-differences">Irony, Sarcasm, and Tonal Differences</h3>
+<p>One of the significant challenges in NLP is detecting the tone of a text, especially irony and sarcasm. <span style="font-style: italic; color:#edd17e">This is because the tone is often conveyed through the context and cannot be determined solely based on the words used.</span><span style="font-style: italic; color:#f4925d">For example, the statement “Oh great, another meeting” can be interpreted as positive or negative depending on the tone.</span> <span style="font-style: italic; color:#92d050">Additionally, different regions or cultures may use different tonal expressions, making it difficult for NLP models to accurately detect them.</span></p>
+</section>
+<section id="spelling-errors" class="level3">
+<h3 class="anchored" data-anchor-id="spelling-errors">Spelling Errors</h3>
+<p>Spelling errors are a common challenge in NLP, <span style="font-style: italic; color:#92d050">as they can significantly affect the accuracy of text analysis.</span><span style="font-style: italic; color:#f4925d">For example, the word “teh” instead of “the” can cause confusion for NLP algorithms.</span> This challenge is particularly prevalent in user-generated content such as social media posts, where people often use abbreviations or non-standard spellings. NLP techniques such as spell checking and correction can help mitigate this issue, but they may not always be foolproof.</p>
+</section>
+<section id="creativity" class="level3">
+<h3 class="anchored" data-anchor-id="creativity">Creativity</h3>
+<p><strong><code>Explanation:</code></strong> <span style="font-style: italic; color:#f4925d">One of the significant challenges in NLP is the ability to generate creative and novel sentences.</span> <span style="font-style: italic; color:#edd17e">It involves generating language that is not just grammatically correct but also unique and meaningful.</span> Current NLP models struggle with producing original content, especially in tasks like <strong>text generation, poetry, and storytelling.</strong> For instance, a model might be able to generate a coherent sentence, but it may not be imaginative or creative.</p>
+<p><strong><code>Example:</code></strong> A simple example would be generating a poem. While current NLP models can produce a grammatically correct poem, they might not be able to create a poem that is creative, has rhyme or meter, and evokes emotions in the reader. <span style="font-style: italic; color:#5DE2E7">This is because generating creative content involves understanding not just the meaning of words but also their associations, connotations, and cultural significance.</span></p>
+</section>
+<section id="diversity" class="level3">
+<h3 class="anchored" data-anchor-id="diversity">Diversity</h3>
+<p>One of the significant challenges in NLP is dealing with diversity in language, <span style="font-style: italic; color:#edd17e">which includes differences in language structures, styles, dialects, and cultures. For example, different regions may have different ways of expressing the same idea, making it difficult to develop universal language models.</span> <span style="font-style: italic; color:#92d050">Additionally, languages themselves can have varying levels of complexity, making it challenging to develop models that can handle the nuances of each language.</span> <span style="font-style: italic; color:#f4925d">An example of this challenge is that many languages have multiple scripts, and some languages may not even have a written form.</span></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/07Sada\.github\.io\/new_quarto_porfolio\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><span class="container"><strong>Made with <a href="https://quarto.org/" target="_blank">Posit Quarto</a></strong></span></p>
+</div>   
+    <div class="nav-footer-center">
+<p><span class="container"><strong><a href="mailto:nandanikar.sadashiv0712@gmail.com" target="_blank">Contact Sadashiv Nandanikar</a></strong></span></p>
+</div>
+    <div class="nav-footer-right">
+<p><span class="container"><strong><a href="https://github.com/07Sada" target="_blank">Github Repo</a></strong></span></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
