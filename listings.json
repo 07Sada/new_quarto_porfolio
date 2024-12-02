@@ -2,6 +2,7 @@
   {
     "listing": "/blogs.html",
     "items": [
+      "/blogs/GitHub_Actions_Introduction/001_GitHub_Actions_Introduction.html",
       "/blogs/Natural_Language_Processing(NLP)/Natural_Language_Processing(NLP).html",
       "/blogs/Chi_Square_Test/Chi Square Test.html",
       "/blogs/SVM/SVM.html",
