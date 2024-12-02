@@ -1,0 +1,177 @@
+---
+title: GitHub Actions Introduction
+author: Sadashiv
+date: 12-02-2024
+image: The_concept_of_GitHub_Actions.png
+format: 
+  html:
+    toc: true 
+---
+
+
+## [Overview](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#overview)
+
+[GitHub Actions is a continuous integration and continuous delivery (CI/CD) platform that allows you to automate your build, test, and deployment pipeline.]{style="font-style: italic; color:#da3ef9"} [You can create workflows that build and test every pull request to your repository, or deploy merged pull requests to production.]{style="font-style: italic; color:#edd17e"}
+
+GitHub Actions goes beyond just DevOps and lets you run workflows when other events happen in your repository. For example, you can run a workflow to automatically add the appropriate labels whenever someone creates a new issue in your repository.
+
+GitHub provides Linux, Windows, and macOS virtual machines to run your workflows, or you can host your own self-hosted runners in your own data center or cloud infrastructure.
+
+## [The components of GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#the-components-of-github-actions)
+You can configure a GitHub Actions [workflow]{style="font-style: italic; color:#5DE2E7"} to be triggered when an [event]{style="font-style: italic; color:#5DE2E7"} occurs in your repository, such as a pull request being opened or an issue being created. Your workflow contains one or more [jobs]{style="font-style: italic; color:#5DE2E7"} which can run in sequential order or in parallel. Each job will run inside its own virtual machine [runner]{style="font-style: italic; color:#5DE2E7"}, or inside a container, and has one or more [steps]{style="font-style: italic; color:#5DE2E7"} that either run a script that you define or run an [action]{style="font-style: italic; color:#5DE2E7"}, which is a reusable extension that can simplify your workflow.
+
+![The_concept_of_GitHub_Actions](The_concept_of_GitHub_Actions.png)
+
+### [Workflows](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#workflows)
+A workflow is a configurable automated process that will run one or more jobs.
+
+Workflows are defined by a YAML file checked in to your repository and [will run when triggered by an event in your repository, or they can be triggered manually, or at a defined schedule.]{style="font-style: italic; color:#edd17e"}
+
+Workflows are defined in the `.github/workflows` directory in a repository, and [a repository can have multiple workflows, each of which can perform a different set of tasks.]{style="font-style: italic; color:#92d050"}
+
+::: {.callout-warning appearance="simple" icon=false}
+For example, you can have one workflow to build and test pull requests, another workflow to deploy your application every time a release is created, and still another workflow that adds a label every time someone opens a new issue.
+:::
+
+You can reference a workflow within another workflow. For more information, see "[Reusing workflows](https://docs.github.com/en/actions/using-workflows/reusing-workflows)."
+For more information about workflows, see "[Using workflows](https://docs.github.com/en/actions/using-workflows)."
+
+***
+### [Events](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#events)
+An event is a specific activity in a repository that triggers a workflow run.
+
+
+::: {.callout-warning appearance="simple" icon=false}
+For example, activity can originate from GitHub when someone creates a pull request, opens an issue, or pushes a commit to a repository. You can also trigger a workflow to run on a schedule, by [posting to a REST API](https://docs.github.com/en/rest/repos#create-a-repository-dispatch-event), or manually.
+:::
+
+For a complete list of events that can be used to trigger workflows, see [Events that trigger workflows](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows).
+
+***
+
+### [Jobs](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#jobs)
+[A job is a set of steps in a workflow that is executed on the same runner.]{style="font-style: italic; color:#92d050"}
+
+[Each step is either a shell script that will be executed, or an action that will be run.]{style="font-style: italic;color:#da3ef9"} [Steps are executed in order and are dependent on each other]{style="font-style: italic; color:#edd17e"}.[Since each step is executed on the same runner, you can share data from one step to another.]{style="font-style: italic; color:#f4925d"}
+
+::: {.callout-warning appearance="simple" icon=false}
+For example, you can have a step that builds your application followed by a step that tests the application that was built.
+:::
+
+[You can configure a job's dependencies with other jobs; by default, jobs have no dependencies and run in parallel with each other.]{style="font-style: italic; color:#f4925d"} When a job takes a dependency on another job, it will wait for the dependent job to complete before it can run.
+
+::: {.callout-warning appearance="simple" icon=false}
+For example, you may have multiple build jobs for different architectures that have no dependencies, and a packaging job that is dependent on those jobs. The build jobs will run in parallel, and when they have all completed successfully, the packaging job will run.
+:::
+
+For more information about jobs, see "[Using jobs](https://docs.github.com/en/actions/using-jobs)."
+
+***
+### [Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#actions)
+
+::: {.callout-important icon=false}
+An [action]{style="font-style: italic; color:#5DE2E7"} is a custom application for the GitHub Actions platform that performs a complex but frequently repeated task. Use an action to help reduce the amount of repetitive code that you write in your workflow files.
+:::
+
+::: {.callout-warning appearance="simple" icon=false}
+An action can pull your git repository from GitHub, set up the correct toolchain for your build environment, or set up the authentication to your cloud provider.
+:::
+
+You can write your own actions, or you can find actions to use in your workflows in the GitHub Marketplace.
+For more information, see "[Creating actions](https://docs.github.com/en/actions/creating-actions)."
+
+***
+
+### [Runners](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#runners)
+
+
+::: {.callout-important icon=false} 
+A runner is a server that runs your workflows when they're triggered. Each runner can run a single job at a time.
+:::
+
+::: {.callout-tip appearance="simple" icon=false}
+GitHub provides Ubuntu Linux, Microsoft Windows, and macOS runners to run your workflows; each workflow run executes in a fresh, newly-provisioned virtual machine.
+:::
+
+GitHub also offers larger runners, which are available in larger configurations. For more information, see "[About larger runners](https://docs.github.com/en/actions/using-github-hosted-runners/using-larger-runners)." If you need a different operating system or require a specific hardware configuration, you can host your own runners. For more information about self-hosted runners, see "[Hosting your own runners](https://docs.github.com/en/actions/hosting-your-own-runners)."
+
+
+## [Create an workflow](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#create-an-example-workflow)
+GitHub Actions uses YAML syntax to define the workflow. Each workflow is stored as a separate YAML file in your code repository, in a directory named `.github/workflows`.
+
+You can create an example workflow in your repository that automatically triggers a series of commands whenever code is pushed.
+1. In your repository, create the `.github/workflows/` directory to store your workflow files.
+2. In the `.github/workflows/` directory, create a new file called `your_file_name.yml` and write the code.
+3. Commit these changes and push them to your GitHub repository.
+
+Your new GitHub Actions workflow file is now installed in your repository and will run automatically each time someone pushes a change to the repository. To see the details about a workflow's execution history, see "[Viewing the activity for a workflow run](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-activity-for-a-workflow-run)."
+
+### Code Block
+```yml
+# This is a comment line, and it's for providing information about the workflow.
+# The name of the workflow is "Hello world workflow."
+name: Hello word workflow
+
+# This section defines when the workflow should run.
+on:
+  # This workflow runs when there's a code push to the "main" branch.
+  push:
+    branches:
+      - main
+  # This workflow also runs when there's a pull request to the "main" branch.
+  pull_request:
+    branches:
+      - main
+  # This line allows manual triggering of the workflow through the GitHub Actions web interface.
+  workflow_dispatch:
+
+# This section defines the jobs that this workflow contains.
+jobs:
+  # This is the first job named "hello."
+  hello:
+    # It runs on an "ubuntu-latest" runner, which is a virtual machine with Ubuntu.
+    runs-on: ubuntu-latest
+    steps:
+      # This step checks out (fetches) the code from the GitHub repository onto the runner.
+      - uses: actions/checkout@v3
+      # This step is named "hello world."
+      - name: hello world
+        # It runs the command "echo 'hello world'" in the bash shell.
+        run: echo "hello world"
+        # This specifies that the shell to use is "bash."
+
+  # This is the second job named "goodbye."
+  goodbye:
+    # It also runs on an "ubuntu-latest" runner.
+    runs-on: ubuntu-latest
+    steps:
+      # This step is named "good bye world."
+      - name: good bye world
+        # It runs the command "echo 'goodbye world'" in the bash shell.
+        run: echo "goodbye world"
+        # This specifies that the shell to use is "bash."
+
+```
+
+***
+### GitHub Interface 
+![](workflow.png)
+![](jobs.png)
+![](job_set_up.png)
+![](checkout.png)
+![](Manually_Entered_Step.png)
+![](default_final_step.png)
+
+The only difference between the above job 'hello world' and below job 'good bye' is here we are not using GitHub's `actions/checkout` i.e. we're not copying the copying the code from repository to runner. We're running only simple shell command.
+![](1.png)
+
+Extra Utilities
+![](2.png)
+
+***
+### Reference Material
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-hVG9z0fCac?si=RU6llEI_JoXyl20C" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+[Official Documentation from GitHub for GitHub actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions)
+[Personal GitHub Repository for trying the methods](https://github.com/07Sada/github-actions-tutorials)
