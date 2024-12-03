@@ -16,11 +16,12 @@ format:
 
 ### SCM: {#scm}
 
+Before the introduction of modern tools like GitHub, source code management (SCM) primarily relied on older systems and practices. One of the earliest forms of SCM was manual version control, where developers would create backups or copies of their code and manually track changes. Here's how SCM worked in the "olden days" before platforms like GitHub:
+
 ::: {.callout-note icon="false" appearance="simple"}
 SCM -\> Source Code Management System
 :::
 
-Before the introduction of modern tools like GitHub, source code management (SCM) primarily relied on older systems and practices. One of the earliest forms of SCM was manual version control, where developers would create backups or copies of their code and manually track changes. Here's how SCM worked in the "olden days" before platforms like GitHub:
 
 1.  **Local Backups:** Developers would [often maintain local backups of their code on their own computers or servers.]{style="font-style: italic; color:#92d050"} These backups were typically directories or folders containing different versions of the code.
 
