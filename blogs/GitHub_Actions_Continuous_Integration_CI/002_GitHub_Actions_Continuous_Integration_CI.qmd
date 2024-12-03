@@ -1,0 +1,113 @@
+---
+title: GitHub Actions Continuous Integration CI
+author: Sadashiv
+date: 12-03-2024
+image: Drawing_001_GitHub_Actions_Continuous_Integration_CI_Automation.png
+format: 
+  html:
+    toc: true 
+---
+
+## Manual Approach
+
+![](Drawing_001_GitHub_Actions_Continuous_Integration_CI_Manual_approach.png){width="500"}
+
+## Before Continuous Integration Automation
+
+### SCM: {#scm}
+
+::: {.callout-note icon="false" appearance="simple"}
+SCM -\> Source Code Management System
+:::
+
+Before the introduction of modern tools like GitHub, source code management (SCM) primarily relied on older systems and practices. One of the earliest forms of SCM was manual version control, where developers would create backups or copies of their code and manually track changes. Here's how SCM worked in the "olden days" before platforms like GitHub:
+
+1.  **Local Backups:** Developers would [often maintain local backups of their code on their own computers or servers.]{style="font-style: italic; color:#92d050"} These backups were typically directories or folders containing different versions of the code.
+
+2.  **Labels or Tags:** [Developers would label or tag specific versions of their code with names or numbers to indicate milestones, releases, or significant changes.]{style="font-style: italic; color:#edd17e"}These labels helped in identifying and retrieving specific versions when needed.
+
+3.  **Documentation:** Detailed documentation about code changes, bug fixes, and new features was crucial. [Developers would maintain written logs or files that described the modifications made in each version of the code.]{style="font-style: italic; color:#f4925d"}
+
+4.  **Manual Collaboration:** Collaboration among developers was challenging. [They would often share code changes through emails, physical copies, or by copying files to shared network drives.]{style="font-style: italic; color:#f76464"} [Merging changes from different contributors was a manual and error-prone process.]{style="font-style: italic; color:#edd17e"}
+
+5.  **Risk of Overwrites:** Without robust SCM tools, there was a significant [risk of accidentally overwriting someone else's changes, leading to code conflicts and errors.]{style="font-style: italic; color:#edd17e"}
+
+6.  **Limited Visibility:** [It was difficult to have a comprehensive view of the entire project's history and changes.]{style="font-style: italic; color:#f4925d"} Developers had to rely on their local records and communication with colleagues to understand the evolution of the codebase.
+
+7.  **No Central Repository:** Unlike modern SCM systems that have a central repository (like GitHub), older SCM relied on each developer's local copies and backups. [This decentralized approach could lead to data loss if a developer's machine failed or backups were not maintained properly.]{style="font-style: italic; color:#f4925d"}
+
+------------------------------------------------------------------------
+
+### Central Repository: {#Central_Repository}
+
+Before the introduction of centralized platforms like GitHub, central repositories for source code management (SCM) were typically set up and maintained using traditional version control systems or network file systems. Here's how central repositories worked in the "olden days" before GitHub:
+
+1.  **Version Control Systems (VCS):** [Organizations often used traditional VCS software like CVS (Concurrent Versions System) or SVN (Subversion) to create central repositories.]{style="font-style: italic; color:#f4925d"} These systems allowed developers to check in and check out code from a central location.
+
+2.  **Local Copies:** Developers had local copies of the code on their own machines, but the authoritative or master copy resided in the central repository. [Developers would make changes to their local copies and then commit those changes to the central repository.]{style="font-style: italic;color:#f76464"}
+
+3.  **Access Control:** [Access to the central repository was controlled through user authentication and permissions.]{style="font-style: italic;color:#f76464"} Typically, only authorized individuals or teams had write access to the central repository, while others had read-only access.
+
+4.  **Check-In and Check-Out:** [Developers would check out code from the central repository to work on it.]{style="font-style: italic;color:#f4925d"} When they were done making changes, [they would check the code back into the central repository.]{style="font-style: italic;color:#f4925d"} This process ensured that changes were tracked and managed centrally.
+
+5.  **Version History:** [The central repository maintained a version history of the code.]{style="font-style: italic;color:#f4925d"} Each check-in or commit created a new version, allowing developers to see how the code evolved over time.
+
+6.  **Branching and Merging:** These systems supported branching and merging, but [it was often a more manual and less user-friendly process compared to modern distributed version control]{style="font-style: italic;color:#edd17e"} systems like Git. Merging code changes from different branches could be complex.
+
+7.  **Communication:** Collaboration and communication among developers were essential. [Developers needed to coordinate with each other to avoid conflicts]{style="font-style: italic;color:#f4925d"} when making changes to the central repository.
+
+8.  **Backup and Recovery:** Maintaining backups of the central repository was crucial because the [loss of the central repository could result in significant data loss.]{style="font-style: italic; color:#edd17e"} Regular backups were often performed to ensure data integrity.
+
+9.  **Limited Collaboration Features:** Unlike modern platforms like GitHub, these central repositories typically [lacked collaboration features such as issue tracking, pull requests, and code review tools.]{style="font-style: italic; color:#f76464"} Collaboration mainly happened outside the central repository using email or other communication tools.
+
+------------------------------------------------------------------------
+
+### Developer Team
+
+For the understanding purpose, we are working on a application with the olden system as discussed above with \[\[002_GitHub_Actions_Continuous_Integration_CI#SCM\| SCM\]\] and \[\[002_GitHub_Actions_Continuous_Integration_CI#Central Repository\| repository system\]\].
+
+Our developers are working on features, every developer is working on individual feature.
+
+For the time sake, we say every developer is responsible for the feature he is assign to, [he doesn't know about the working code of other developer]{style="font-style: italic; color:#f76464"}
+
+After completing the feature, the [developer will check in the code into the central repository.]{style="font-style: italic; color:#f76464"} Similarly other developers will also do the same. Once all the developers have check in the code, there work is complete for the time being.
+
+------------------------------------------------------------------------
+
+### Integration Team
+
+Here we will have integration team for the integration of code, they will checkout the code for each feature from the central repository and will build the application on a machine.
+
+**The goal of integration team is:** - Integrate all the code for the feature and build it. - Run the code. - Test the integration quality.
+
+**What doesn't come under their scope:** - Test the features according to the specification and design.
+
+Once they finished the integration, they will share the details with the QA (Quality Assurance) team for further testing.
+
+------------------------------------------------------------------------
+
+### Quality Assurance (QA) Team
+
+After the integration of the code, and building. [The QA team will test the features if they meet the specification and business requirements.]{style="font-style: italic; color:#f76464"}
+
+[If they find any problem with the features, they will send the code back to the developer and the process will repeat again.]{style="font-style: italic; color:#f4925d"}
+
+(developer team) feature development/bug fixing --\> code integration --\> quality assurance tests.
+
+------------------------------------------------------------------------
+
+### Problem with Manual Approach
+
+-   Time consuming
+-   Extra manpower
+-   Cost expensive.
+
+## With Continuous Integration
+
+![](Drawing_001_GitHub_Actions_Continuous_Integration_CI_Automation.png)
+
+In this approach we will use the same problem statement of building an application.
+
+Here we will use git as [SCM](#scm) and GitHub as [Central Repository](#Central_Repository)
+
+Here the developers will start working on the features, and with each code update they will check in the code in the central repository. In this approach, the developer will not have to worry about the other developers, he can work in his own feature branch at his own pace. He can also track the progress of other developers.
