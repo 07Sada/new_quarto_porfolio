@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Sadashiv">
+<meta name="dcterms.date" content="2024-12-03">
 
-<title>Projects – Sadashiv Nandanikar</title>
+<title>GitHub Actions Continuous Integration CI – Sadashiv Nandanikar</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,27 +25,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./images/luffy.jpg" rel="icon" type="image/jpeg">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c5c8e97dfaa57774b94f6b5f2c9b2a4f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-283a0ba947f1ad48e838dd614ba91c46.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/luffy.jpg" rel="icon" type="image/jpeg">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c5c8e97dfaa57774b94f6b5f2c9b2a4f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-283a0ba947f1ad48e838dd614ba91c46.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,77 +70,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Sadashiv Nandanikar</span>
     </a>
   </div>
@@ -151,19 +93,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./projects.html" aria-current="page"> 
+    <a class="nav-link" href="../../projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blogs.html"> 
+    <a class="nav-link" href="../../blogs.html"> 
 <span class="menu-text">Blogs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./resume.html"> 
+    <a class="nav-link" href="../../resume.html"> 
 <span class="menu-text">Resume</span></a>
   </li>  
 </ul>
@@ -187,102 +129,151 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Projects</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta column-page-left">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#manual-approach" id="toc-manual-approach" class="nav-link active" data-scroll-target="#manual-approach">Manual Approach</a></li>
+  <li><a href="#before-continuous-integration-automation" id="toc-before-continuous-integration-automation" class="nav-link" data-scroll-target="#before-continuous-integration-automation">Before Continuous Integration Automation</a>
+  <ul class="collapse">
+  <li><a href="#scm" id="toc-scm" class="nav-link" data-scroll-target="#scm">SCM:</a></li>
+  <li><a href="#Central_Repository" id="toc-Central_Repository" class="nav-link" data-scroll-target="#Central_Repository">Central Repository:</a></li>
+  <li><a href="#developer-team" id="toc-developer-team" class="nav-link" data-scroll-target="#developer-team">Developer Team</a></li>
+  <li><a href="#integration-team" id="toc-integration-team" class="nav-link" data-scroll-target="#integration-team">Integration Team</a></li>
+  <li><a href="#quality-assurance-qa-team" id="toc-quality-assurance-qa-team" class="nav-link" data-scroll-target="#quality-assurance-qa-team">Quality Assurance (QA) Team</a></li>
+  <li><a href="#problem-with-manual-approach" id="toc-problem-with-manual-approach" class="nav-link" data-scroll-target="#problem-with-manual-approach">Problem with Manual Approach</a></li>
+  </ul></li>
+  <li><a href="#with-continuous-integration" id="toc-with-continuous-integration" class="nav-link" data-scroll-target="#with-continuous-integration">With Continuous Integration</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">GitHub Actions Continuous Integration CI</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sadashiv </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 3, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
 
 
+</header>
 
 
+<section id="manual-approach" class="level2">
+<h2 class="anchored" data-anchor-id="manual-approach">Manual Approach</h2>
+<p><img src="Drawing_001_GitHub_Actions_Continuous_Integration_CI_Manual_approach.png" class="img-fluid" width="500"></p>
+</section>
+<section id="before-continuous-integration-automation" class="level2">
+<h2 class="anchored" data-anchor-id="before-continuous-integration-automation">Before Continuous Integration Automation</h2>
+<section id="scm" class="level3">
+<h3 class="anchored" data-anchor-id="scm">SCM:</h3>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>SCM -&gt; Source Code Management System</p>
+</div>
+</div>
+</div>
+<p>Before the introduction of modern tools like GitHub, source code management (SCM) primarily relied on older systems and practices. One of the earliest forms of SCM was manual version control, where developers would create backups or copies of their code and manually track changes. Here’s how SCM worked in the “olden days” before platforms like GitHub:</p>
+<ol type="1">
+<li><p><strong>Local Backups:</strong> Developers would <span style="font-style: italic; color:#92d050">often maintain local backups of their code on their own computers or servers.</span> These backups were typically directories or folders containing different versions of the code.</p></li>
+<li><p><strong>Labels or Tags:</strong> <span style="font-style: italic; color:#edd17e">Developers would label or tag specific versions of their code with names or numbers to indicate milestones, releases, or significant changes.</span>These labels helped in identifying and retrieving specific versions when needed.</p></li>
+<li><p><strong>Documentation:</strong> Detailed documentation about code changes, bug fixes, and new features was crucial. <span style="font-style: italic; color:#f4925d">Developers would maintain written logs or files that described the modifications made in each version of the code.</span></p></li>
+<li><p><strong>Manual Collaboration:</strong> Collaboration among developers was challenging. <span style="font-style: italic; color:#f76464">They would often share code changes through emails, physical copies, or by copying files to shared network drives.</span> <span style="font-style: italic; color:#edd17e">Merging changes from different contributors was a manual and error-prone process.</span></p></li>
+<li><p><strong>Risk of Overwrites:</strong> Without robust SCM tools, there was a significant <span style="font-style: italic; color:#edd17e">risk of accidentally overwriting someone else’s changes, leading to code conflicts and errors.</span></p></li>
+<li><p><strong>Limited Visibility:</strong> <span style="font-style: italic; color:#f4925d">It was difficult to have a comprehensive view of the entire project’s history and changes.</span> Developers had to rely on their local records and communication with colleagues to understand the evolution of the codebase.</p></li>
+<li><p><strong>No Central Repository:</strong> Unlike modern SCM systems that have a central repository (like GitHub), older SCM relied on each developer’s local copies and backups. <span style="font-style: italic; color:#f4925d">This decentralized approach could lead to data loss if a developer’s machine failed or backups were not maintained properly.</span></p></li>
+</ol>
+<hr>
+</section>
+<section id="Central_Repository" class="level3">
+<h3 class="anchored" data-anchor-id="Central_Repository">Central Repository:</h3>
+<p>Before the introduction of centralized platforms like GitHub, central repositories for source code management (SCM) were typically set up and maintained using traditional version control systems or network file systems. Here’s how central repositories worked in the “olden days” before GitHub:</p>
+<ol type="1">
+<li><p><strong>Version Control Systems (VCS):</strong> <span style="font-style: italic; color:#f4925d">Organizations often used traditional VCS software like CVS (Concurrent Versions System) or SVN (Subversion) to create central repositories.</span> These systems allowed developers to check in and check out code from a central location.</p></li>
+<li><p><strong>Local Copies:</strong> Developers had local copies of the code on their own machines, but the authoritative or master copy resided in the central repository. <span style="font-style: italic;color:#f76464">Developers would make changes to their local copies and then commit those changes to the central repository.</span></p></li>
+<li><p><strong>Access Control:</strong> <span style="font-style: italic;color:#f76464">Access to the central repository was controlled through user authentication and permissions.</span> Typically, only authorized individuals or teams had write access to the central repository, while others had read-only access.</p></li>
+<li><p><strong>Check-In and Check-Out:</strong> <span style="font-style: italic;color:#f4925d">Developers would check out code from the central repository to work on it.</span> When they were done making changes, <span style="font-style: italic;color:#f4925d">they would check the code back into the central repository.</span> This process ensured that changes were tracked and managed centrally.</p></li>
+<li><p><strong>Version History:</strong> <span style="font-style: italic;color:#f4925d">The central repository maintained a version history of the code.</span> Each check-in or commit created a new version, allowing developers to see how the code evolved over time.</p></li>
+<li><p><strong>Branching and Merging:</strong> These systems supported branching and merging, but <span style="font-style: italic;color:#edd17e">it was often a more manual and less user-friendly process compared to modern distributed version control</span> systems like Git. Merging code changes from different branches could be complex.</p></li>
+<li><p><strong>Communication:</strong> Collaboration and communication among developers were essential. <span style="font-style: italic;color:#f4925d">Developers needed to coordinate with each other to avoid conflicts</span> when making changes to the central repository.</p></li>
+<li><p><strong>Backup and Recovery:</strong> Maintaining backups of the central repository was crucial because the <span style="font-style: italic; color:#edd17e">loss of the central repository could result in significant data loss.</span> Regular backups were often performed to ensure data integrity.</p></li>
+<li><p><strong>Limited Collaboration Features:</strong> Unlike modern platforms like GitHub, these central repositories typically <span style="font-style: italic; color:#f76464">lacked collaboration features such as issue tracking, pull requests, and code review tools.</span> Collaboration mainly happened outside the central repository using email or other communication tools.</p></li>
+</ol>
+<hr>
+</section>
+<section id="developer-team" class="level3">
+<h3 class="anchored" data-anchor-id="developer-team">Developer Team</h3>
+<p>For the understanding purpose, we are working on a application with the olden system as discussed above with [[002_GitHub_Actions_Continuous_Integration_CI#SCM| SCM]] and [[002_GitHub_Actions_Continuous_Integration_CI#Central Repository| repository system]].</p>
+<p>Our developers are working on features, every developer is working on individual feature.</p>
+<p>For the time sake, we say every developer is responsible for the feature he is assign to, <span style="font-style: italic; color:#f76464">he doesn’t know about the working code of other developer</span></p>
+<p>After completing the feature, the <span style="font-style: italic; color:#f76464">developer will check in the code into the central repository.</span> Similarly other developers will also do the same. Once all the developers have check in the code, there work is complete for the time being.</p>
+<hr>
+</section>
+<section id="integration-team" class="level3">
+<h3 class="anchored" data-anchor-id="integration-team">Integration Team</h3>
+<p>Here we will have integration team for the integration of code, they will checkout the code for each feature from the central repository and will build the application on a machine.</p>
+<p><strong>The goal of integration team is:</strong> - Integrate all the code for the feature and build it. - Run the code. - Test the integration quality.</p>
+<p><strong>What doesn’t come under their scope:</strong> - Test the features according to the specification and design.</p>
+<p>Once they finished the integration, they will share the details with the QA (Quality Assurance) team for further testing.</p>
+<hr>
+</section>
+<section id="quality-assurance-qa-team" class="level3">
+<h3 class="anchored" data-anchor-id="quality-assurance-qa-team">Quality Assurance (QA) Team</h3>
+<p>After the integration of the code, and building. <span style="font-style: italic; color:#f76464">The QA team will test the features if they meet the specification and business requirements.</span></p>
+<p><span style="font-style: italic; color:#f4925d">If they find any problem with the features, they will send the code back to the developer and the process will repeat again.</span></p>
+<p>(developer team) feature development/bug fixing –&gt; code integration –&gt; quality assurance tests.</p>
+<hr>
+</section>
+<section id="problem-with-manual-approach" class="level3">
+<h3 class="anchored" data-anchor-id="problem-with-manual-approach">Problem with Manual Approach</h3>
+<ul>
+<li>Time consuming</li>
+<li>Extra manpower</li>
+<li>Cost expensive.</li>
+</ul>
+</section>
+</section>
+<section id="with-continuous-integration" class="level2">
+<h2 class="anchored" data-anchor-id="with-continuous-integration">With Continuous Integration</h2>
+<p><img src="Drawing_001_GitHub_Actions_Continuous_Integration_CI_Automation.png" class="img-fluid"></p>
+<p>In this approach we will use the same problem statement of building an application.</p>
+<p>Here we will use git as <a href="#scm">SCM</a> and GitHub as <a href="#Central_Repository">Central Repository</a></p>
+<p>Here the developers will start working on the features, and with each code update they will check in the code in the central repository. In this approach, the developer will not have to worry about the other developers, he can work in his own feature branch at his own pace. He can also track the progress of other developers.</p>
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1731283200000" data-listing-file-modified-sort="1733234008602" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="76">
-<div class="thumbnail">
-<p><a href="./projects/computer_vison_project/Vegetable_Recognition.html" class="no-external"></a></p><a href="./projects/computer_vison_project/Vegetable_Recognition.html" class="no-external">
-<p><img loading="lazy" src="https://pyimagesearch.com/wp-content/uploads/2023/02/vegetable-images-visualise.png" class="thumbnail-image"></p>
-</a><p><a href="./projects/computer_vison_project/Vegetable_Recognition.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./projects/computer_vison_project/Vegetable_Recognition.html" class="no-external">Vegetable Recognition</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./projects/computer_vison_project/Vegetable_Recognition.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./projects/computer_vison_project/Vegetable_Recognition.html" class="no-external">This notebook demonstrates a deep learning approach to classifying vegetable types from images, a task with applications in agriculture and retail. The model is built using…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./projects/computer_vison_project/Vegetable_Recognition.html" class="no-external">
-<div class="listing-date">
-Nov 11, 2024
-</div>
-<div class="listing-author">
-Sadashiv
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1731283200000" data-listing-file-modified-sort="1733234008590" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="160">
-<div class="thumbnail">
-<p><a href="./projects/Brand Detection/Brand_Detection.html" class="no-external"></a></p><a href="./projects/Brand Detection/Brand_Detection.html" class="no-external">
-<p><img loading="lazy" src="https://user-images.githubusercontent.com/112761379/235088788-8aacd18f-cd43-49a2-a501-63b161ebc520.png" class="thumbnail-image"></p>
-</a><p><a href="./projects/Brand Detection/Brand_Detection.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./projects/Brand Detection/Brand_Detection.html" class="no-external">Brand Detection</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./projects/Brand Detection/Brand_Detection.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./projects/Brand Detection/Brand_Detection.html" class="no-external">Visual content, such as videos and images, plays a significant role in modern-day marketing. Traditionally, brands have had to pay content creators to feature their brand…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./projects/Brand Detection/Brand_Detection.html" class="no-external">
-<div class="listing-date">
-Nov 11, 2024
-</div>
-<div class="listing-author">
-Sadashiv
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
