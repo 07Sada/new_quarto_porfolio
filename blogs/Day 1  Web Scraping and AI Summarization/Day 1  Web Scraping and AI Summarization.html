@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Sadashiv">
-<meta name="dcterms.date" content="2024-11-19">
 
-<title>Supervised Learning Algorithms – Sadashiv Nandanikar</title>
+<title>day-1--web-scraping-and-ai-summarization – Sadashiv Nandanikar</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -298,79 +331,121 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Supervised Learning Algorithms</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Sadashiv </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">November 19, 2024</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
 
 
-</header>
-
-
-<p>Imagine teaching a computer like a teacher instructs a student. In supervised learning, we provide the computer with labeled examples. It’s like showing it the right answers and letting it figure out how to get there.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://databasetown.com/wp-content/uploads/2023/05/Supervised-Learning-1024x726.jpg" class="img-fluid figure-img"></p>
-<figcaption>supervised learning</figcaption>
-</figure>
-</div>
-<p><strong>Why Do We Use It?</strong></p>
-<p>Supervised learning helps the computer make predictions, classify things, and make decisions based on past experiences.</p>
-<p><strong>Meet the Superstars!</strong></p>
+<section id="importing-libraries" class="level3">
+<h3 class="anchored" data-anchor-id="importing-libraries">Importing Libraries</h3>
 <ul>
-<li><p><em>[[Linear Regression in Machine Learning|Linear Regression]]</em>: Think of it as drawing a straight line through dots on a graph to make predictions, like guessing a house’s price based on its size.</p></li>
-<li><p><em>[[Decision Tree|Decision Trees]]</em>: Imagine playing 20 Questions. It’s like that but for sorting things, such as deciding if an email is spam or not.</p></li>
-<li><p><em>Support Vector Machines (SVM)</em>: Picture separating different groups of data with a clear line. It’s used in things like sorting images or categorizing text.</p></li>
+<li>Import necessary libraries: <code>openai</code>, <code>os</code>, <code>requests</code>, <code>BeautifulSoup</code>, <code>load_dotenv</code>, <code>display</code>, and <code>Markdown</code>.</li>
+<li>These libraries are used for interacting with the OpenAI API, handling operating system interactions, making HTTP requests, parsing HTML, loading environment variables, and displaying Markdown content.</li>
+<li>Dependencies can be installed using <code>requirements.txt</code>.</li>
+<li>Code: <code>python     # importing the libaries     import openai     import os     import requests     from bs4 import BeautifulSoup     from dotenv import load_dotenv     from IPython.display import display, Markdown</code></li>
 </ul>
-<p><strong>How It Works</strong></p>
+</section>
+<section id="setting-up-api-key" class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-api-key">Setting Up API Key</h3>
 <ul>
-<li><p><strong>Training</strong>: We teach the algorithm using a dataset with examples and their correct answers. It learns by finding patterns in this training data.</p></li>
-<li><p><strong>Testing</strong>: After training, we test it on new, unseen data to see how well it can predict or classify.</p></li>
+<li><p>Load environment variables from the <code>.env</code> file using <code>load_dotenv()</code>.</p></li>
+<li><p>Set the OpenAI API key using <code>openai.api_key = os.getenv("OPENAI_API_KEY")</code>.</p></li>
+<li><p>Code: ```python # load the environment variables from .env file load_dotenv()</p>
+<p># set the OpenAI API key openai.api_key = os.getenv(“OPENAI_API_KEY”) ```</p></li>
 </ul>
-<p><strong>In the Real World</strong></p>
+</section>
+<section id="website-class" class="level3">
+<h3 class="anchored" data-anchor-id="website-class">Website Class</h3>
 <ul>
-<li>Predicting stock prices based on past trends.</li>
-<li>Deciding if an email is junk or not.</li>
-<li>Recognizing handwritten numbers in ZIP codes.</li>
+<li><p>The <code>Website</code> class is defined to fetch and parse website content.</p></li>
+<li><p>It takes a URL as input, retrieves the HTML content using <code>requests.get()</code> with headers to mimic a browser, and parses it with <code>BeautifulSoup</code>.</p></li>
+<li><p>The class extracts the title and visible text of the webpage, removing irrelevant elements like script, style, img, and input tags.</p></li>
+<li><p>Code: ```python # Some websites need you to use proper headers when fetching them: headers = { # The User-Agent header is used to identify the client making the request. # This helps in mimicking a real browser to avoid being blocked by websites. “User-Agent”: “Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36” }</p>
+<p>class Website: def <strong>init</strong>(self, url): ““” Initialize a Website object from the given URL using the BeautifulSoup library.</p>
+<pre><code>      Args:
+          url (str): The URL of the website to fetch and parse.
+      """
+      self.url = url  # Store the URL of the website.
+
+      # Send an HTTP GET request to the URL with the specified headers.
+      response = requests.get(url, headers=headers)
+
+      # Parse the HTML content of the response using BeautifulSoup.
+      soup = BeautifulSoup(response.content, 'html.parser')
+
+      # Extract the title of the webpage, if available. If not, set it to "No title found".
+      self.title = soup.title.string if soup.title else "No title found"
+
+      # Remove irrelevant elements like &lt;script&gt;, &lt;style&gt;, &lt;img&gt;, and &lt;input&gt; from the body of the webpage.
+      for irrelevant in soup.body(["script", "style", "img", "input"]):
+          irrelevant.decompose()
+
+      # Extract the visible text from the body of the webpage, separating lines with a newline character.
+      self.text = soup.body.get_text(separator="\n", strip=True)</code></pre>
+<p>```</p></li>
 </ul>
-<p><strong>Pros and Cons</strong></p>
+</section>
+<section id="prompts" class="level3">
+<h3 class="anchored" data-anchor-id="prompts">Prompts</h3>
 <ul>
-<li><p><strong>Pros</strong>: It’s widely used and can be very accurate if the training data is good.</p></li>
-<li><p><strong>Cons</strong>: You need labeled data (which can be costly), and it might not work well if the data is messy or the problem is tricky.</p></li>
+<li><p><strong>System Prompt</strong>: Instructs the AI on its role and desired output format (e.g., summarizing a website in markdown).</p></li>
+<li><p><strong>User Prompt</strong>: Contains the specific request or query for the AI, such as summarizing the content of a given website.</p></li>
+<li><p>Code: ```python # Define our system prompt system_prompt = “You are an assistant that analyzes the contents of a website<br>
+and provides a short summary, ignoring text that might be navigation related.<br>
+Respond in markdown.”</p>
+<p># A function that writes a User Prompt that asks for summaries of websites: def user_prompt_for(website): user_prompt = f”You are looking at a website titled {website.title}” user_prompt += “The contents of this website is as follows;<br>
+please provide a short summary of this website in markdown.<br>
+If it includes news or announcements, then summarize these too.” user_prompt += website.text return user_prompt ```</p></li>
 </ul>
-<p><strong>Takeaway</strong></p>
-<p>Supervised learning is like training a pet with treats. It’s essential in machine learning, especially when you know what the right answers should be. It’s like the foundation of our machine learning journey!</p>
-<hr>
-<section id="reference-reading" class="level3">
-<h3 class="anchored" data-anchor-id="reference-reading">Reference Reading</h3>
-<p><a href="https://databasetown.com/supervised-learning-algorithms/"># Supervised Learning: Algorithms, Examples, and How It Works</a></p>
+</section>
+<section id="messages" class="level3">
+<h3 class="anchored" data-anchor-id="messages">Messages</h3>
+<ul>
+<li>The OpenAI API requires messages to be structured as a list of dictionaries, with each dictionary containing a ‘role’ (system or user) and ‘content’ (the prompt).</li>
+<li>Code: <code>python     def message_for(website):         return [             {'role': 'system', 'content': system_prompt},             {'role': 'user', 'content': user_prompt_for(website)}         ]</code></li>
+</ul>
+</section>
+<section id="summarization-function" class="level3">
+<h3 class="anchored" data-anchor-id="summarization-function">Summarization Function</h3>
+<ul>
+<li>The <code>summarize()</code> function takes a URL, creates a <code>Website</code> object, constructs the messages with the system and user prompts, and calls the OpenAI API to generate a summary.</li>
+<li>The generated summary is then returned.</li>
+<li>Code: <code>python     def summarize(url):         website = Website(url)         response = openai.chat.completions.create(             model="gpt-4o-mini",             messages=message_for(website)         )         return response.choices[0].message.content</code></li>
+</ul>
+</section>
+<section id="displaying-summaries" class="level3">
+<h3 class="anchored" data-anchor-id="displaying-summaries">Displaying Summaries</h3>
+<ul>
+<li>The <code>display(Markdown())</code> function is used to display the website summaries in Markdown format.</li>
+<li>Code: <code>python     display(Markdown(summarize("[https://edwarddonner.com](https://edwarddonner.com)")))     display(Markdown(summarize("[https://cnn.com](https://cnn.com)")))     display(Markdown(summarize("[https://anthropic.com](https://anthropic.com)")))</code></li>
+</ul>
+</section>
+<section id="output-after-running-the-below-code" class="level3">
+<h3 class="anchored" data-anchor-id="output-after-running-the-below-code">Output After running the below code</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>display(Markdown(summarize(<span class="st">"[https://anthropic.com](https://anthropic.com)"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="website-summary-for-anthropic" class="level1">
+<h1>Website Summary for Anthropic</h1>
+<p>The Anthropic website primarily focuses on its flagship AI model, Claude, showcasing its capabilities, pricing plans, and various applications. Key sections of the site include:</p>
+<ul>
+<li><strong>Claude Overview</strong>: Introduction to Claude and its various iterations (like Claude 3.7 Sonnet), highlighting its advanced capabilities and responsible AI design.</li>
+<li><strong>API</strong>: Resources for developers to build applications with Claude, including API documentation and pricing.</li>
+<li><strong>Solutions</strong>: Information on how Claude can assist in different domains such as AI agents, coding, and customer support.</li>
+<li><strong>Research</strong>: Insights into the company’s research initiatives concerning AI safety, impacts, and transparency. Notable mentioned topics include the Claude Economic Index and interpretability.</li>
+<li><strong>Learning Resources</strong>: The Anthropic Academy offers tutorials on utilizing Claude effectively.</li>
+<li><strong>Responsible AI Development</strong>: An emphasis on creating AI technologies with human benefit in mind and maintaining transparency in the development process.</li>
+</ul>
+<section id="recent-announcements" class="level2">
+<h2 class="anchored" data-anchor-id="recent-announcements">Recent Announcements</h2>
+<ul>
+<li><strong>ISO 42001 Certification</strong>: An announcement regarding achieving certification in responsible AI practices.</li>
+<li><strong>Claude 3.7 Sonnet Launch</strong>: Announcement of the release of the latest iteration of Claude, touted as the most intelligent AI model yet.</li>
+</ul>
+<p>Anthropic positions itself as a leader in developing AI with a focus on safety and long-term societal benefits.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

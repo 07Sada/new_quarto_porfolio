@@ -1,71 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://07Sada.github.io/new_quarto_porfolio/blogs.html</loc>
-    <lastmod>2024-12-03T13:56:23.182Z</lastmod>
-  </url>
-  <url>
-    <loc>https://07Sada.github.io/new_quarto_porfolio/blogs/Supervised_Learning_Algorithms/Supervised Learning Algorithms.html</loc>
-    <lastmod>2024-12-03T13:56:23.226Z</lastmod>
-  </url>
-  <url>
-    <loc>https://07Sada.github.io/new_quarto_porfolio/blogs/Chi_Square_Test/Chi Square Test.html</loc>
-    <lastmod>2024-12-03T13:56:23.182Z</lastmod>
-  </url>
-  <url>
-    <loc>https://07Sada.github.io/new_quarto_porfolio/blogs/Unsupervised_Learning_Algorithms/Unsupervised Learning Algorithms.html</loc>
-    <lastmod>2024-12-03T13:56:23.226Z</lastmod>
-  </url>
-  <url>
-    <loc>https://07Sada.github.io/new_quarto_porfolio/blogs/Natural_Language_Processing(NLP)/Natural_Language_Processing(NLP).html</loc>
-    <lastmod>2024-12-03T13:56:23.210Z</lastmod>
-  </url>
-  <url>
-    <loc>https://07Sada.github.io/new_quarto_porfolio/blogs/GitHub_Actions_Continuous_Integration_CI/002_GitHub_Actions_Continuous_Integration_CI.html</loc>
-    <lastmod>2024-12-03T13:56:23.182Z</lastmod>
-  </url>
-  <url>
-    <loc>https://07Sada.github.io/new_quarto_porfolio/projects.html</loc>
-    <lastmod>2024-12-03T13:56:23.230Z</lastmod>
-  </url>
-  <url>
-    <loc>https://07Sada.github.io/new_quarto_porfolio/projects/Brand Detection/Brand_Detection.html</loc>
-    <lastmod>2024-12-03T13:56:23.230Z</lastmod>
-  </url>
-  <url>
-    <loc>https://07Sada.github.io/new_quarto_porfolio/resume.html</loc>
-    <lastmod>2024-12-03T13:56:23.238Z</lastmod>
-  </url>
-  <url>
-    <loc>https://07Sada.github.io/new_quarto_porfolio/projects/computer_vison_project/Vegetable_Recognition.html</loc>
-    <lastmod>2024-12-03T13:56:23.238Z</lastmod>
-  </url>
-  <url>
-    <loc>https://07Sada.github.io/new_quarto_porfolio/about.html</loc>
-    <lastmod>2024-12-03T13:56:23.182Z</lastmod>
-  </url>
-  <url>
-    <loc>https://07Sada.github.io/new_quarto_porfolio/index.html</loc>
-    <lastmod>2024-12-03T13:56:23.230Z</lastmod>
-  </url>
-  <url>
-    <loc>https://07Sada.github.io/new_quarto_porfolio/blogs/Introduction_to_Docker/Introduction_to_Docker.html</loc>
-    <lastmod>2024-12-03T13:56:23.206Z</lastmod>
+    <loc>https://07Sada.github.io/new_quarto_porfolio/blogs/GitHub_Actions_Introduction/001_GitHub_Actions_Introduction.html</loc>
+    <lastmod>2025-05-03T13:47:10.836Z</lastmod>
   </url>
   <url>
     <loc>https://07Sada.github.io/new_quarto_porfolio/blogs/SVM/SVM.html</loc>
-    <lastmod>2024-12-03T13:56:23.226Z</lastmod>
+    <lastmod>2025-05-03T13:47:10.861Z</lastmod>
+  </url>
+  <url>
+    <loc>https://07Sada.github.io/new_quarto_porfolio/blogs/Unsupervised_Learning_Algorithms/Unsupervised Learning Algorithms.html</loc>
+    <lastmod>2025-05-03T13:47:10.861Z</lastmod>
+  </url>
+  <url>
+    <loc>https://07Sada.github.io/new_quarto_porfolio/blogs/GitHub_Actions_Continuous_Integration_CI/002_GitHub_Actions_Continuous_Integration_CI.html</loc>
+    <lastmod>2025-05-03T13:47:10.821Z</lastmod>
+  </url>
+  <url>
+    <loc>https://07Sada.github.io/new_quarto_porfolio/blogs/Introduction_to_Docker/Introduction_to_Docker.html</loc>
+    <lastmod>2025-05-03T13:47:10.841Z</lastmod>
   </url>
   <url>
     <loc>https://07Sada.github.io/new_quarto_porfolio/blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html</loc>
-    <lastmod>2024-12-03T13:56:23.226Z</lastmod>
+    <lastmod>2025-05-03T13:47:10.861Z</lastmod>
+  </url>
+  <url>
+    <loc>https://07Sada.github.io/new_quarto_porfolio/index.html</loc>
+    <lastmod>2025-05-03T13:47:10.863Z</lastmod>
+  </url>
+  <url>
+    <loc>https://07Sada.github.io/new_quarto_porfolio/blogs.html</loc>
+    <lastmod>2025-05-03T13:47:10.820Z</lastmod>
+  </url>
+  <url>
+    <loc>https://07Sada.github.io/new_quarto_porfolio/projects/Brand Detection/Brand_Detection.html</loc>
+    <lastmod>2025-05-03T13:47:10.863Z</lastmod>
+  </url>
+  <url>
+    <loc>https://07Sada.github.io/new_quarto_porfolio/resume.html</loc>
+    <lastmod>2025-05-03T13:47:10.873Z</lastmod>
+  </url>
+  <url>
+    <loc>https://07Sada.github.io/new_quarto_porfolio/projects/computer_vison_project/Vegetable_Recognition.html</loc>
+    <lastmod>2025-05-03T13:47:10.872Z</lastmod>
+  </url>
+  <url>
+    <loc>https://07Sada.github.io/new_quarto_porfolio/about.html</loc>
+    <lastmod>2025-05-03T13:47:10.820Z</lastmod>
+  </url>
+  <url>
+    <loc>https://07Sada.github.io/new_quarto_porfolio/projects.html</loc>
+    <lastmod>2025-05-03T13:47:10.863Z</lastmod>
   </url>
   <url>
     <loc>https://07Sada.github.io/new_quarto_porfolio/blogs/Introduction_to_Algorithm/Introduction to Algorithm.html</loc>
-    <lastmod>2024-12-03T13:56:23.206Z</lastmod>
+    <lastmod>2025-05-03T13:47:10.841Z</lastmod>
   </url>
   <url>
-    <loc>https://07Sada.github.io/new_quarto_porfolio/blogs/GitHub_Actions_Introduction/001_GitHub_Actions_Introduction.html</loc>
-    <lastmod>2024-12-03T13:56:23.198Z</lastmod>
+    <loc>https://07Sada.github.io/new_quarto_porfolio/blogs/Chi_Square_Test/Chi Square Test.html</loc>
+    <lastmod>2025-05-03T13:47:10.820Z</lastmod>
+  </url>
+  <url>
+    <loc>https://07Sada.github.io/new_quarto_porfolio/blogs/Supervised_Learning_Algorithms/Supervised Learning Algorithms.html</loc>
+    <lastmod>2025-05-03T13:47:10.861Z</lastmod>
+  </url>
+  <url>
+    <loc>https://07Sada.github.io/new_quarto_porfolio/blogs/Natural_Language_Processing(NLP)/Natural_Language_Processing(NLP).html</loc>
+    <lastmod>2025-05-03T13:47:10.846Z</lastmod>
+  </url>
+  <url>
+    <loc>https://07Sada.github.io/new_quarto_porfolio/blogs/Day 1  Web Scraping and AI Summarization/Day 1  Web Scraping and AI Summarization.html</loc>
+    <lastmod>2025-05-03T13:47:10.821Z</lastmod>
   </url>
 </urlset>
