@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Sadashiv">
+<meta name="dcterms.date" content="2025-05-03">
 
-<title>Blogs – Sadashiv Nandanikar</title>
+<title>Accessing Ollama in Free Google Colab Session – Sadashiv Nandanikar</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,33 +22,66 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./images/luffy.jpg" rel="icon" type="image/jpeg">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-748b535e376f14d4692bf2b2e5fd6380.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cb069e8cead923d46920d6532b808f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-029af10e193e991b9e419fbd7a0fce3d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-cb069e8cead923d46920d6532b808f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/luffy.jpg" rel="icon" type="image/jpeg">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-748b535e376f14d4692bf2b2e5fd6380.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-cb069e8cead923d46920d6532b808f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-029af10e193e991b9e419fbd7a0fce3d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-cb069e8cead923d46920d6532b808f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,70 +108,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -300,11 +277,11 @@ window.Quarto = {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Sadashiv Nandanikar</span>
     </a>
   </div>
@@ -315,19 +292,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./projects.html"> 
+    <a class="nav-link" href="../../projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./blogs.html" aria-current="page"> 
+    <a class="nav-link" href="../../blogs.html"> 
 <span class="menu-text">Blogs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./resume.html"> 
+    <a class="nav-link" href="../../resume.html"> 
 <span class="menu-text">Resume</span></a>
   </li>  
 </ul>
@@ -351,345 +328,152 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Blogs</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta column-page-left">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(12)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Accessing Ollama in Free Google Colab Session</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sadashiv </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 3, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
 
 
+</header>
 
 
+<section id="accessing-ollama-in-free-google-colab-session" class="level2">
+<h2 class="anchored" data-anchor-id="accessing-ollama-in-free-google-colab-session">1. Accessing Ollama in Free Google Colab Session</h2>
+<section id="step-by-step-setup" class="level3">
+<h3 class="anchored" data-anchor-id="step-by-step-setup">Step-by-Step Setup</h3>
+<section id="enable-terminal-access-in-colab" class="level4">
+<h4 class="anchored" data-anchor-id="enable-terminal-access-in-colab">Enable Terminal Access in Colab</h4>
+<ol type="1">
+<li><p><strong>Install <code>colab-xterm</code> package:</strong> <code>python     !pip install colab-xterm</code></p></li>
+<li><p><strong>Load the xterm extension:</strong> <code>python     %load_ext colabxterm</code></p></li>
+<li><p><strong>Open a terminal window:</strong> <code>python     %xterm</code></p></li>
+</ol>
+</section>
+<section id="install-and-run-ollama-from-terminal" class="level4">
+<h4 class="anchored" data-anchor-id="install-and-run-ollama-from-terminal">Install and Run Ollama from Terminal</h4>
+<ol start="4" type="1">
+<li><p><strong>In the terminal, run the following to install Ollama:</strong> <code>bash     curl -fsSL https://ollama.com/install.sh | sh</code></p></li>
+<li><p><strong>Then run the following command in terminal to pull the model from ollma model repository and host it on google colab:</strong> <code>bash     ollama serve &amp; ollma pull llama3.2</code></p></li>
+</ol>
+<hr>
+</section>
+</section>
+</section>
+<section id="creating-payload-and-inference-via-local-url" class="level2">
+<h2 class="anchored" data-anchor-id="creating-payload-and-inference-via-local-url">2. Creating Payload and Inference via Local URL</h2>
+<section id="sample-payload-format" class="level3">
+<h3 class="anchored" data-anchor-id="sample-payload-format">Sample Payload Format</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>MODEL <span class="op">=</span> <span class="st">"llama3.2"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>OLLAMA_API <span class="op">=</span> <span class="st">"http://localhost:11434/api/chat"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>HEADERS <span class="op">=</span> {<span class="st">"Content-Type"</span>: <span class="st">"application/json"</span>}</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>messages <span class="op">=</span> [</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="st">"Describe some of the business applications of Generative AI"</span>}</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>payload <span class="op">=</span> {</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"model"</span>: MODEL,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"messages"</span>: messages,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"stream"</span>: <span class="va">False</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="sending-payload-via-requests" class="level3">
+<h3 class="anchored" data-anchor-id="sending-payload-via-requests">Sending Payload via <code>requests</code></h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.post(OLLAMA_API, json<span class="op">=</span>payload, headers<span class="op">=</span>HEADERS)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.json()[<span class="st">"message"</span>][<span class="st">"content"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+</section>
+<section id="using-the-python-ollama-library" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-python-ollama-library">3. Using the Python <code>ollama</code> Library</h2>
+<section id="installation-if-needed" class="level3">
+<h3 class="anchored" data-anchor-id="installation-if-needed">Installation (if needed)</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">!pip</span> install ollama</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="inference-example" class="level3">
+<h3 class="anchored" data-anchor-id="inference-example">Inference Example</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ollama</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> ollama.chat(model<span class="op">=</span>MODEL, messages<span class="op">=</span>messages)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response[<span class="st">"message"</span>][<span class="st">"content"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+</section>
+<section id="using-the-openai-library-for-inference-with-ollama" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-openai-library-for-inference-with-ollama">4. Using the <code>openai</code> Library for Inference with Ollama</h2>
+<section id="installation" class="level3">
+<h3 class="anchored" data-anchor-id="installation">Installation</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">!pip</span> install openai</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="set-api-key-and-base-url-ollama-emulates-openai-api" class="level3">
+<h3 class="anchored" data-anchor-id="set-api-key-and-base-url-ollama-emulates-openai-api">Set API Key and Base URL (Ollama emulates OpenAI API)</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> openai <span class="im">import</span> OpenAI</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> OpenAI(base_url<span class="op">=</span><span class="st">"http://localhost:11434/v1"</span>, api_key<span class="op">=</span><span class="st">"ollama"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> client.chat.completions.create(</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    model<span class="op">=</span><span class="st">"llama3.2"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    messages<span class="op">=</span>[{<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="st">"What is Artificial Intelligence?"</span>}]</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.choices[<span class="dv">0</span>].message.content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+</section>
+<section id="pulling-and-using-deepseek-model" class="level2">
+<h2 class="anchored" data-anchor-id="pulling-and-using-deepseek-model">5. Pulling and Using DeepSeek Model</h2>
+<section id="pull-deepseek-model" class="level3">
+<h3 class="anchored" data-anchor-id="pull-deepseek-model">Pull DeepSeek Model</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">!ollama</span> pull deepseek-coder:6.7b-instruct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="inference-with-deepseek-model" class="level3">
+<h3 class="anchored" data-anchor-id="inference-with-deepseek-model">Inference with DeepSeek Model</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.post(<span class="st">"http://localhost:11434/api/generate"</span>, json<span class="op">=</span>{</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"model"</span>: <span class="st">"deepseek-coder:6.7b-instruct"</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"prompt"</span>: <span class="st">"Write a Python function to compute factorial."</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.json()[<span class="st">"response"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Or using Python <code>ollama</code> package:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> ollama.chat(model<span class="op">=</span><span class="st">"deepseek-coder:6.7b-instruct"</span>, messages<span class="op">=</span>[</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="st">"Explain decorators in Python"</span>}</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response[<span class="st">"message"</span>][<span class="st">"content"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
+</section>
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1746230400000" data-listing-file-modified-sort="1746281008821" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="312">
-<div class="thumbnail"><a href="./blogs/Day 2 Inferencing Local Ollama/Day 2 Inferencing Local Ollama.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blogs/Day 2 Inferencing Local Ollama/Day 2 Inferencing Local Ollama.html" class="no-external">Accessing Ollama in Free Google Colab Session</a>
-</h3>
-<div class="delink listing-description"><a href="./blogs/Day 2 Inferencing Local Ollama/Day 2 Inferencing Local Ollama.html" class="no-external">
-<strong>Install <code>colab-xterm</code> package:</strong> <code>python     !pip install colab-xterm</code>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./blogs/Day 2 Inferencing Local Ollama/Day 2 Inferencing Local Ollama.html" class="no-external">
-<div class="listing-date">
-May 3, 2025
-</div>
-<div class="listing-author">
-Sadashiv
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1746230400000" data-listing-file-modified-sort="1746281008821" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1298">
-<div class="thumbnail"><a href="./blogs/Day 1  Web Scraping and AI Summarization/Day 1  Web Scraping and AI Summarization.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blogs/Day 1  Web Scraping and AI Summarization/Day 1  Web Scraping and AI Summarization.html" class="no-external">Day 1 Web Scraping and AI Summarization</a>
-</h3>
-<div class="delink listing-description"><a href="./blogs/Day 1  Web Scraping and AI Summarization/Day 1  Web Scraping and AI Summarization.html" class="no-external">
-Load environment variables from the <code>.env</code> file using <code>load_dotenv()</code>.
-</a></div>
-</div>
-<div class="metadata">
-<a href="./blogs/Day 1  Web Scraping and AI Summarization/Day 1  Web Scraping and AI Summarization.html" class="no-external">
-<div class="listing-date">
-May 3, 2025
-</div>
-<div class="listing-author">
-Sadashiv
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1733184000000" data-listing-file-modified-sort="1746281008821" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1069">
-<div class="thumbnail"><a href="./blogs/GitHub_Actions_Continuous_Integration_CI/002_GitHub_Actions_Continuous_Integration_CI.html" class="no-external">
-
-<img loading="lazy" src="./blogs/GitHub_Actions_Continuous_Integration_CI/Drawing_001_GitHub_Actions_Continuous_Integration_CI_Automation.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blogs/GitHub_Actions_Continuous_Integration_CI/002_GitHub_Actions_Continuous_Integration_CI.html" class="no-external">GitHub Actions Continuous Integration CI</a>
-</h3>
-<div class="delink listing-description"><a href="./blogs/GitHub_Actions_Continuous_Integration_CI/002_GitHub_Actions_Continuous_Integration_CI.html" class="no-external">
-Before the introduction of modern tools like GitHub, source code management (SCM) primarily relied on older systems and practices. One of the earliest forms of SCM was…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./blogs/GitHub_Actions_Continuous_Integration_CI/002_GitHub_Actions_Continuous_Integration_CI.html" class="no-external">
-<div class="listing-date">
-Dec 3, 2024
-</div>
-<div class="listing-author">
-Sadashiv
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1733097600000" data-listing-file-modified-sort="1746281008836" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1345">
-<div class="thumbnail"><a href="./blogs/GitHub_Actions_Introduction/001_GitHub_Actions_Introduction.html" class="no-external">
-
-<img loading="lazy" src="./blogs/GitHub_Actions_Introduction/The_concept_of_GitHub_Actions.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blogs/GitHub_Actions_Introduction/001_GitHub_Actions_Introduction.html" class="no-external">GitHub Actions Introduction</a>
-</h3>
-<div class="delink listing-description"><a href="./blogs/GitHub_Actions_Introduction/001_GitHub_Actions_Introduction.html" class="no-external">
-<span style="font-style: italic; color:#da3ef9">GitHub Actions is a continuous integration and continuous delivery (CI/CD) platform that allows you to automate your build, test, and deployment pipeline.</span> <span style="font-style: italic; color:#edd17e">You can create…</span>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./blogs/GitHub_Actions_Introduction/001_GitHub_Actions_Introduction.html" class="no-external">
-<div class="listing-date">
-Dec 2, 2024
-</div>
-<div class="listing-author">
-Sadashiv
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1732665600000" data-listing-file-modified-sort="1746281008846" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="27" data-listing-word-count-sort="5338">
-<div class="thumbnail"><a href="./blogs/Natural_Language_Processing(NLP)/Natural_Language_Processing(NLP).html" class="no-external">
-
-<img loading="lazy" src="./blogs/Natural_Language_Processing(NLP)/Untitled 11.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blogs/Natural_Language_Processing(NLP)/Natural_Language_Processing(NLP).html" class="no-external">Natural Language Processing(NLP)</a>
-</h3>
-<div class="delink listing-description"><a href="./blogs/Natural_Language_Processing(NLP)/Natural_Language_Processing(NLP).html" class="no-external">
-Natural language processing is a <span style="font-style: italic; color:#92d050">subfield of linguistics, computer science, and artificial intelligence concerned</span> with the <span style="font-style: italic; color:#da3ef9">interactions between computers and human language,</span> …<span style="font-style: italic; color:#5DE2E7"></span>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./blogs/Natural_Language_Processing(NLP)/Natural_Language_Processing(NLP).html" class="no-external">
-<div class="listing-date">
-Nov 27, 2024
-</div>
-<div class="listing-author">
-Sadashiv
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-listing-date-sort="1732147200000" data-listing-file-modified-sort="1746281008820" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1931">
-<div class="thumbnail"><a href="./blogs/Chi_Square_Test/Chi Square Test.html" class="no-external">
-
-<img loading="lazy" src="./blogs/Chi_Square_Test/th.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blogs/Chi_Square_Test/Chi Square Test.html" class="no-external">Chi Square Test</a>
-</h3>
-<div class="delink listing-description"><a href="./blogs/Chi_Square_Test/Chi Square Test.html" class="no-external">
-The chi-square test is a statistical test used to determine whether there is a significant difference between the expected frequencies and the observed frequencies in one or…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./blogs/Chi_Square_Test/Chi Square Test.html" class="no-external">
-<div class="listing-date">
-Nov 21, 2024
-</div>
-<div class="listing-author">
-Sadashiv
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-listing-date-sort="1732060800000" data-listing-file-modified-sort="1746281008861" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3357">
-<div class="thumbnail"><a href="./blogs/SVM/SVM.html" class="no-external">
-
-<img loading="lazy" src="./blogs/SVM/Pasted image 20240417193515.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blogs/SVM/SVM.html" class="no-external">Support Vector Machines</a>
-</h3>
-<div class="delink listing-description"><a href="./blogs/SVM/SVM.html" class="no-external">
-SVM is a powerful supervised machine learning algorithm that works best on smaller dataset but on complex ones. Support Vector Machine, abbreviated as SVM can be used for…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./blogs/SVM/SVM.html" class="no-external">
-<div class="listing-date">
-Nov 20, 2024
-</div>
-<div class="listing-author">
-Sadashiv
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-listing-date-sort="1731974400000" data-listing-file-modified-sort="1746281008861" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="294">
-<div class="thumbnail"><a href="./blogs/Supervised_Learning_Algorithms/Supervised Learning Algorithms.html" class="no-external">
-
-<img loading="lazy" src="https://databasetown.com/wp-content/uploads/2023/05/Supervised-Learning-1024x726.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blogs/Supervised_Learning_Algorithms/Supervised Learning Algorithms.html" class="no-external">Supervised Learning Algorithms</a>
-</h3>
-<div class="delink listing-description"><a href="./blogs/Supervised_Learning_Algorithms/Supervised Learning Algorithms.html" class="no-external">
-Imagine teaching a computer like a teacher instructs a student. In supervised learning, we provide the computer with labeled examples. It’s like showing it the right answers…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./blogs/Supervised_Learning_Algorithms/Supervised Learning Algorithms.html" class="no-external">
-<div class="listing-date">
-Nov 19, 2024
-</div>
-<div class="listing-author">
-Sadashiv
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="8" data-listing-date-sort="1731974400000" data-listing-file-modified-sort="1746281008861" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="268">
-<div class="thumbnail"><a href="./blogs/Unsupervised_Learning_Algorithms/Unsupervised Learning Algorithms.html" class="no-external">
-
-<img loading="lazy" src="https://databasetown.com/wp-content/uploads/2023/05/Unsupervised-Learning-1024x726.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blogs/Unsupervised_Learning_Algorithms/Unsupervised Learning Algorithms.html" class="no-external">Unsupervised Learning Algorithms</a>
-</h3>
-<div class="delink listing-description"><a href="./blogs/Unsupervised_Learning_Algorithms/Unsupervised Learning Algorithms.html" class="no-external">
-Imagine you give the computer a bunch of puzzle pieces without telling it what the picture should be. Unsupervised learning is like asking the computer to figure out if…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./blogs/Unsupervised_Learning_Algorithms/Unsupervised Learning Algorithms.html" class="no-external">
-<div class="listing-date">
-Nov 19, 2024
-</div>
-<div class="listing-author">
-Sadashiv
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="9" data-listing-date-sort="1731888000000" data-listing-file-modified-sort="1746281008841" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1612">
-<div class="thumbnail"><a href="./blogs/Introduction_to_Docker/Introduction_to_Docker.html" class="no-external">
-
-<img loading="lazy" src="./blogs/Introduction_to_Docker/docker-logo-blue.svg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blogs/Introduction_to_Docker/Introduction_to_Docker.html" class="no-external">Introduction to Docker</a>
-</h3>
-<div class="delink listing-description"><a href="./blogs/Introduction_to_Docker/Introduction_to_Docker.html" class="no-external">
-Docker is a platform designed to help developers build, share, and run container applications.
-</a></div>
-</div>
-<div class="metadata">
-<a href="./blogs/Introduction_to_Docker/Introduction_to_Docker.html" class="no-external">
-<div class="listing-date">
-Nov 18, 2024
-</div>
-<div class="listing-author">
-Sadashiv
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="10" data-listing-date-sort="1727654400000" data-listing-file-modified-sort="1746281008861" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1710">
-<div class="thumbnail"><a href="./blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html" class="no-external">
-
-<p class="card-img-top"><img src="https://static.javatpoint.com/tutorial/machine-learning/images/feature-selection-techniques-in-machine-learning.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html" class="no-external">Feature Selection Techniques in Machine Learning</a>
-</h3>
-<div class="delink listing-description"><a href="./blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html" class="no-external">
-<em>Feature selection is a way of selecting the subset of the most relevant features from the original features set by removing the redundant, irrelevant, or noisy features.</em>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html" class="no-external">
-<div class="listing-date">
-Sep 30, 2024
-</div>
-<div class="listing-author">
-Sadashiv
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="11" data-listing-date-sort="1727308800000" data-listing-file-modified-sort="1746281008841" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="536">
-<div class="thumbnail"><a href="./blogs/Introduction_to_Algorithm/Introduction to Algorithm.html" class="no-external">
-
-<img loading="lazy" src="./blogs/Introduction_to_Algorithm/machine-learning-algorithms.jpeg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./blogs/Introduction_to_Algorithm/Introduction to Algorithm.html" class="no-external">Introduction to Algorithm</a>
-</h3>
-<div class="delink listing-description"><a href="./blogs/Introduction_to_Algorithm/Introduction to Algorithm.html" class="no-external">
-In the context of machine learning and deep learning, an algorithm is like a set of step-by-step instructions that a computer follows to learn from data or make predictions.
-</a></div>
-</div>
-<div class="metadata">
-<a href="./blogs/Introduction_to_Algorithm/Introduction to Algorithm.html" class="no-external">
-<div class="listing-date">
-Sep 26, 2024
-</div>
-<div class="listing-author">
-Sadashiv
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

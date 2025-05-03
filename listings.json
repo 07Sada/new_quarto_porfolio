@@ -1,7 +1,15 @@
 [
   {
+    "listing": "/projects.html",
+    "items": [
+      "/projects/Brand Detection/Brand_Detection.html",
+      "/projects/computer_vison_project/Vegetable_Recognition.html"
+    ]
+  },
+  {
     "listing": "/blogs.html",
     "items": [
+      "/blogs/Day 2 Inferencing Local Ollama/Day 2 Inferencing Local Ollama.html",
       "/blogs/Day 1  Web Scraping and AI Summarization/Day 1  Web Scraping and AI Summarization.html",
       "/blogs/GitHub_Actions_Continuous_Integration_CI/002_GitHub_Actions_Continuous_Integration_CI.html",
       "/blogs/GitHub_Actions_Introduction/001_GitHub_Actions_Introduction.html",
@@ -13,13 +21,6 @@
       "/blogs/Introduction_to_Docker/Introduction_to_Docker.html",
       "/blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html",
       "/blogs/Introduction_to_Algorithm/Introduction to Algorithm.html"
-    ]
-  },
-  {
-    "listing": "/projects.html",
-    "items": [
-      "/projects/Brand Detection/Brand_Detection.html",
-      "/projects/computer_vison_project/Vegetable_Recognition.html"
     ]
   }
 ]
