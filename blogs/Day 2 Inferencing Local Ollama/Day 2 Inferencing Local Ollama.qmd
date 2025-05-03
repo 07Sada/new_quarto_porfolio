@@ -35,7 +35,7 @@ date: 05-03-2025
     ollama serve & ollma pull llama3.2
     ```
 
----
+***
 ## 2. Creating Payload and Inference via Local URL
 ### Sample Payload Format
 ```python
@@ -61,7 +61,7 @@ response = requests.post(OLLAMA_API, json=payload, headers=HEADERS)
 print(response.json()["message"]["content"])
 ```
 
----
+***
 
 ## 3. Using the Python `ollama` Library
 ### Installation (if needed)
@@ -75,7 +75,7 @@ response = ollama.chat(model=MODEL, messages=messages)
 print(response["message"]["content"])
 ```
 
----
+***
 ## 4. Using the `openai` Library for Inference with Ollama
 ### Installation
 ```bash
@@ -96,7 +96,7 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 ```
 
----
+***
 ## 5. Pulling and Using DeepSeek Model
 ### Pull DeepSeek Model
 ```bash
