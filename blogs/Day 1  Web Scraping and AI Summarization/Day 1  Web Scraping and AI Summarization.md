@@ -1,3 +1,11 @@
+---
+title: Day 1  Web Scraping and AI Summarization
+author: Sadashiv
+date: 05-03-2025
+---
+
+## Web Scraping and AI Summarization
+
 ### Importing Libraries
 * Import necessary libraries: `openai`, `os`, `requests`, `BeautifulSoup`, `load_dotenv`, `display`, and `Markdown`.
 * These libraries are used for interacting with the OpenAI API, handling operating system interactions, making HTTP requests, parsing HTML, loading environment variables, and displaying Markdown content.
