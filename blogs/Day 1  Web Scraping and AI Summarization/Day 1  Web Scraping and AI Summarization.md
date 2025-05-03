@@ -1,0 +1,142 @@
+### Importing Libraries
+* Import necessary libraries: `openai`, `os`, `requests`, `BeautifulSoup`, `load_dotenv`, `display`, and `Markdown`.
+* These libraries are used for interacting with the OpenAI API, handling operating system interactions, making HTTP requests, parsing HTML, loading environment variables, and displaying Markdown content.
+* Dependencies can be installed using `requirements.txt`.
+* Code:
+    ```python
+    # importing the libaries
+    import openai
+    import os
+    import requests
+    from bs4 import BeautifulSoup
+    from dotenv import load_dotenv
+    from IPython.display import display, Markdown
+    ```
+
+### Setting Up API Key
+* Load environment variables from the `.env` file using `load_dotenv()`.
+* Set the OpenAI API key using `openai.api_key = os.getenv("OPENAI_API_KEY")`.
+* Code:
+    ```python
+    # load the environment variables from .env file
+    load_dotenv()
+
+    # set the OpenAI API key
+    openai.api_key = os.getenv("OPENAI_API_KEY")
+    ```
+
+### Website Class
+* The `Website` class is defined to fetch and parse website content.
+* It takes a URL as input, retrieves the HTML content using `requests.get()` with headers to mimic a browser, and parses it with `BeautifulSoup`.
+* The class extracts the title and visible text of the webpage, removing irrelevant elements like script, style, img, and input tags.
+* Code:
+    ```python
+    # Some websites need you to use proper headers when fetching them:
+    headers = {
+        # The User-Agent header is used to identify the client making the request.
+        # This helps in mimicking a real browser to avoid being blocked by websites.
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
+    }
+
+    class Website:
+        def __init__(self, url):
+            """
+            Initialize a Website object from the given URL using the BeautifulSoup library.
+
+            Args:
+                url (str): The URL of the website to fetch and parse.
+            """
+            self.url = url  # Store the URL of the website.
+
+            # Send an HTTP GET request to the URL with the specified headers.
+            response = requests.get(url, headers=headers)
+
+            # Parse the HTML content of the response using BeautifulSoup.
+            soup = BeautifulSoup(response.content, 'html.parser')
+
+            # Extract the title of the webpage, if available. If not, set it to "No title found".
+            self.title = soup.title.string if soup.title else "No title found"
+
+            # Remove irrelevant elements like <script>, <style>, <img>, and <input> from the body of the webpage.
+            for irrelevant in soup.body(["script", "style", "img", "input"]):
+                irrelevant.decompose()
+
+            # Extract the visible text from the body of the webpage, separating lines with a newline character.
+            self.text = soup.body.get_text(separator="\n", strip=True)
+    ```
+
+### Prompts
+* **System Prompt**:  Instructs the AI on its role and desired output format (e.g., summarizing a website in markdown).
+* **User Prompt**: Contains the specific request or query for the AI, such as summarizing the content of a given website.
+* Code:
+    ```python
+    # Define our system prompt
+    system_prompt = "You are an assistant that analyzes the contents of a website \
+    and provides a short summary, ignoring text that might be navigation related. \
+    Respond in markdown."
+
+    # A function that writes a User Prompt that asks for summaries of websites:
+    def user_prompt_for(website):
+        user_prompt = f"You are looking at a website titled {website.title}\n"
+        user_prompt += "The contents of this website is as follows; \
+        please provide a short summary of this website in markdown. \
+        If it includes news or announcements, then summarize these too.\n\n"
+        user_prompt += website.text
+        return user_prompt
+    ```
+
+### Messages
+* The OpenAI API requires messages to be structured as a list of dictionaries, with each dictionary containing a 'role' (system or user) and 'content' (the prompt).
+* Code:
+    ```python
+    def message_for(website):
+        return [
+            {'role': 'system', 'content': system_prompt},
+            {'role': 'user', 'content': user_prompt_for(website)}
+        ]
+    ```
+
+### Summarization Function
+* The `summarize()` function takes a URL, creates a `Website` object, constructs the messages with the system and user prompts, and calls the OpenAI API to generate a summary.
+* The generated summary is then returned.
+* Code:
+    ```python
+    def summarize(url):
+        website = Website(url)
+        response = openai.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=message_for(website)
+        )
+        return response.choices[0].message.content
+    ```
+
+### Displaying Summaries
+* The `display(Markdown())` function is used to display the website summaries in Markdown format.
+* Code:
+    ```python
+    display(Markdown(summarize("[https://edwarddonner.com](https://edwarddonner.com)")))
+    display(Markdown(summarize("[https://cnn.com](https://cnn.com)")))
+    display(Markdown(summarize("[https://anthropic.com](https://anthropic.com)")))
+    ```
+
+
+### Output After running the below code
+```python
+display(Markdown(summarize("[https://anthropic.com](https://anthropic.com)")))
+```
+# Website Summary for Anthropic
+
+The Anthropic website primarily focuses on its flagship AI model, Claude, showcasing its capabilities, pricing plans, and various applications. Key sections of the site include:
+
+- **Claude Overview**: Introduction to Claude and its various iterations (like Claude 3.7 Sonnet), highlighting its advanced capabilities and responsible AI design.
+- **API**: Resources for developers to build applications with Claude, including API documentation and pricing.
+- **Solutions**: Information on how Claude can assist in different domains such as AI agents, coding, and customer support.
+- **Research**: Insights into the company's research initiatives concerning AI safety, impacts, and transparency. Notable mentioned topics include the Claude Economic Index and interpretability.
+- **Learning Resources**: The Anthropic Academy offers tutorials on utilizing Claude effectively.
+- **Responsible AI Development**: An emphasis on creating AI technologies with human benefit in mind and maintaining transparency in the development process.
+
+## Recent Announcements
+- **ISO 42001 Certification**: An announcement regarding achieving certification in responsible AI practices.
+- **Claude 3.7 Sonnet Launch**: Announcement of the release of the latest iteration of Claude, touted as the most intelligent AI model yet.
+
+Anthropic positions itself as a leader in developing AI with a focus on safety and long-term societal benefits.
