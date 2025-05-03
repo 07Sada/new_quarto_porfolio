@@ -372,10 +372,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="importing-libraries" class="level3">
 <h3 class="anchored" data-anchor-id="importing-libraries">Importing Libraries</h3>
 <ul>
-<li>Import necessary libraries: <code>openai</code>, <code>os</code>, <code>requests</code>, <code>BeautifulSoup</code>, <code>load_dotenv</code>, <code>display</code>, and <code>Markdown</code>.</li>
-<li>These libraries are used for interacting with the OpenAI API, handling operating system interactions, making HTTP requests, parsing HTML, loading environment variables, and displaying Markdown content.</li>
-<li>Dependencies can be installed using <code>requirements.txt</code>.</li>
-<li>Code: <code>python     # importing the libaries     import openai     import os     import requests     from bs4 import BeautifulSoup     from dotenv import load_dotenv     from IPython.display import display, Markdown</code></li>
+<li><p>Import necessary libraries: <code>openai</code>, <code>os</code>, <code>requests</code>, <code>BeautifulSoup</code>, <code>load_dotenv</code>, <code>display</code>, and <code>Markdown</code>.</p></li>
+<li><p>These libraries are used for interacting with the OpenAI API, handling operating system interactions, making HTTP requests, parsing HTML, loading environment variables, and displaying Markdown content.</p></li>
+<li><p>Dependencies can be installed using <code>requirements.txt</code>.</p></li>
+<li><p>Code:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># importing the libaries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> openai</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dotenv <span class="im">import</span> load_dotenv</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Markdown</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
 <section id="setting-up-api-key" class="level3">
@@ -383,8 +390,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p>Load environment variables from the <code>.env</code> file using <code>load_dotenv()</code>.</p></li>
 <li><p>Set the OpenAI API key using <code>openai.api_key = os.getenv("OPENAI_API_KEY")</code>.</p></li>
-<li><p>Code: ```python # load the environment variables from .env file load_dotenv()</p>
-<p># set the OpenAI API key openai.api_key = os.getenv(“OPENAI_API_KEY”) ```</p></li>
+<li><p>Code:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the environment variables from .env file </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>load_dotenv()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># set the OpenAI API key </span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>openai.api_key <span class="op">=</span> os.getenv(<span class="st">"OPENAI_API_KEY"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
 <section id="website-class" class="level3">
@@ -393,29 +404,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>The <code>Website</code> class is defined to fetch and parse website content.</p></li>
 <li><p>It takes a URL as input, retrieves the HTML content using <code>requests.get()</code> with headers to mimic a browser, and parses it with <code>BeautifulSoup</code>.</p></li>
 <li><p>The class extracts the title and visible text of the webpage, removing irrelevant elements like script, style, img, and input tags.</p></li>
-<li><p>Code: ```python # Some websites need you to use proper headers when fetching them: headers = { # The User-Agent header is used to identify the client making the request. # This helps in mimicking a real browser to avoid being blocked by websites. “User-Agent”: “Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36” }</p>
-<p>class Website: def <strong>init</strong>(self, url): ““” Initialize a Website object from the given URL using the BeautifulSoup library.</p>
-<pre><code>      Args:
-          url (str): The URL of the website to fetch and parse.
-      """
-      self.url = url  # Store the URL of the website.
-
-      # Send an HTTP GET request to the URL with the specified headers.
-      response = requests.get(url, headers=headers)
-
-      # Parse the HTML content of the response using BeautifulSoup.
-      soup = BeautifulSoup(response.content, 'html.parser')
-
-      # Extract the title of the webpage, if available. If not, set it to "No title found".
-      self.title = soup.title.string if soup.title else "No title found"
-
-      # Remove irrelevant elements like &lt;script&gt;, &lt;style&gt;, &lt;img&gt;, and &lt;input&gt; from the body of the webpage.
-      for irrelevant in soup.body(["script", "style", "img", "input"]):
-          irrelevant.decompose()
-
-      # Extract the visible text from the body of the webpage, separating lines with a newline character.
-      self.text = soup.body.get_text(separator="\n", strip=True)</code></pre>
-<p>```</p></li>
+<li><p>Code:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Some websites need you to use proper headers when fetching them:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>headers <span class="op">=</span> {</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The User-Agent header is used to identify the client making the request.</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This helps in mimicking a real browser to avoid being blocked by websites.</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"User-Agent"</span>: <span class="st">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Website:</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, url):</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">        Initialize a Website object from the given URL using the BeautifulSoup library.</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">        Args:</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">            url (str): The URL of the website to fetch and parse.</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.url <span class="op">=</span> url  <span class="co"># Store the URL of the website.</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Send an HTTP GET request to the URL with the specified headers.</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        response <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Parse the HTML content of the response using BeautifulSoup.</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        soup <span class="op">=</span> BeautifulSoup(response.content, <span class="st">'html.parser'</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract the title of the webpage, if available. If not, set it to "No title found".</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.title <span class="op">=</span> soup.title.string <span class="cf">if</span> soup.title <span class="cf">else</span> <span class="st">"No title found"</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Remove irrelevant elements like &lt;script&gt;, &lt;style&gt;, &lt;img&gt;, and &lt;input&gt; from the body of the webpage.</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> irrelevant <span class="kw">in</span> soup.body([<span class="st">"script"</span>, <span class="st">"style"</span>, <span class="st">"img"</span>, <span class="st">"input"</span>]):</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>            irrelevant.decompose()</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract the visible text from the body of the webpage, separating lines with a newline character.</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.text <span class="op">=</span> soup.body.get_text(separator<span class="op">=</span><span class="st">"</span><span class="ch">\n</span><span class="st">"</span>, strip<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
 <section id="prompts" class="level3">
@@ -423,39 +444,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p><strong>System Prompt</strong>: Instructs the AI on its role and desired output format (e.g., summarizing a website in markdown).</p></li>
 <li><p><strong>User Prompt</strong>: Contains the specific request or query for the AI, such as summarizing the content of a given website.</p></li>
-<li><p>Code: ```python # Define our system prompt system_prompt = “You are an assistant that analyzes the contents of a website<br>
-and provides a short summary, ignoring text that might be navigation related.<br>
-Respond in markdown.”</p>
-<p># A function that writes a User Prompt that asks for summaries of websites: def user_prompt_for(website): user_prompt = f”You are looking at a website titled {website.title}” user_prompt += “The contents of this website is as follows;<br>
-please provide a short summary of this website in markdown.<br>
-If it includes news or announcements, then summarize these too.” user_prompt += website.text return user_prompt ```</p></li>
+<li><p>Code:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our system prompt</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>system_prompt <span class="op">=</span> <span class="st">"You are an assistant that analyzes the contents of a website </span><span class="op">\</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="st">and provides a short summary, ignoring text that might be navigation related. </span><span class="op">\</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="st">Respond in markdown."</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># A function that writes a User Prompt that asks for summaries of websites:</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> user_prompt_for(website):</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    user_prompt <span class="op">=</span> <span class="ss">f"You are looking at a website titled </span><span class="sc">{</span>website<span class="sc">.</span>title<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    user_prompt <span class="op">+=</span> <span class="st">"The contents of this website is as follows; </span><span class="op">\</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="st">    please provide a short summary of this website in markdown. </span><span class="op">\</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="st">    If it includes news or announcements, then summarize these too.</span><span class="ch">\n\n</span><span class="st">"</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    user_prompt <span class="op">+=</span> website.text</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> user_prompt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
 <section id="messages" class="level3">
 <h3 class="anchored" data-anchor-id="messages">Messages</h3>
 <ul>
-<li>The OpenAI API requires messages to be structured as a list of dictionaries, with each dictionary containing a ‘role’ (system or user) and ‘content’ (the prompt).</li>
-<li>Code: <code>python     def message_for(website):         return [             {'role': 'system', 'content': system_prompt},             {'role': 'user', 'content': user_prompt_for(website)}         ]</code></li>
+<li><p>The OpenAI API requires messages to be structured as a list of dictionaries, with each dictionary containing a ‘role’ (system or user) and ‘content’ (the prompt).</p></li>
+<li><p>Code:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> message_for(website):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        {<span class="st">'role'</span>: <span class="st">'system'</span>, <span class="st">'content'</span>: system_prompt},</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        {<span class="st">'role'</span>: <span class="st">'user'</span>, <span class="st">'content'</span>: user_prompt_for(website)}</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
 <section id="summarization-function" class="level3">
 <h3 class="anchored" data-anchor-id="summarization-function">Summarization Function</h3>
 <ul>
-<li>The <code>summarize()</code> function takes a URL, creates a <code>Website</code> object, constructs the messages with the system and user prompts, and calls the OpenAI API to generate a summary.</li>
-<li>The generated summary is then returned.</li>
-<li>Code: <code>python     def summarize(url):         website = Website(url)         response = openai.chat.completions.create(             model="gpt-4o-mini",             messages=message_for(website)         )         return response.choices[0].message.content</code></li>
+<li><p>The <code>summarize()</code> function takes a URL, creates a <code>Website</code> object, constructs the messages with the system and user prompts, and calls the OpenAI API to generate a summary.</p></li>
+<li><p>The generated summary is then returned.</p></li>
+<li><p>Code:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> summarize(url):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    website <span class="op">=</span> Website(url)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> openai.chat.completions.create(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        model<span class="op">=</span><span class="st">"gpt-4o-mini"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        messages<span class="op">=</span>message_for(website)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> response.choices[<span class="dv">0</span>].message.content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
 <section id="displaying-summaries" class="level3">
 <h3 class="anchored" data-anchor-id="displaying-summaries">Displaying Summaries</h3>
 <ul>
-<li>The <code>display(Markdown())</code> function is used to display the website summaries in Markdown format.</li>
-<li>Code: <code>python     display(Markdown(summarize("[https://edwarddonner.com](https://edwarddonner.com)")))     display(Markdown(summarize("[https://cnn.com](https://cnn.com)")))     display(Markdown(summarize("[https://anthropic.com](https://anthropic.com)")))</code></li>
+<li><p>The <code>display(Markdown())</code> function is used to display the website summaries in Markdown format.</p></li>
+<li><p>Code:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>display(Markdown(summarize(<span class="st">"[https://edwarddonner.com](https://edwarddonner.com)"</span>)))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>display(Markdown(summarize(<span class="st">"[https://cnn.com](https://cnn.com)"</span>)))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>display(Markdown(summarize(<span class="st">"[https://anthropic.com](https://anthropic.com)"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
 <section id="output-after-running-the-below-code" class="level3">
 <h3 class="anchored" data-anchor-id="output-after-running-the-below-code">Output After running the below code</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>display(Markdown(summarize(<span class="st">"[https://anthropic.com](https://anthropic.com)"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>display(Markdown(summarize(<span class="st">"[https://anthropic.com](https://anthropic.com)"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="website-summary-for-anthropic" class="level1">
