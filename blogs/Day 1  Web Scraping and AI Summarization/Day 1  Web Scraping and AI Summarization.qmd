@@ -9,6 +9,10 @@ image: Day_01.jpg
 
 ![](Day_01.jpg){fig-align="left" width="600"}
 
+## Introduction
+
+In this blog, I explore how to leverage Large Language Models (LLMs) for real-world tasks by combining them with traditional web scraping techniques. You'll learn how to extract website content using Python and then summarize it automatically using OpenAI's API. This hands-on walkthrough demonstrates the synergy between classic data extraction and modern AI-powered summarization.
+
 ### Importing Libraries
 
 -   Import necessary libraries: `openai`, `os`, `requests`, `BeautifulSoup`, `load_dotenv`, `display`, and `Markdown`.

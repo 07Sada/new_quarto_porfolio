@@ -9,6 +9,10 @@ image: Day_02.jpg
 
 ![](Day_02.jpg){fig-align="left" width="700" height="356"}
 
+## Introduction
+
+This guide walks you through running Large Language Models (LLMs) locally in a free Google Colab environment using Ollama. It covers setting up terminal access, installing Ollama, pulling models like LLaMA3 and DeepSeek, and performing inference using Python libraries such as `requests`, `ollama`, and `openai`. Ideal for developers looking to experiment with local LLMs without needing a powerful machine.
+
 ### Step-by-Step Setup
 
 #### Enable Terminal Access in Colab
