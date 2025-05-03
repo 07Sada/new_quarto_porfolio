@@ -2,9 +2,12 @@
 title: Day 1  Web Scraping and AI Summarization
 author: Sadashiv
 date: 05-03-2025
+image: Day_01.jpg
 ---
 
 ## Web Scraping and AI Summarization
+
+![](Day_01.jpg){fig-align="left" width="600"}
 
 ### Importing Libraries
 
