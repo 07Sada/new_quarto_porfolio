@@ -7,7 +7,7 @@ image: Day_02.jpg
 
 ## 1. Accessing Ollama in Free Google Colab Session
 
-![](Day_02.jpg){fig-align="left" width="1472" height="500"}
+![](Day_02.jpg){fig-align="left" width="700" height="356"}
 
 ### Step-by-Step Setup
 
@@ -44,7 +44,6 @@ image: Day_02.jpg
     ``` bash
     ollama serve & ollma pull llama3.2
     ```
-
 
 ## 2. Creating Payload and Inference via Local URL
 
