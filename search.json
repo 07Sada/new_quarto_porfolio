@@ -74,14 +74,14 @@
     "href": "blogs/Day 2 Inferencing Local Ollama/Day 2 Inferencing Local Ollama.html",
     "title": "Accessing Ollama in Free Google Colab Session",
     "section": "",
-    "text": "Install colab-xterm package: python     !pip install colab-xterm\nLoad the xterm extension: python     %load_ext colabxterm\nOpen a terminal window: python     %xterm\n\n\n\n\n\nIn the terminal, run the following to install Ollama: bash     curl -fsSL https://ollama.com/install.sh | sh\nThen run the following command in terminal to pull the model from ollma model repository and host it on google colab: bash     ollama serve & ollma pull llama3.2"
+    "text": "Install colab-xterm package:\n!pip install colab-xterm\nLoad the xterm extension:\n%load_ext colabxterm\nOpen a terminal window:\n %xterm\n\n\n\n\n\nIn the terminal, run the following to install Ollama:\ncurl -fsSL https://ollama.com/install.sh | sh\nThen run the following command in terminal to pull the model from ollma model repository and host it on google colab:\nollama serve & ollma pull llama3.2"
   },
   {
     "objectID": "blogs/Day 2 Inferencing Local Ollama/Day 2 Inferencing Local Ollama.html#accessing-ollama-in-free-google-colab-session",
     "href": "blogs/Day 2 Inferencing Local Ollama/Day 2 Inferencing Local Ollama.html#accessing-ollama-in-free-google-colab-session",
     "title": "Accessing Ollama in Free Google Colab Session",
     "section": "",
-    "text": "Install colab-xterm package: python     !pip install colab-xterm\nLoad the xterm extension: python     %load_ext colabxterm\nOpen a terminal window: python     %xterm\n\n\n\n\n\nIn the terminal, run the following to install Ollama: bash     curl -fsSL https://ollama.com/install.sh | sh\nThen run the following command in terminal to pull the model from ollma model repository and host it on google colab: bash     ollama serve & ollma pull llama3.2"
+    "text": "Install colab-xterm package:\n!pip install colab-xterm\nLoad the xterm extension:\n%load_ext colabxterm\nOpen a terminal window:\n %xterm\n\n\n\n\n\nIn the terminal, run the following to install Ollama:\ncurl -fsSL https://ollama.com/install.sh | sh\nThen run the following command in terminal to pull the model from ollma model repository and host it on google colab:\nollama serve & ollma pull llama3.2"
   },
   {
     "objectID": "blogs/Day 2 Inferencing Local Ollama/Day 2 Inferencing Local Ollama.html#creating-payload-and-inference-via-local-url",
