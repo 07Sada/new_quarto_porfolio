@@ -1,13 +1,5 @@
 [
   {
-    "listing": "/projects.html",
-    "items": [
-      "/projects/Building_a_Company_Brochure_with_AI/Building_a_Company_Brochure_with_AI.html",
-      "/projects/Brand Detection/Brand_Detection.html",
-      "/projects/computer_vison_project/Vegetable_Recognition.html"
-    ]
-  },
-  {
     "listing": "/blogs.html",
     "items": [
       "/blogs/Day 2 Inferencing Local Ollama/Day 2 Inferencing Local Ollama.html",
@@ -17,11 +9,20 @@
       "/blogs/Natural_Language_Processing(NLP)/Natural_Language_Processing(NLP).html",
       "/blogs/Chi_Square_Test/Chi Square Test.html",
       "/blogs/SVM/SVM.html",
-      "/blogs/Supervised_Learning_Algorithms/Supervised Learning Algorithms.html",
       "/blogs/Unsupervised_Learning_Algorithms/Unsupervised Learning Algorithms.html",
+      "/blogs/Supervised_Learning_Algorithms/Supervised Learning Algorithms.html",
       "/blogs/Introduction_to_Docker/Introduction_to_Docker.html",
       "/blogs/feature_selection_technique/Feature Selection Techniques in Machine Learning.html",
       "/blogs/Introduction_to_Algorithm/Introduction to Algorithm.html"
+    ]
+  },
+  {
+    "listing": "/projects.html",
+    "items": [
+      "/projects/Chatbot_gemini_vs_gpt/chatbot_gemini_vs_gpt.html",
+      "/projects/Building_a_Company_Brochure_with_AI/Building_a_Company_Brochure_with_AI.html",
+      "/projects/computer_vison_project/Vegetable_Recognition.html",
+      "/projects/Brand Detection/Brand_Detection.html"
     ]
   }
 ]

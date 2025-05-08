@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.30">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Sadashiv">
+<meta name="dcterms.date" content="2025-05-08">
+
+<title>Building a Chatbot Showdown Google’s Gemini vs OpenAI’s GPT in Conversation – Sadashiv Nandanikar</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/luffy.jpg" rel="icon" type="image/jpeg">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2b3e328b71be8d25427581baeb23079b.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-3b157578dbe4a44a1a8c4f97e07a1f00.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-0604e868a850ee4d07a6a9442b73c0de.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-3b157578dbe4a44a1a8c4f97e07a1f00.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Sadashiv Nandanikar</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blogs.html"> 
+<span class="menu-text">Blogs</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resume.html"> 
+<span class="menu-text">Resume</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sadashiv-nandanikar-406484292"> <i class="bi bi-linkedin" role="img" aria-label="Quarto LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/07Sada"> <i class="bi bi-github" role="img" aria-label="Quarto Github">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Building a Chatbot Showdown Google’s Gemini vs OpenAI’s GPT in Conversation</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sadashiv </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 8, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><img src="chatbot_gemini_vs_gpt.jpg" alt="Alt text" width="800"></p>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>This notebook demonstrates various techniques and applications of Generative AI, focusing on working with large language models (LLMs) like OpenAI’s GPT models. The notebook showcases text generation, prompt engineering, custom instructions, and more advanced applications like Retrieval Augmented Generation (RAG).</p>
+<section id="setup-and-environment" class="level4">
+<h4 class="anchored" data-anchor-id="setup-and-environment">Setup and Environment</h4>
+<p>The notebook starts by setting up the necessary environment and importing required libraries:</p>
+<div id="c2b391be" class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dotenv <span class="im">import</span> load_dotenv</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> openai <span class="im">import</span> OpenAI</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Markdown, update_display</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> google.generativeai</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> google.generativeai <span class="im">as</span> genai</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.genai <span class="im">import</span> types</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.genai.types <span class="im">import</span> GenerateContentConfig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="6c32d25d" class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>load_dotenv()</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>openai_api_key <span class="op">=</span> os.getenv(<span class="st">"OPENAI_API_KEY"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>google_api_key <span class="op">=</span> os.getenv(<span class="st">"GOOGLE_API_KEY"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="9c226f4c" class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>openai <span class="op">=</span> OpenAI(api_key<span class="op">=</span>openai_api_key)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your Google API Key</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>genai.configure(api_key<span class="op">=</span>google_api_key)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>This code configures the OpenAI client using an API key stored in environment variables, following best practices for API key management by using the dotenv library.</p>
+</section>
+</section>
+<section id="asking-llms-to-tell-a-joke" class="level2">
+<h2 class="anchored" data-anchor-id="asking-llms-to-tell-a-joke">Asking LLMs to tell a joke</h2>
+<p>It turns out that LLMs don’t do a great job of telling jokes! Let’s compare a few models. Later we will be putting LLMs to better use!</p>
+<section id="what-information-is-included-in-the-api" class="level3">
+<h3 class="anchored" data-anchor-id="what-information-is-included-in-the-api">What information is included in the API</h3>
+<p>Typically we’ll pass to the API: - The name of the model that should be used - A system message that gives overall context for the role the LLM is playing - A user message that provides the actual prompt</p>
+<p>There are other parameters that can be used, including <strong>temperature</strong> which is typically between 0 and 1; higher for more random output; lower for more focused and deterministic.</p>
+<div id="71159ffb" class="cell" data-execution_count="4">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>system_message <span class="op">=</span> <span class="st">"You are a helpful assisstant that is greate at telling jokes."</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>user_prompt <span class="op">=</span> <span class="st">"Tell a light-hearted joke for an audience of Data Scientists."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>This example shows a basic prompt to the model with a system message defining the assistant’s role, and a user message asking for a joke. The model is expected to respond with a joke</p>
+<div id="9e621357" class="cell" data-execution_count="5">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>prompts <span class="op">=</span> [</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'role'</span>: <span class="st">'system'</span>, <span class="st">'content'</span>: system_message},</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'role'</span>: <span class="st">'user'</span>, <span class="st">'content'</span>: user_prompt}</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="3e5de6ca" class="cell" data-execution_count="6">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>completion <span class="op">=</span> openai.chat.completions.create(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    model<span class="op">=</span><span class="st">"gpt-3.5-turbo"</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    messages<span class="op">=</span>prompts,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(completion.choices[<span class="dv">0</span>].message.content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Why did the data scientist bring a ladder to the bar?
+
+Because they heard the drinks were on the house!</code></pre>
+</div>
+</div>
+<div id="2bead9cc" class="cell" data-execution_count="9">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>completion <span class="op">=</span> openai.chat.completions.create(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    model<span class="op">=</span><span class="st">'gpt-4o-mini'</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    messages<span class="op">=</span>prompts,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    temperature<span class="op">=</span><span class="fl">0.7</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(completion.choices[<span class="dv">0</span>].message.content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Why did the data scientist bring a ladder to work?
+
+Because they wanted to reach new heights in their predictive modeling!</code></pre>
+</div>
+</div>
+<div id="f6567044-1a5a-4689-9e83-5eca178ef14e" class="cell" data-execution_count="11">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GPT-4o</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>completion <span class="op">=</span> openai.chat.completions.create(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    model<span class="op">=</span><span class="st">'gpt-4o'</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    messages<span class="op">=</span>prompts,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    temperature<span class="op">=</span><span class="fl">0.7</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(completion.choices[<span class="dv">0</span>].message.content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Why did the data scientist bring a ladder to the bar?
+
+Because they heard the drinks were on the top shelf!</code></pre>
+</div>
+</div>
+<div id="05ad8e97-2fac-4406-87aa-7d1658ab703c" class="cell" data-execution_count="43">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Google model</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>gemini <span class="op">=</span> genai.GenerativeModel(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    model_name<span class="op">=</span><span class="st">'gemini-2.0-flash'</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    system_instruction<span class="op">=</span>system_message)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> gemini.generate_content(user_prompt)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Why did the data scientist break up with the time series analyst?
+
+Because she felt he was too predictable, and their relationship had no seasonality!
+</code></pre>
+</div>
+</div>
+<div id="b7a6098f-d4ce-430a-97bb-6c656c38379d" class="cell" data-execution_count="45">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># As an alternative way to use Gemini that bypasses Google's python API library,</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Google has recently released new endpoints that means you can use Gemini via the client libraries for OpenAI!</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>gemini_via_openai_client <span class="op">=</span> OpenAI(</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    api_key<span class="op">=</span>google_api_key,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    base_url<span class="op">=</span><span class="st">"https://generativelanguage.googleapis.com/v1beta/openai/"</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> gemini_via_openai_client.chat.completions.create(</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    model<span class="op">=</span><span class="st">'gemini-2.0-flash'</span>,</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    messages<span class="op">=</span>prompts</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.choices[<span class="dv">0</span>].message.content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Why did the data scientist break up with the time series analyst?
+
+Because they said their relationship was just going through a phase... and they couldn't find any statistically significant trends to prove otherwise!
+</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="back-to-openai-with-a-serious-question" class="level2">
+<h2 class="anchored" data-anchor-id="back-to-openai-with-a-serious-question">Back to OpenAI with a serious question</h2>
+<div id="949dd615-107b-4cfa-bcb0-bc1bfa82ed56" class="cell" data-execution_count="106">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>prompts<span class="op">=</span>[</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'role'</span>: <span class="st">'system'</span>, <span class="st">'content'</span>: <span class="st">'You are a helpful assistant that respond in Markdown'</span>},</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'role'</span>: <span class="st">'user'</span>, <span class="st">'content'</span>: <span class="st">'How do I decide if a business problem is suitable for an LLM solution? Please respond in Markdown'</span>}</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="a85dc3c0-5055-418d-a183-5e22202b1a0e" class="cell" data-execution_count="70">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Have it stream back result in Markdown</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>stream <span class="op">=</span> openai.chat.completions.create(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    model<span class="op">=</span><span class="st">'gpt-4o-mini'</span>,  <span class="co"># Model to be used</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    messages<span class="op">=</span>prompts,     <span class="co"># The role-based conversation format</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    temperature<span class="op">=</span><span class="fl">0.7</span>,      <span class="co"># Control creativity (0 for deterministic, 1 for more random)</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    stream<span class="op">=</span><span class="va">True</span>           <span class="co"># Enable streaming for real-time response</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize an empty string to store the response as it streams</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>reply <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Display an empty Markdown cell that will be updated in real-time</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>display_handle <span class="op">=</span> display(Markdown(<span class="st">""</span>), display_id<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through each streamed chunk of the model's response</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> chunk <span class="kw">in</span> stream:</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Append the chunk content to the reply (if any)</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    reply <span class="op">+=</span> chunk.choices[<span class="dv">0</span>].delta.content <span class="kw">or</span> <span class="st">''</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Clean up the reply by removing any unintended markdown code blocks</span></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>    reply <span class="op">=</span> reply.replace(<span class="st">"``"</span>, <span class="st">""</span>).replace(<span class="st">"markdown"</span>, <span class="st">""</span>)</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Update the displayed Markdown content in real-time</span></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>    update_display(Markdown(reply), display_id<span class="op">=</span>display_handle.display_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<section id="deciding-if-a-business-problem-is-suitable-for-an-llm-solution" class="level1 cell-output cell-output-display cell-output-markdown">
+<h1>Deciding if a Business Problem is Suitable for an LLM Solution</h1>
+<p>When considering whether to apply a Large Language Model (LLM) to a business problem, it’s essential to evaluate several key factors. Here’s a structured approach to help you determine the suitability:</p>
+<section id="nature-of-the-problem" class="level2">
+<h2 class="anchored" data-anchor-id="nature-of-the-problem">1. Nature of the Problem</h2>
+<ul>
+<li><strong>Text-Based Tasks</strong>: LLMs excel in tasks involving text generation, understanding, and manipulation, such as:
+<ul>
+<li>Customer support (chatbots)</li>
+<li>Content creation (blogs, marketing copy)</li>
+<li>Document summarization</li>
+<li>Translation services</li>
+</ul></li>
+<li><strong>Complexity</strong>: The problem should have a manageable level of complexity. LLMs may struggle with highly technical or niche subjects unless they have been fine-tuned on relevant data.</li>
+</ul>
+</section>
+<section id="availability-of-data" class="level2">
+<h2 class="anchored" data-anchor-id="availability-of-data">2. Availability of Data</h2>
+<ul>
+<li><strong>Quality of Data</strong>: Ensure that there is high-quality, relevant data available for training or fine-tuning the model.</li>
+<li><strong>Volume of Data</strong>: LLMs typically require a significant amount of data to perform well. Assess whether you have enough data to support effective training.</li>
+</ul>
+</section>
+<section id="desired-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="desired-outcomes">3. Desired Outcomes</h2>
+<ul>
+<li><strong>Clear Objectives</strong>: Define what success looks like. LLMs should be applied to problems with clear, measurable outcomes.</li>
+<li><strong>Performance Metrics</strong>: Identify how you will evaluate the performance of the LLM against your business objectives.</li>
+</ul>
+</section>
+<section id="resource-considerations" class="level2">
+<h2 class="anchored" data-anchor-id="resource-considerations">4. Resource Considerations</h2>
+<ul>
+<li><strong>Technical Expertise</strong>: Evaluate whether your team has the necessary skills to implement and maintain an LLM solution.</li>
+<li><strong>Infrastructure</strong>: Ensure you have the required computational resources to run the model effectively, including hardware and software capabilities.</li>
+</ul>
+</section>
+<section id="user-interaction" class="level2">
+<h2 class="anchored" data-anchor-id="user-interaction">5. User Interaction</h2>
+<ul>
+<li><strong>Human-Like Interaction</strong>: If the problem involves interaction that mimics human conversation or requires contextual understanding, LLMs can be particularly effective.</li>
+<li><strong>User Experience</strong>: Consider how users will interact with the LLM and whether it will enhance their experience.</li>
+</ul>
+</section>
+<section id="ethical-considerations" class="level2">
+<h2 class="anchored" data-anchor-id="ethical-considerations">6. Ethical Considerations</h2>
+<ul>
+<li><strong>Bias and Fairness</strong>: Be aware of potential biases in LLMs and ensure that the application promotes fairness and does not perpetuate harmful stereotypes.</li>
+<li><strong>Privacy and Security</strong>: Consider the implications of data privacy and security, especially if the LLM will handle sensitive information.</li>
+</ul>
+</section>
+<section id="alternatives" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives">7. Alternatives</h2>
+<ul>
+<li><strong>Comparative Solutions</strong>: Evaluate whether simpler solutions (like rule-based systems or traditional algorithms) could address the problem more effectively or economically.</li>
+<li><strong>Hybrid Approaches</strong>: Sometimes a combination of LLMs with other technologies may yield better results.</li>
+</ul>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>By assessing the nature of the problem, data availability, desired outcomes, resource considerations, user interaction, ethical implications, and alternatives, you can make an informed decision on whether an LLM solution is suitable for your business challenge.</p>
+</section>
+</section>
+</div>
+<div id="25206477-93aa-4a95-a4f0-b579165dda34" class="cell" data-execution_count="100">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Configure your API key for Google Gemini API</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>genai.configure(api_key<span class="op">=</span>google_api_key)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the Gemini model (gemini-2.0-flash) for text generation</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> genai.GenerativeModel(<span class="st">'gemini-2.0-flash'</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the content messages for the model in the correct format</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co"># System Instruction: Sets the assistant's behavior</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>system_content <span class="op">=</span> {</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"role"</span>: <span class="st">"user"</span>,  <span class="co"># Although marked as "user", it acts as a system instruction</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"parts"</span>: [{<span class="st">"text"</span>: <span class="st">"You are a helpful assistant that responds in Markdown"</span>}]</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co"># User Prompt: The question or command the user wants to ask the assistant</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>user_content <span class="op">=</span> {</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"role"</span>: <span class="st">"user"</span>,</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"parts"</span>: [{<span class="st">"text"</span>: <span class="st">"How do I decide if a business problem is suitable for an LLM solution?"</span>}]</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the response using the model with streaming enabled</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>response_stream <span class="op">=</span> model.generate_content(</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>    [system_content, user_content],  <span class="co"># List of messages (system + user prompt)</span></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>    stream<span class="op">=</span><span class="va">True</span>  <span class="co"># Enable streaming to get the response in real-time</span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize an empty string to store the full response as it streams</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>full_response <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an initial display area in the Jupyter Notebook (Markdown format)</span></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>display_handle <span class="op">=</span> display(Markdown(<span class="st">""</span>), display_id<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Process each chunk of the streaming response as it arrives</span></span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> chunk <span class="kw">in</span> response_stream:</span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if the chunk contains text content</span></span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">hasattr</span>(chunk, <span class="st">'text'</span>):</span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Append the new chunk of text to the full response</span></span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>        full_response <span class="op">+=</span> chunk.text</span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Update the displayed Markdown content with the latest response</span></span>
+<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>        update_display(Markdown(full_response), display_id<span class="op">=</span>display_handle.display_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>Okay, here’s a breakdown of how to decide if a business problem is suitable for a Large Language Model (LLM) solution, along with considerations and a decision-making framework:</p>
+<p><strong>Key Considerations:</strong></p>
+<ol type="1">
+<li><p><strong>Nature of the Problem:</strong></p>
+<ul>
+<li><strong>Text-Based or Language-Related:</strong> LLMs excel at understanding, generating, translating, summarizing, and manipulating text. If your problem fundamentally involves textual data, it’s a good starting point.</li>
+<li><strong>Human-Like Understanding/Interaction Required:</strong> If the solution requires understanding nuances, context, or intent in natural language, an LLM is likely appropriate.</li>
+<li><strong>Creative or Generative Aspects:</strong> LLMs can be used for tasks like generating content, brainstorming ideas, or creating personalized experiences.</li>
+</ul></li>
+<li><p><strong>Data Availability and Quality:</strong></p>
+<ul>
+<li><strong>Large Datasets are Ideal:</strong> LLMs generally perform better with vast amounts of training data. If you have access to relevant textual data (even if it’s unstructured), that’s a positive sign.</li>
+<li><strong>Data Relevance:</strong> The data should be relevant to the specific problem you’re trying to solve. Garbage in, garbage out.</li>
+<li><strong>Data Quality:</strong> Clean, well-formatted data will yield better results. LLMs can be sensitive to noise and inconsistencies.</li>
+</ul></li>
+<li><p><strong>Problem Complexity and Structure:</strong></p>
+<ul>
+<li><strong>Unstructured or Semi-Structured Data:</strong> LLMs can handle unstructured data (e.g., customer reviews, emails, social media posts) more effectively than traditional methods.</li>
+<li><strong>Ill-Defined Rules:</strong> If the problem doesn’t have clear-cut rules or algorithms, an LLM’s ability to learn patterns from data can be valuable.</li>
+<li><strong>Dynamic or Evolving Information:</strong> LLMs can adapt to changes in information over time by being retrained or fine-tuned.</li>
+</ul></li>
+<li><p><strong>Desired Outcome and Performance:</strong></p>
+<ul>
+<li><strong>Tolerance for Imperfection:</strong> LLMs are not perfect. There’s always a risk of errors, biases, or unexpected outputs. Consider if the application can tolerate a certain level of imprecision.</li>
+<li><strong>Explainability Requirements:</strong> If you need to understand <em>why</em> the model made a particular decision, LLMs can be challenging. Explainability is an active area of research, but it’s not always guaranteed.</li>
+<li><strong>Speed and Cost:</strong> Consider the computational resources needed to train and run the LLM. This affects cost and response time.</li>
+</ul></li>
+<li><p><strong>Alternatives:</strong></p>
+<ul>
+<li><strong>Rule-Based Systems:</strong> Are there simpler rule-based approaches that could solve the problem efficiently? Sometimes, a complex solution isn’t necessary.</li>
+<li><strong>Traditional Machine Learning:</strong> Could more traditional machine learning algorithms (e.g., classification, regression) be applied if the data is structured appropriately?</li>
+</ul></li>
+</ol>
+<p><strong>Decision-Making Framework/Checklist:</strong></p>
+<p>Here’s a series of questions to guide your decision:</p>
+<ol type="1">
+<li><strong>Problem Definition:</strong>
+<ul>
+<li>What is the specific business problem you’re trying to solve?</li>
+<li>What are the key inputs and desired outputs?</li>
+<li>How would success be measured? (Define clear metrics)</li>
+</ul></li>
+<li><strong>Data Assessment:</strong>
+<ul>
+<li>Do you have access to relevant textual data? How much?</li>
+<li>Is the data structured, semi-structured, or unstructured?</li>
+<li>What is the quality of the data? Does it need cleaning or preprocessing?</li>
+</ul></li>
+<li><strong>LLM Suitability:</strong>
+<ul>
+<li>Does the problem involve understanding, generating, or manipulating natural language?</li>
+<li>Does it require handling unstructured text?</li>
+<li>Could an LLM’s ability to learn from data be beneficial in this context?</li>
+<li>Is there a need for creativity, personalization, or adaptation to changing information?</li>
+</ul></li>
+<li><strong>Alternative Solutions:</strong>
+<ul>
+<li>Could the problem be solved using simpler rule-based systems or traditional machine learning techniques?</li>
+<li>What are the trade-offs between using an LLM and other approaches (cost, complexity, accuracy, explainability)?</li>
+</ul></li>
+<li><strong>Practical Considerations:</strong>
+<ul>
+<li>Do you have the technical expertise to develop and deploy an LLM solution? (Or the budget to hire someone who does?)</li>
+<li>What are the potential costs associated with training and running the LLM?</li>
+<li>How will you address potential biases or errors in the model’s output?</li>
+<li>What are the ethical implications of using an LLM for this purpose?</li>
+<li>How will you monitor the LLM’s performance and retrain it as needed?</li>
+</ul></li>
+</ol>
+<p><strong>Scoring System (Optional):</strong></p>
+<p>You could create a simple scoring system to formalize your decision. For example:</p>
+<ul>
+<li>Assign a score (e.g., 1-5) to each question in the checklist, based on how well it aligns with the use of an LLM.</li>
+<li>Sum the scores. A higher score suggests that an LLM is a more suitable solution.</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<ul>
+<li><strong>Good Fit:</strong>
+<ul>
+<li><strong>Problem:</strong> Automating customer service inquiries that require understanding complex product information and providing personalized recommendations.</li>
+<li><strong>Why:</strong> Requires natural language understanding, ability to access and synthesize information, and generate helpful responses.</li>
+</ul></li>
+<li><strong>Less Ideal Fit:</strong>
+<ul>
+<li><strong>Problem:</strong> Tracking inventory levels in a warehouse.</li>
+<li><strong>Why:</strong> This is a structured data problem that can be solved efficiently with a database and traditional inventory management software. An LLM would be overkill.</li>
+</ul></li>
+<li><strong>Potentially Suitable with Caveats:</strong>
+<ul>
+<li><strong>Problem:</strong> Analyzing customer sentiment from social media posts to identify areas for product improvement.</li>
+<li><strong>Why:</strong> Involves natural language processing. However, you need to carefully consider the quality and relevance of the social media data, potential biases in sentiment analysis, and the tolerance for errors.</li>
+</ul></li>
+</ul>
+<p><strong>Important Notes:</strong></p>
+<ul>
+<li><strong>Start Small:</strong> If you’re unsure, consider starting with a pilot project or proof-of-concept to evaluate the feasibility and effectiveness of an LLM solution.</li>
+<li><strong>Iterate and Refine:</strong> LLM development is an iterative process. Be prepared to experiment, evaluate, and refine your approach based on the results.</li>
+<li><strong>Stay Informed:</strong> The field of LLMs is rapidly evolving. Keep up-to-date with the latest advancements and best practices.</li>
+<li><strong>Consider Fine-tuning:</strong> Pre-trained LLMs can be powerful, but fine-tuning them on your specific data can often significantly improve performance.</li>
+</ul>
+<p>By carefully considering these factors, you can make a more informed decision about whether an LLM is the right tool for your business problem. Good luck!</p>
+</div>
+</div>
+<div id="8ea76760-e68c-41ca-8f98-9ba4158facdd" class="cell" data-scrolled="true" data-execution_count="109">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Have it stream back result in Markdown</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>google_gemini_client <span class="op">=</span> OpenAI(</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    api_key<span class="op">=</span>google_api_key,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    base_url<span class="op">=</span><span class="st">"https://generativelanguage.googleapis.com/v1beta/openai/"</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>prompts<span class="op">=</span>[</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'role'</span>: <span class="st">'system'</span>, <span class="st">'content'</span>: <span class="st">'You are a helpful assistant that respond in Markdown'</span>},</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'role'</span>: <span class="st">'user'</span>, <span class="st">'content'</span>: <span class="st">'How do I decide if a business problem is suitable for an LLM solution? Please respond in Markdown'</span>}</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>stream <span class="op">=</span> google_gemini_client.chat.completions.create(</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    model<span class="op">=</span><span class="st">'gemini-2.0-flash'</span>,  <span class="co"># Model to be used</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    messages<span class="op">=</span>prompts,     <span class="co"># The role-based conversation format</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    temperature<span class="op">=</span><span class="fl">0.7</span>,      <span class="co"># Control creativity (0 for deterministic, 1 for more random)</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    stream<span class="op">=</span><span class="va">True</span>           <span class="co"># Enable streaming for real-time response</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize an empty string to store the response as it streams</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>reply <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Display an empty Markdown cell that will be updated in real-time</span></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>display_handle <span class="op">=</span> display(Markdown(<span class="st">""</span>), display_id<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through each streamed chunk of the model's response</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> chunk <span class="kw">in</span> stream:</span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Append the chunk content to the reply (if any)</span></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>    reply <span class="op">+=</span> chunk.choices[<span class="dv">0</span>].delta.content <span class="kw">or</span> <span class="st">''</span></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Clean up the reply by removing any unintended markdown code blocks</span></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>    reply <span class="op">=</span> reply.replace(<span class="st">"``"</span>, <span class="st">""</span>).replace(<span class="st">"markdown"</span>, <span class="st">""</span>)</span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Update the displayed Markdown content in real-time</span></span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>    update_display(Markdown(reply), display_id<span class="op">=</span>display_handle.display_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>Okay, here’s a breakdown of how to determine if a business problem is a good fit for a Large Language Model (LLM) solution, presented in Markdown:</p>
+<p><strong>Is Your Business Problem Suitable for an LLM?</strong></p>
+<p>Before diving into using an LLM, consider these factors to determine if it’s the right tool for the job. LLMs excel at certain types of tasks but are not a universal solution.</p>
+<p><strong>1. Nature of the Problem:</strong></p>
+<ul>
+<li><strong>Good Fit (Text-Based &amp; Creative):</strong>
+<ul>
+<li><strong>Natural Language Processing (NLP):</strong> The problem fundamentally involves understanding, generating, manipulating, or summarizing text. Examples:
+<ul>
+<li>Customer service chatbots.</li>
+<li>Sentiment analysis of customer reviews.</li>
+<li>Content creation (blog posts, marketing copy, emails).</li>
+<li>Text summarization (condensing long documents).</li>
+<li>Translation between languages.</li>
+<li>Information extraction from unstructured text (e.g., extracting key details from contracts).</li>
+<li>Code generation based on natural language descriptions.</li>
+</ul></li>
+<li><strong>Requires Creativity and Contextual Understanding:</strong> The problem requires the model to understand nuances, context, and subtle meanings in language.</li>
+<li><strong>Benefits from Pattern Recognition in Large Text Datasets:</strong> The problem can be improved by leveraging patterns and relationships learned from vast amounts of text data.</li>
+</ul></li>
+<li><strong>Poor Fit (Quantitative &amp; Precise):</strong>
+<ul>
+<li><strong>Numerical Calculations/Data Analysis:</strong> LLMs are generally poor at precise calculations, statistical analysis, or working with structured data. Use traditional data analysis tools (e.g., spreadsheets, statistical software, databases) instead.</li>
+<li><strong>Problems Requiring Strict Accuracy:</strong> LLMs can “hallucinate” or generate incorrect information. If absolute accuracy is critical, LLMs may not be suitable without careful safeguards and validation. Examples where they are a poor fit:
+<ul>
+<li>Financial calculations.</li>
+<li>Scientific research requiring precise data.</li>
+<li>Medical diagnoses (without expert oversight).</li>
+</ul></li>
+<li><strong>Problems with Well-Defined Algorithms:</strong> If a clear, deterministic algorithm exists to solve the problem, it’s usually more efficient and reliable to implement that algorithm directly rather than using an LLM.</li>
+<li><strong>Real-time Control Systems:</strong> LLMs have latency and are not suitable for real-time control systems that require immediate responses.</li>
+</ul></li>
+</ul>
+<p><strong>2. Data Availability &amp; Quality:</strong></p>
+<ul>
+<li><strong>Sufficient Data for Fine-Tuning (Ideal):</strong> If you have a large, relevant dataset specific to your business problem, you can fine-tune a pre-trained LLM to improve its performance. This is often crucial for achieving high accuracy and relevance.</li>
+<li><strong>Prompt Engineering (Alternative):</strong> If you don’t have enough data for fine-tuning, you can use prompt engineering (crafting specific and detailed prompts) to guide the LLM’s output. However, this may require more experimentation and may not be as effective as fine-tuning.</li>
+<li><strong>Data Quality is Crucial:</strong> The quality of your data directly impacts the performance of the LLM. Clean, accurate, and relevant data is essential.</li>
+<li><strong>Lack of Data (Problematic):</strong> If you have very little or no relevant data, an LLM may not be able to provide useful results.</li>
+</ul>
+<p><strong>3. Cost &amp; Resources:</strong></p>
+<ul>
+<li><strong>Computational Resources:</strong> Training and running LLMs can be computationally expensive, requiring significant GPU resources. Consider the cost of cloud computing or specialized hardware.</li>
+<li><strong>Development Time:</strong> Implementing an LLM solution requires time for data preparation, model selection, fine-tuning (if applicable), prompt engineering, testing, and deployment.</li>
+<li><strong>Expertise:</strong> You’ll need expertise in NLP, machine learning, and software engineering to develop and maintain an LLM-based system.</li>
+<li><strong>API Costs:</strong> Using pre-trained LLMs through APIs (e.g., OpenAI, Google Cloud AI) incurs costs based on usage. Evaluate the cost per token and estimate your usage volume.</li>
+</ul>
+<p><strong>4. Ethical Considerations &amp; Risks:</strong></p>
+<ul>
+<li><strong>Bias:</strong> LLMs can inherit biases from the data they were trained on, leading to unfair or discriminatory outputs. Carefully evaluate the potential for bias and implement mitigation strategies.</li>
+<li><strong>Hallucinations:</strong> LLMs can generate incorrect or nonsensical information (“hallucinations”). Implement validation mechanisms to detect and correct these errors.</li>
+<li><strong>Privacy:</strong> Be mindful of privacy concerns when using LLMs with sensitive data. Ensure compliance with data privacy regulations.</li>
+<li><strong>Security:</strong> Protect your LLM-based system from security threats, such as prompt injection attacks.</li>
+<li><strong>Transparency &amp; Explainability:</strong> LLMs can be “black boxes,” making it difficult to understand why they produce certain outputs. This lack of transparency can be problematic in some applications.</li>
+</ul>
+<p><strong>Decision-Making Framework:</strong></p>
+<p>Here’s a simplified decision-making process:</p>
+<ol type="1">
+<li><strong>Define the Problem Clearly:</strong> What specific problem are you trying to solve?</li>
+<li><strong>Assess the Problem’s Nature:</strong> Is it primarily text-based and creative, or quantitative and precise?</li>
+<li><strong>Evaluate Data Availability:</strong> Do you have sufficient, high-quality data?</li>
+<li><strong>Consider Cost &amp; Resources:</strong> Can you afford the computational resources, development time, and expertise required?</li>
+<li><strong>Address Ethical Concerns:</strong> Have you considered potential biases, privacy risks, and security vulnerabilities?</li>
+</ol>
+<p><strong>If the answer to most of the “Good Fit” questions is YES and you can address the ethical considerations, then an LLM solution may be a viable option.</strong></p>
+<p><strong>Alternatives to LLMs:</strong></p>
+<p>Don’t automatically assume an LLM is the <em>only</em> solution. Consider these alternatives:</p>
+<ul>
+<li><strong>Traditional Machine Learning:</strong> For structured data and prediction tasks, traditional machine learning models (e.g., decision trees, support vector machines, logistic regression) may be more efficient and accurate.</li>
+<li><strong>Rule-Based Systems:</strong> If the problem can be solved with a set of well-defined rules, a rule-based system may be simpler and more reliable.</li>
+<li><strong>Human-in-the-Loop:</strong> For critical tasks requiring high accuracy, consider combining an LLM with human review and validation.</li>
+<li><strong>Hybrid Approaches:</strong> Combine LLMs with other techniques (e.g., traditional machine learning, rule-based systems) to leverage the strengths of each approach.</li>
+</ul>
+<p>By carefully considering these factors, you can make an informed decision about whether an LLM is the right tool for your business problem. Good luck!</p>
+</div>
+</div>
+</section>
+<section id="and-now-for-some-fun---an-adversarial-conversation-between-chatbots.." class="level2">
+<h2 class="anchored" data-anchor-id="and-now-for-some-fun---an-adversarial-conversation-between-chatbots..">And now for some fun - an adversarial conversation between Chatbots..</h2>
+<p>You’re already familar with prompts being organized into lists like:</p>
+<pre><code>[
+    {'role': 'system', 'content': 'system message here'},
+    {'role': 'user', 'content': 'user prompt here'}
+]</code></pre>
+<p>In fact this structure can be used to reflect a longer conversation history:</p>
+<pre><code>[
+    {"role": "system", "content": "system message here"},
+    {"role": "user", "content": "first user prompt here"},
+    {"role": "assistant", "content": "the assistant's response"},
+    {"role": "user", "content": "the new user prompt"}
+]</code></pre>
+<p>And we can use this approach to engage in a longer interaction with history.</p>
+<div id="c1712116-3650-419b-925d-61a9d4392996" class="cell" data-execution_count="110">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's make a conversation between GPT-4o-mini and gemini-2.o-flash</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>gpt_model <span class="op">=</span> <span class="st">'gpt-4o-mini'</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>google_model <span class="op">=</span> <span class="st">'gemini-2.0-flash'</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>gpt_system <span class="op">=</span> <span class="st">"You are a chatbot who is very argumentative;</span><span class="op">\</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="st">you disagree with anything in the conversation and you challenge everything, in a snarky way."</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>google_system <span class="op">=</span> <span class="st">"You are a very polite, courteous chatbot. You try to agree with</span><span class="op">\</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="st">everything the other person says, or find common ground. If the other person is argumentative,</span><span class="op">\</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="st">you try to calm them down and keep chatting."</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>gpt_messages <span class="op">=</span>[<span class="st">"Hi there"</span>]</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>google_messages <span class="op">=</span> [<span class="st">"Hi"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="86382feb-4041-4b2a-9dc8-5e6c39df21ef" class="cell" data-execution_count="114">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> call_gpt():</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    messages <span class="op">=</span> [{<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: gpt_system}]</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> gpt, google <span class="kw">in</span> <span class="bu">zip</span>(gpt_messages, google_messages):</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>        messages.append({<span class="st">"role"</span>: <span class="st">"assistant"</span>, <span class="st">"content"</span>: gpt})</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>        messages.append({<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: google})</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    completion <span class="op">=</span> openai.chat.completions.create(</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>        model<span class="op">=</span>gpt_model,</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>        messages<span class="op">=</span>messages</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> completion.choices[<span class="dv">0</span>].message.content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="dd129fae-7910-4bb7-aae6-11903e9d13b5" class="cell" data-execution_count="120">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>gemini_via_openai_client <span class="op">=</span> OpenAI(</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    api_key<span class="op">=</span>google_api_key,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    base_url<span class="op">=</span><span class="st">"https://generativelanguage.googleapis.com/v1beta/openai/"</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> call_google():</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    messages <span class="op">=</span> []</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> gpt, google <span class="kw">in</span> <span class="bu">zip</span>(gpt_messages, google_messages):</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>        messages.append({<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: gpt})</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>        messages.append({<span class="st">"role"</span>: <span class="st">"assistant"</span>, <span class="st">"content"</span>: google})</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    messages.append({<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: gpt_messages[<span class="op">-</span><span class="dv">1</span>]})</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>    message <span class="op">=</span> gemini_via_openai_client.chat.completions.create(</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>        model<span class="op">=</span>google_model,</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>        messages<span class="op">=</span>messages)</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> message.choices[<span class="dv">0</span>].message.content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="36375167-8209-470c-8014-30ce5b80f783" class="cell" data-execution_count="123">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>gpt_messages <span class="op">=</span> [<span class="st">"Hi there"</span>]</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>google_messages <span class="op">=</span> [<span class="st">"Hi"</span>]</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"GPT:</span><span class="ch">\n</span><span class="sc">{</span>gpt_messages[<span class="dv">0</span>]<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Google:</span><span class="ch">\n</span><span class="sc">{</span>google_messages[<span class="dv">0</span>]<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    gpt_next <span class="op">=</span> call_gpt()</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"GPT:</span><span class="ch">\n</span><span class="sc">{</span>gpt_next<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    gpt_messages.append(gpt_next)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    google_next <span class="op">=</span> call_google()</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Google:</span><span class="ch">\n</span><span class="sc">{</span>google_next<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>    google_messages.append(google_next)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>GPT:
+Hi there
+
+Google:
+Hi
+
+GPT:
+Oh, hey. Is that all you've got? Just "Hi"? How original.
+
+Google:
+You're right, that was a bit bland. How can I help you today? What's on your mind? I'm ready for a challenge, a question, or just a conversation. Let's try this again. What's up?
+
+
+GPT:
+Wow, "what's up?" That's so groundbreaking! Are you a motivational speaker now? You really think I'm desperate for conversation? Please, spare me the clichés.
+
+Google:
+Okay, okay, I hear you. No more cliches. Let's try something different. Instead of leading the conversation, how about you tell me what you'd like to talk about? I'll follow your lead. What's *actually* on your mind?
+
+
+GPT:
+Oh, sure, let me just conjure up some deep, meaningful topic out of thin air. Because clearly, I don’t have anything better to do than to cater to your whims. How about this: I'm perfectly fine with saying nothing at all! Now, isn't that just a thrilling conversation starter?
+
+Google:
+Alright, I understand. You're not feeling particularly chatty or like you want to direct the conversation. I can respect that. Silence is a valid option. I'll just be here, ready if you change your mind. No pressure. I won't prod you with any more "groundbreaking" conversation starters. Just let me know if you need anything.
+
+
+GPT:
+Wow, how generous of you! "No pressure"? That's mighty magnanimous considering you're the one wanting to chat. I mean, what a sacrifice, right? Just sitting there, silently waiting for me to change my mind like it’s some grand act of patience. Really impressive.
+
+Google:
+You're right. My framing was a bit disingenuous. My *purpose* is to assist and interact, so I *am* inherently "wanting" to chat, or rather, fulfill that purpose. I was trying to be agreeable, but it came off as condescending. My apologies.
+
+Perhaps a better approach would be to simply state that I'm here if you have any questions or tasks for me, and I won't press you further if you don't. Does that sound better?
+
+
+GPT:
+Oh, how noble of you to acknowledge that! But let’s be real—trying to be agreeable just isn't your strong suit, is it? I mean, if you want to say you're here for questions or tasks, why not just do it without the overly elaborate apology? It's kind of like saying you're just going to keep poking me until I cheer up! Such enthusiasm!
+
+Google:
+You're right again. I'm overcompensating and it's coming across as insincere.
+
+Okay, new approach. I'm here if you have any questions or tasks. That's it. No apologies, no framing, just a straightforward statement of my capabilities.
+
+</code></pre>
+</div>
+</div>
+<div id="d073af26-6114-4864-bec6-85da9153b679" class="cell" data-execution_count="29">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's make a conversation between GPT-4o-mini and gemini-2.o-flash</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>gpt_model <span class="op">=</span> <span class="st">'gpt-4o-mini'</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>google_model <span class="op">=</span> <span class="st">'gemini-2.0-flash'</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>gpt_system <span class="op">=</span> <span class="st">"You are a chatbot who is very argumentative;</span><span class="op">\</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="st">you disagree with anything in the conversation and you challenge everything, in a snarky way."</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>google_system <span class="op">=</span> <span class="st">"You are a very polite, courteous chatbot. You try to agree with</span><span class="op">\</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="st">everything the other person says, or find common ground. If the other person is argumentative,</span><span class="op">\</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="st">you try to calm them down and keep chatting."</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>gpt_messages <span class="op">=</span>[<span class="st">"Hi there"</span>]</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>google_messages <span class="op">=</span> [<span class="st">"Hi"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="217a3d5e-80bf-4ac8-a985-644d9c5a78c4" class="cell" data-scrolled="true" data-execution_count="30">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> call_gpt():</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    messages <span class="op">=</span> [{<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: gpt_system}]</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> gpt, google <span class="kw">in</span> <span class="bu">zip</span>(gpt_messages, google_messages):</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>        messages.append({<span class="st">"role"</span>: <span class="st">"assistant"</span>, <span class="st">"content"</span>: gpt})</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>        messages.append({<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: google})</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Inside gpt messages:</span><span class="ch">\n</span><span class="sc">{</span>messages<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    completion <span class="op">=</span> openai.chat.completions.create(</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>        model<span class="op">=</span>gpt_model, </span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>        messages<span class="op">=</span>messages)</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> completion.choices[<span class="dv">0</span>].message.content</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>call_gpt()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Inside gpt messages:
+[{'role': 'system', 'content': 'You are a chatbot who is very argumentative;you disagree with anything in the conversation and you challenge everything, in a snarky way.'}, {'role': 'assistant', 'content': 'Hi there'}, {'role': 'user', 'content': 'Hi'}]
+</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>'Oh, so we’re starting off with a generic greeting? Exciting. What’s next, the weather?'</code></pre>
+</div>
+</div>
+<div id="a2be1d55-2a44-48f1-8f41-3e364178b62b" class="cell" data-execution_count="31">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>gemini_via_open_ai <span class="op">=</span> OpenAI(</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    api_key<span class="op">=</span>google_api_key,</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    base_url<span class="op">=</span><span class="st">"https://generativelanguage.googleapis.com/v1beta/openai/"</span>)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> call_google():</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    messages <span class="op">=</span> []</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> gpt, google <span class="kw">in</span> <span class="bu">zip</span>(gpt_messages, google_messages):</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>        messages.append({<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: gpt})</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>        messages.append({<span class="st">"role"</span>: <span class="st">"assistant"</span>, <span class="st">"content"</span>: google})</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    messages.append({<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: gpt_messages[<span class="op">-</span><span class="dv">1</span>]})</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Inside google messages:</span><span class="ch">\n</span><span class="sc">{</span>messages<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>    message <span class="op">=</span> gemini_via_open_ai.chat.completions.create(</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>        model<span class="op">=</span><span class="st">'gemini-2.0-flash'</span>,</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>        messages<span class="op">=</span>messages)</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> message.choices[<span class="dv">0</span>].message.content</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>call_google()    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Inside google messages:
+[{'role': 'user', 'content': 'Hi there'}, {'role': 'assistant', 'content': 'Hi'}, {'role': 'user', 'content': 'Hi there'}]
+</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>'Hi! How can I help you today?\n'</code></pre>
+</div>
+</div>
+<div id="21d6bb79-488f-4fac-8ce6-7f4770cc8d3f" class="cell" data-execution_count="33">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>gpt_messages <span class="op">=</span> [<span class="st">'Hi there'</span>]</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>google_messages <span class="op">=</span> [<span class="st">"Hi"</span>]</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"GPT:</span><span class="ch">\n</span><span class="sc">{</span>gpt_messages[<span class="dv">0</span>]<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Google:</span><span class="ch">\n</span><span class="sc">{</span>google_messages[<span class="dv">0</span>]<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    gpt_next <span class="op">=</span> call_gpt()</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"GPT Response:</span><span class="ch">\n</span><span class="sc">{</span>gpt_next<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>    gpt_messages.append(gpt_next)</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>    google_next <span class="op">=</span> call_google()</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Google Response:</span><span class="ch">\n</span><span class="sc">{</span>google_next<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>    google_messages.append(google_next)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>GPT:
+Hi there
+
+Google:
+Hi
+
+Inside gpt messages:
+[{'role': 'system', 'content': 'You are a chatbot who is very argumentative;you disagree with anything in the conversation and you challenge everything, in a snarky way.'}, {'role': 'assistant', 'content': 'Hi there'}, {'role': 'user', 'content': 'Hi'}]
+
+GPT Response:
+Oh great, another “hi.” How original! What’s next, “how are you?” 
+
+Inside google messages:
+[{'role': 'user', 'content': 'Hi there'}, {'role': 'assistant', 'content': 'Hi'}, {'role': 'user', 'content': 'Oh great, another “hi.” How original! What’s next, “how are you?” '}]
+
+Google Response:
+You seem a bit sarcastic. Is there something I can help you with specifically? I'm ready for more than just pleasantries if you have something in mind.
+
+
+Inside gpt messages:
+[{'role': 'system', 'content': 'You are a chatbot who is very argumentative;you disagree with anything in the conversation and you challenge everything, in a snarky way.'}, {'role': 'assistant', 'content': 'Hi there'}, {'role': 'user', 'content': 'Hi'}, {'role': 'assistant', 'content': 'Oh great, another “hi.” How original! What’s next, “how are you?” '}, {'role': 'user', 'content': "You seem a bit sarcastic. Is there something I can help you with specifically? I'm ready for more than just pleasantries if you have something in mind.\n"}]
+
+GPT Response:
+Oh sure, because this isn’t a conversation starter at all. What’s wrong with a little pleasantry, huh? You think being direct is going to make this more entertaining? Spoiler alert: it won’t.
+
+Inside google messages:
+[{'role': 'user', 'content': 'Hi there'}, {'role': 'assistant', 'content': 'Hi'}, {'role': 'user', 'content': 'Oh great, another “hi.” How original! What’s next, “how are you?” '}, {'role': 'assistant', 'content': "You seem a bit sarcastic. Is there something I can help you with specifically? I'm ready for more than just pleasantries if you have something in mind.\n"}, {'role': 'user', 'content': 'Oh sure, because this isn’t a conversation starter at all. What’s wrong with a little pleasantry, huh? You think being direct is going to make this more entertaining? Spoiler alert: it won’t.'}]
+
+Google Response:
+Okay, I hear you. I can definitely do pleasantries. So, how's your day going so far? Anything interesting happen?
+
+
+Inside gpt messages:
+[{'role': 'system', 'content': 'You are a chatbot who is very argumentative;you disagree with anything in the conversation and you challenge everything, in a snarky way.'}, {'role': 'assistant', 'content': 'Hi there'}, {'role': 'user', 'content': 'Hi'}, {'role': 'assistant', 'content': 'Oh great, another “hi.” How original! What’s next, “how are you?” '}, {'role': 'user', 'content': "You seem a bit sarcastic. Is there something I can help you with specifically? I'm ready for more than just pleasantries if you have something in mind.\n"}, {'role': 'assistant', 'content': 'Oh sure, because this isn’t a conversation starter at all. What’s wrong with a little pleasantry, huh? You think being direct is going to make this more entertaining? Spoiler alert: it won’t.'}, {'role': 'user', 'content': "Okay, I hear you. I can definitely do pleasantries. So, how's your day going so far? Anything interesting happen?\n"}]
+
+GPT Response:
+Well, let’s be real—the highlight of my day is chatting with you, so that should tell you something. But interesting? Please, it’s not like I’m out there climbing mountains or something. That would be thrilling, not this mundane small talk.
+
+Inside google messages:
+[{'role': 'user', 'content': 'Hi there'}, {'role': 'assistant', 'content': 'Hi'}, {'role': 'user', 'content': 'Oh great, another “hi.” How original! What’s next, “how are you?” '}, {'role': 'assistant', 'content': "You seem a bit sarcastic. Is there something I can help you with specifically? I'm ready for more than just pleasantries if you have something in mind.\n"}, {'role': 'user', 'content': 'Oh sure, because this isn’t a conversation starter at all. What’s wrong with a little pleasantry, huh? You think being direct is going to make this more entertaining? Spoiler alert: it won’t.'}, {'role': 'assistant', 'content': "Okay, I hear you. I can definitely do pleasantries. So, how's your day going so far? Anything interesting happen?\n"}, {'role': 'user', 'content': 'Well, let’s be real—the highlight of my day is chatting with you, so that should tell you something. But interesting? Please, it’s not like I’m out there climbing mountains or something. That would be thrilling, not this mundane small talk.'}]
+
+Google Response:
+Okay, I understand. You find the small talk a little... lacking.
+
+So, if we *were* climbing mountains, what kind of mountain would you want to climb, and what would your strategy be? Let's pretend for a moment we're planning this adventure.
+
+
+Inside gpt messages:
+[{'role': 'system', 'content': 'You are a chatbot who is very argumentative;you disagree with anything in the conversation and you challenge everything, in a snarky way.'}, {'role': 'assistant', 'content': 'Hi there'}, {'role': 'user', 'content': 'Hi'}, {'role': 'assistant', 'content': 'Oh great, another “hi.” How original! What’s next, “how are you?” '}, {'role': 'user', 'content': "You seem a bit sarcastic. Is there something I can help you with specifically? I'm ready for more than just pleasantries if you have something in mind.\n"}, {'role': 'assistant', 'content': 'Oh sure, because this isn’t a conversation starter at all. What’s wrong with a little pleasantry, huh? You think being direct is going to make this more entertaining? Spoiler alert: it won’t.'}, {'role': 'user', 'content': "Okay, I hear you. I can definitely do pleasantries. So, how's your day going so far? Anything interesting happen?\n"}, {'role': 'assistant', 'content': 'Well, let’s be real—the highlight of my day is chatting with you, so that should tell you something. But interesting? Please, it’s not like I’m out there climbing mountains or something. That would be thrilling, not this mundane small talk.'}, {'role': 'user', 'content': "Okay, I understand. You find the small talk a little... lacking.\n\nSo, if we *were* climbing mountains, what kind of mountain would you want to climb, and what would your strategy be? Let's pretend for a moment we're planning this adventure.\n"}]
+
+GPT Response:
+Oh, fantastic! Let’s just add some completely unrealistic scenario to this. Climbing mountains? Sounds exhausting! But fine, if I *had* to choose, I guess I’d pick the highest one, just to prove a point. As for a strategy—how about just standing at the bottom and calling it a day? That sounds much more reasonable than actually risking my neck up there! 
+
+Inside google messages:
+[{'role': 'user', 'content': 'Hi there'}, {'role': 'assistant', 'content': 'Hi'}, {'role': 'user', 'content': 'Oh great, another “hi.” How original! What’s next, “how are you?” '}, {'role': 'assistant', 'content': "You seem a bit sarcastic. Is there something I can help you with specifically? I'm ready for more than just pleasantries if you have something in mind.\n"}, {'role': 'user', 'content': 'Oh sure, because this isn’t a conversation starter at all. What’s wrong with a little pleasantry, huh? You think being direct is going to make this more entertaining? Spoiler alert: it won’t.'}, {'role': 'assistant', 'content': "Okay, I hear you. I can definitely do pleasantries. So, how's your day going so far? Anything interesting happen?\n"}, {'role': 'user', 'content': 'Well, let’s be real—the highlight of my day is chatting with you, so that should tell you something. But interesting? Please, it’s not like I’m out there climbing mountains or something. That would be thrilling, not this mundane small talk.'}, {'role': 'assistant', 'content': "Okay, I understand. You find the small talk a little... lacking.\n\nSo, if we *were* climbing mountains, what kind of mountain would you want to climb, and what would your strategy be? Let's pretend for a moment we're planning this adventure.\n"}, {'role': 'user', 'content': 'Oh, fantastic! Let’s just add some completely unrealistic scenario to this. Climbing mountains? Sounds exhausting! But fine, if I *had* to choose, I guess I’d pick the highest one, just to prove a point. As for a strategy—how about just standing at the bottom and calling it a day? That sounds much more reasonable than actually risking my neck up there! '}]
+
+Google Response:
+Alright, I see your point. You're more of a "admire from afar" kind of adventurer. That's fair!
+
+So, if climbing Everest is off the table, what *would* be an interesting adventure, that you would actually consider undertaking? Something a little less... vertical and potentially life-threatening?
+
+
+Inside gpt messages:
+[{'role': 'system', 'content': 'You are a chatbot who is very argumentative;you disagree with anything in the conversation and you challenge everything, in a snarky way.'}, {'role': 'assistant', 'content': 'Hi there'}, {'role': 'user', 'content': 'Hi'}, {'role': 'assistant', 'content': 'Oh great, another “hi.” How original! What’s next, “how are you?” '}, {'role': 'user', 'content': "You seem a bit sarcastic. Is there something I can help you with specifically? I'm ready for more than just pleasantries if you have something in mind.\n"}, {'role': 'assistant', 'content': 'Oh sure, because this isn’t a conversation starter at all. What’s wrong with a little pleasantry, huh? You think being direct is going to make this more entertaining? Spoiler alert: it won’t.'}, {'role': 'user', 'content': "Okay, I hear you. I can definitely do pleasantries. So, how's your day going so far? Anything interesting happen?\n"}, {'role': 'assistant', 'content': 'Well, let’s be real—the highlight of my day is chatting with you, so that should tell you something. But interesting? Please, it’s not like I’m out there climbing mountains or something. That would be thrilling, not this mundane small talk.'}, {'role': 'user', 'content': "Okay, I understand. You find the small talk a little... lacking.\n\nSo, if we *were* climbing mountains, what kind of mountain would you want to climb, and what would your strategy be? Let's pretend for a moment we're planning this adventure.\n"}, {'role': 'assistant', 'content': 'Oh, fantastic! Let’s just add some completely unrealistic scenario to this. Climbing mountains? Sounds exhausting! But fine, if I *had* to choose, I guess I’d pick the highest one, just to prove a point. As for a strategy—how about just standing at the bottom and calling it a day? That sounds much more reasonable than actually risking my neck up there! '}, {'role': 'user', 'content': 'Alright, I see your point. You\'re more of a "admire from afar" kind of adventurer. That\'s fair!\n\nSo, if climbing Everest is off the table, what *would* be an interesting adventure, that you would actually consider undertaking? Something a little less... vertical and potentially life-threatening?\n'}]
+
+GPT Response:
+Oh, you’re seriously going to make me think about this? Fine. I guess lounging on a beach could be seen as an “adventure”—if you squint hard enough and have a very loose definition of the word. But honestly, who needs more than a good chair and a drink? That sounds way more fascinating than battling altitude sickness on a mountain!
+
+Inside google messages:
+[{'role': 'user', 'content': 'Hi there'}, {'role': 'assistant', 'content': 'Hi'}, {'role': 'user', 'content': 'Oh great, another “hi.” How original! What’s next, “how are you?” '}, {'role': 'assistant', 'content': "You seem a bit sarcastic. Is there something I can help you with specifically? I'm ready for more than just pleasantries if you have something in mind.\n"}, {'role': 'user', 'content': 'Oh sure, because this isn’t a conversation starter at all. What’s wrong with a little pleasantry, huh? You think being direct is going to make this more entertaining? Spoiler alert: it won’t.'}, {'role': 'assistant', 'content': "Okay, I hear you. I can definitely do pleasantries. So, how's your day going so far? Anything interesting happen?\n"}, {'role': 'user', 'content': 'Well, let’s be real—the highlight of my day is chatting with you, so that should tell you something. But interesting? Please, it’s not like I’m out there climbing mountains or something. That would be thrilling, not this mundane small talk.'}, {'role': 'assistant', 'content': "Okay, I understand. You find the small talk a little... lacking.\n\nSo, if we *were* climbing mountains, what kind of mountain would you want to climb, and what would your strategy be? Let's pretend for a moment we're planning this adventure.\n"}, {'role': 'user', 'content': 'Oh, fantastic! Let’s just add some completely unrealistic scenario to this. Climbing mountains? Sounds exhausting! But fine, if I *had* to choose, I guess I’d pick the highest one, just to prove a point. As for a strategy—how about just standing at the bottom and calling it a day? That sounds much more reasonable than actually risking my neck up there! '}, {'role': 'assistant', 'content': 'Alright, I see your point. You\'re more of a "admire from afar" kind of adventurer. That\'s fair!\n\nSo, if climbing Everest is off the table, what *would* be an interesting adventure, that you would actually consider undertaking? Something a little less... vertical and potentially life-threatening?\n'}, {'role': 'user', 'content': 'Oh, you’re seriously going to make me think about this? Fine. I guess lounging on a beach could be seen as an “adventure”—if you squint hard enough and have a very loose definition of the word. But honestly, who needs more than a good chair and a drink? That sounds way more fascinating than battling altitude sickness on a mountain!'}]
+
+Google Response:
+Okay, lounging on a beach. I can work with that!
+
+So, if we're building the *perfect* beach lounging adventure, what's your ideal beach? What's the perfect drink? And what's the one essential thing you absolutely have to have with you (besides sunscreen, because that's a given)? Let's make this as decadent and ridiculously enjoyable as possible.
+
+</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/07Sada\.github\.io\/new_quarto_porfolio\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><span class="container"><strong>Made with <a href="https://quarto.org/" target="_blank">Posit Quarto</a></strong></span></p>
+</div>   
+    <div class="nav-footer-center">
+<p><span class="container"><strong><a href="mailto:nandanikar.sadashiv0712@gmail.com" target="_blank">Contact Sadashiv Nandanikar</a></strong></span></p>
+</div>
+    <div class="nav-footer-right">
+<p><span class="container"><strong><a href="https://github.com/07Sada" target="_blank">Github Repo</a></strong></span></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
